@@ -1,0 +1,98 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: RAVE
+  affiliation: IRCAM
+  architecture: variational autoencoder
+  applications: audio synthesis, style transfer
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: partial
+    notes: A consumer-grade GPU (e.g., 8–16GB VRAM) is needed depending on configuration.
+      Lightweight options (e.g., ONNX, Raspberry) reduce demands, but CPU-only training
+      is not recommended.
+  dataset_size:
+    value: high
+    notes: The model is designed to be trained on relatively small, domain-specific
+      datasets, with documentation suggesting a few hours of homogeneous audio as
+      a practical minimum, making personal datasets viable.
+  adaptation_pathways:
+    value: high
+    notes: Complete dataset preparation, training, export, and prior training pipelines
+      are provided, with multiple architectures and configurations explicitly intended
+      for adaptation on new data.
+    tags: prior training, training
+  technical_barriers:
+    value: partial
+    notes: Training and preprocessing rely on command-line tools and Python environments.
+      A Colab notebook, a detailed tutorial, and extensive documentation are provided,
+      making adaptation accessible to users with basic technical skills, but no dedicated
+      training GUI is available.
+    tags: CLI, Colab, tutorial
+  model_redistribution:
+    value: partial
+    notes: RAVE’s CC BY-NC 4.0 license permits redistribution of trained models or
+      checkpoints with attribution for non-commercial use. Sharing is legally allowed
+      but commercially restricted and not explicitly structured or encouraged beyond
+      general community practice.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: RAVE primarily operates in an audio-to-audio paradigm. Conditioning is
+      based on incoming audio, with no native support for text, MIDI, or symbolic
+      inputs.
+    tags: audio
+  time_varying_control:
+    value: partial
+    notes: RAVE preserves temporal structure through audio-to-audio conditioning,
+      with output following the time evolution of the input signal. However, it does
+      not support explicit symbolic or structured time-varying controls (e.g. MIDI,
+      aligned control envelopes, or temporal embeddings).
+  feature_disentanglement:
+    value: partial
+    notes: Post-training analysis identifies informative latent dimensions and improves
+      controllability, but these dimensions are not associated with explicit or interpretable
+      musical attributes, such as pitch or timbre.
+    tags: ''
+  control_parameters:
+    value: high
+    notes: RAVE exposes a rich set of inference-time control parameters, including
+      per-dimension latent scaling and bias, controllable noise injection, and optional
+      latent priors, enabling fine-grained manipulation during synthesis.
+    tags: latent manipulation, latent noise, latent prior
+usability:
+  interface_availability:
+    value: high
+    notes: Inference is available via multiple user-facing interfaces, including a
+      VST plugin and real-time integrations for Max/MSP and Pure Data, in addition
+      to command-line tools.
+    tags: AU, Max/MSP, PureData, VST
+  access_restrictions:
+    value: high
+    notes: The model’s source code is publicly available, along with inference scripts
+      and pretrained models. No login, subscription, or usage limits apply.
+  realtime_capabilities:
+    value: high
+    notes: The model supports low-latency, real-time audio synthesis and streaming,
+      including CPU-based real-time inference suitable for live performance.
+  workflow_integration:
+    value: high
+    notes: RAVE can be embedded directly into common music workflows, including DAWs
+      and visual programming environments, enabling both studio and live use.
+    tags: DAW, visual programming
+  output_licensing:
+    value: partial
+    notes: The output may be used, modified, and shared for non-commercial purposes
+      only, and attribution is required. Commercial use of generated material is not
+      permitted under CC BY-NC 4.0.
+  community_support:
+    value: high
+    notes: Active and accessible support is available via a dedicated Discord server,
+      GitHub discussions, and regularly updated tutorials and examples.
+    tags: Discord, Forum, GitHub Discussions, GitHub Issues

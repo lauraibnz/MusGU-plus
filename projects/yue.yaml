@@ -1,0 +1,108 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: YuE
+  affiliation: The Hong Kong University of Science and Technology (HKUST) and MAP
+  architecture: autoregressive transformer
+  applications: continuation, full song generation, lyrics-to-song
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: low
+    notes: 'YuE requires dedicated high-end GPU infrastructure for training and scaling
+      (e.g., tens to hundreds of NVIDIA H800 GPUs via Megatron-LM). Fine-tuning setup
+      assumes substantial VRAM and distributed tooling. Therefore, training or fine-tuning
+      is not feasible without institutional-level computational resources. '
+  dataset_size:
+    value: low
+    notes: 'YuE was trained on large-scale datasets (e.g., hundreds of thousands of
+      hours of audio), and does not support adaptation on small datasets. '
+  adaptation_pathways:
+    value: high
+    notes: 'YuE provides fine-tuning code in a subdirectory of the main GitHub repository.
+      However, the pathway documentation assumes prior technical knowledge and infrastructure,
+      which makes adaptation technically possible but not streamlined from a musician''s
+      perspective.  '
+    tags: LoRA, fine-tuning, pretrained checkpoints
+  technical_barriers:
+    value: low
+    notes: Fine-tuning is provided only through low-level training scripts. No graphical
+      interface, simplified notebook, or musician-oriented workflow is provided, resulting
+      in high technical barriers to adaptation.
+    tags: CLI
+  model_redistribution:
+    value: high
+    notes: YuE is released under the Apache 2.0 license, which explicitly permits
+      modification and redistribution of derivative works, including fine-tuned models.
+      Although fine-tuning is technically demanding, adapted checkpoints can be legally
+      redistributed without restriction.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: 'YuE supports generation conditioning through text (lyrics, structural
+      labels, and style tags), and optional reference audio for in-context learning. '
+    tags: audio, lyrics, section, style tags, text
+  time_varying_control:
+    value: partial
+    notes: YuE provides limited time-localized control through section-based generation,
+      allowing different musical behaviors across structured segments (e.g., verse,
+      chorus). However, control remains discrete and symbolic, with no fine-grained
+      or continuous time-varying manipulation within segments.
+  feature_disentanglement:
+    value: partial
+    notes: YuE introduces training-stage mechanisms to reduce entanglement between
+      textual and audio conditioning, yielding partial disentanglement at inference
+      time. Nonetheless, internal musical attributes remain bundled, and disentanglement
+      is neither explicit nor robustly exposed to user-level control.
+    tags: ''
+  control_parameters:
+    value: partial
+    notes: YuE supports a few inference-time control parameters, limited to repetition
+      penalty (to discourage looping) and deterministic seeding. Other controls, including
+      temperature, top-p sampling and per-segment guidance scaling, remain hard-coded
+      in the inference script, and direct manipulation of internal latent representations
+      is not supported.
+    tags: randomness, variability
+usability:
+  interface_availability:
+    value: partial
+    notes: Multiple community-developed Gradio-based UIs are available for YuE, most
+      of them based on or derived from the interface developed by Alisson Pereira
+      Anjos (alisson-anjos). There is also a third-party one-click installer (Pinokio),
+      which can simplify local setup on Windows. Still, these UIs require local setup,
+      GPU configuration, and technical familiarity. Moreover, there are some community-develop
+      Colab notebooks for specific tasks, such as music continuation. No official
+      standalone or plug-and-play application in provided.
+    tags: Colab, Gradio
+  access_restrictions:
+    value: high
+    notes: YuE’s inference code and pretrained checkpoints are openly available without
+      paywalls, subscriptions, or usage limits. The model is released under the Apache
+      2.0 license, allowing unrestricted use, with no login or platform-specific access
+      requirements.
+  realtime_capabilities:
+    value: low
+    notes: 'YuE does not support real-time or interactive generation. Inference requires
+      a GPU, and generation latency is substantial (e.g., generating 30 seconds of
+      audio takes ~150 s on a NVIDIA H800 and ~360 s on a RTX4090). '
+  workflow_integration:
+    value: low
+    notes: Interaction is limited to offline, file-based generation via scripts or
+      standalone UIs, with no native support for DAW plugins, MIDI/OSC control, or
+      other direct integration into existing creative setups.
+    tags: ''
+  output_licensing:
+    value: high
+    notes: 'YuE outputs may be used for both personal and commercial purposes, and
+      users retain ownership of generated content. However, the license encourages
+      attribution to the model (“YuE by HKUST/M-A-P”) and recommends transparency
+      when publishing AI-generated works. '
+  community_support:
+    value: high
+    notes: 'Support exists via a Discord channel, GitHub issues and documentation. '
+    tags: Discord, GitHub Issues

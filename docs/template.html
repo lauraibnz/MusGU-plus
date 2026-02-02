@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MusGU+ Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet"/>
+<style>
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+
+body.ready {
+  opacity: 1;
+}
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.header h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.header p {
+  font-size: 1.1em;
+  color: #666;
+}
+.controls {
+  background: white;
+  padding: 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.active-filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 6px 0;
+  min-height: 40px;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.active-filters-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+.active-filters-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0; /* Critical: allows flex item to shrink below content size */
+}
+
+.active-filter-tag {
+  padding: 3px 8px;
+  background: #6c757d;
+  color: white;
+  border: 1px solid #6c757d;
+  border-radius: 12px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.active-filter-tag:hover {
+  background: #5a6268;
+  border-color: #5a6268;
+}
+
+.active-filter-tag .remove-icon {
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.clear-filters-inline {
+  padding: 3px 8px;
+  background: #6c757d;
+  color: white;
+  border: 1px solid #6c757d;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+  display: none;
+  flex-shrink: 0; /* Don't allow button to shrink */
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.clear-filters-inline.visible {
+  display: inline-flex;
+  align-items: center;
+}
+
+.clear-filters-inline:hover {
+  background: #5a6268;
+  border-color: #5a6268;
+}
+
+.search-container {
+  display: none; /* Hide search for now, keep functionality */
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.search-box-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+.controls input, .controls select {
+  padding: 8px 12px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.search-box {
+  width: 300px;
+}
+
+/* Applications tags section */
+.applications-section {
+  margin: 0px auto 0;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.applications-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.applications-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 30px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.application-tag {
+  padding: 4px 10px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.application-tag:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.application-tag.active {
+  background: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+
+#musgu-table {
+  width: auto;
+  max-width: fit-content;
+  border-collapse: separate;
+  border-spacing: 2px 2px;
+  font-size: 13px;
+  background: white;
+  box-shadow: none;
+  margin: 0 auto;
+  table-layout: auto;
+}
+
+#musgu-table.calculating {
+  visibility: hidden;
+}
+#included-table {
+  overflow-x: auto;
+  width: 100%;
+}
+#musgu-table thead {
+  background: white;
+  color: #333;
+  border-bottom: 1px solid #000;
+}
+#musgu-table th {
+  padding: 12px 4px;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+#musgu-table td {
+  padding: 10px 4px;
+  border: none;
+  text-align: center;
+}
+.name-cell {
+  text-align: left !important;
+  font-weight: bold;
+  border-right: 1px solid #000;
+  width: 0.1%;
+  white-space: nowrap;
+}
+.org {
+  text-align: left !important;
+  font-size: 0.9em;
+  color: #333;
+  font-weight: bold;
+  border-right: 1px solid #000;
+  width: 0.1%;
+  white-space: nowrap;
+}
+.score {
+  font-weight: 600;
+  background: #f0f0f0;
+}
+.data-cell {
+  cursor: help;
+}
+.high {
+  color: #2d6a4f;
+  background: #c7f0d8;
+}
+.partial {
+  color: #e67700;
+  background: #ffd699;
+}
+.low {
+  color: #c1121f;
+  background: #ffb3ba;
+}
+.empty {
+  color: #999;
+  background: #f5f5f5;
+}
+
+.main-header th {
+  font-size: 14px;
+  padding: 10px;
+  position: relative;
+}
+
+.main-header th:first-child,
+.main-header th:nth-child(2) {
+  width: 0.1%;
+  white-space: nowrap;
+}
+
+.dimension-header-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dimension-name {
+  text-align: center;
+}
+
+.dimension-filter-tag {
+  padding: 4px 10px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dimension-filter-tag:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.dimension-filter-tag.active {
+  background: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+
+.second-header th {
+  font-size: 12px;
+  padding: 8px 4px;
+  position: relative;
+  width: 80px;
+  vertical-align: top;
+  white-space: normal;
+  overflow: visible; /* Allow expanded tags to overflow */
+}
+
+.criterion-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  overflow: visible; /* Allow expanded tags to overflow */
+}
+
+.criterion-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  max-width: 150px;
+  overflow: visible; /* Allow content to be visible */
+}
+
+/* When there's only 1 visible tag (no second tag, no expand button), make it narrower */
+.criterion-tags:has(.visible-tag:only-of-type) {
+  max-width: fit-content; /* Only as wide as the single tag */
+}
+
+/* When there are exactly 2 visible tags (no expand button), force them to wrap */
+.criterion-tags:has(.visible-tag:nth-of-type(2)):not(:has(.expand-tags-btn)) {
+  max-width: 60px; /* Force narrower width to wrap 2 tags */
+}
+
+.tag-group {
+  display: inline-flex;
+  gap: 4px;
+  flex-wrap: nowrap; /* Keep tag and button together */
+  align-items: center;
+  flex-shrink: 0; /* Prevent the group from shrinking */
+}
+
+.criterion-tags.expanded {
+  position: relative;
+  max-width: none !important;
+  flex-wrap: wrap !important;
+  min-height: 60px; /* Reserve space for expanded tags */
+}
+
+.criterion-tags.expanded .tag-group {
+  flex-wrap: wrap;
+}
+
+.hidden-tag {
+  display: none !important;
+}
+
+.criterion-tags.expanded .hidden-tag {
+  display: inline-flex !important;
+  order: 999; /* Push hidden tags to the end when expanded */
+}
+
+/* Force first hidden tag to start on new line after button */
+.criterion-tags.expanded .hidden-tag:first-of-type {
+  margin-left: 100%; /* Force break before first hidden tag */
+}
+
+.expand-tags-btn {
+  padding: 2px 1px;
+  background: #e9ecef;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  font-size: 8.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+  color: #495057;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 12px;
+  justify-content: center;
+  order: 100; /* Keep button after visible tags but before hidden tags */
+}
+
+.expand-tags-btn:hover {
+  background: #dee2e6;
+  border-color: #adb5bd;
+}
+
+.criterion-tag {
+  padding: 1px 4px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 9px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.criterion-tag:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.criterion-tag.active {
+  background: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+
+.expand-tags-btn {
+  padding: 2px 6px;
+  background: #e9ecef;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  color: #495057;
+  flex-shrink: 0;
+}
+
+.criterion-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.filter-icon {
+  cursor: pointer;
+  font-size: 11px;
+  color: #6c757d;
+  padding: 2px 4px;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  line-height: 1;
+  font-weight: normal;
+  display: none; /* Hide the SVG filter icon for now */
+  vertical-align: middle;
+}
+
+.filter-icon svg {
+  display: block;
+  width: 9px;
+  height: 7px;
+  fill: currentColor;
+}
+
+.filter-icon:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.filter-icon.has-active {
+  color: #fff;
+  background: #6c757d;
+}
+
+.filter-popup {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 200px;
+  margin-top: 4px;
+}
+
+.filter-popup.active {
+  display: block;
+}
+
+.filter-popup-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.filter-popup-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.filter-popup-tag {
+  padding: 4px 10px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.filter-popup-tag:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.filter-popup-tag.active {
+  background: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+
+#footer {
+  margin-top: 30px;
+  padding: 30px 40px;
+  margin-bottom: 40px;
+  background: #f8f8f8;
+  border-top: 3px solid #e0e0e0;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 15px auto;
+  flex-wrap: wrap;
+  width: auto;
+  max-width: 1200px;
+}
+.legend-items {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-symbol {
+  font-size: 16px;
+  font-weight: bold;
+}
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+.sortable:hover {
+  background: #d8d8d8;
+}
+.sort-arrow {
+  font-size: 0.7em;
+  margin-left: 4px;
+  opacity: 0.3;
+  display: inline-block;
+}
+.sortable.active .sort-arrow {
+  opacity: 1;
+}
+.clear-filters-btn {
+  padding: 8px 16px;
+  background: #6c757d;
+  color: white;
+  border: 1px solid #6c757d;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+.clear-filters-btn:hover {
+  background: #5a6268;
+  border-color: #5a6268;
+}
+#description {
+  background-color: #f8f8f8;
+  padding: 1.5em;
+  margin: 5px auto 5px;
+  max-width: 1200px;
+  font-size: 1em;
+  line-height: 1.6;
+  border-radius: 4px;
+}
+#description ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+#table-guide {
+  background-color: #f8f8f8;
+  padding: 1em 1.5em;
+  margin: 0 auto 0;
+  max-width: 1200px;
+  font-size: 1em;
+  line-height: 1.6;
+  border-radius: 4px;
+}
+#table-guide p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+#table-guide ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>MusGU+: A Musician-Centered Evaluation Framework</h1>
+</div>
+
+<div id="description">
+  <p style="margin-top: 0;">
+    The <strong>Music-Generative Usable+ AI (MusGU+)</strong> framework is a musician-centered evaluation framework designed to assess how generative music models can be adapted, used, and controlled in real-world creative contexts. 
+    The framework evaluates models along three complementary dimensions, with each dimension addressing a key question from the musician's perspective:
+  </p>
+  <ul>
+    <li><strong>Adaptability</strong> — <em>Can I realistically adapt this model to my own data?</em></li>
+    <li><strong>Usability</strong> — <em>Can I access, run, and integrate this model into my music-making workflow?</em></li>
+    <li><strong>Controllability</strong> — <em>Can I guide the model in musically meaningful and interpretable ways?</em></li>
+  </ul>
+  <p style="margin-bottom: 0;">
+    📖 Read the <a href="framework.html" style="color: #0066cc;">detailed evaluation criteria</a>
+  </p>
+</div>
+
+<h2 style="text-align: left; margin: 5px auto 5px; max-width: 1200px; padding: 0 1.5em; font-size: 1.3em;">Discovery Tool for Generative Music AI</h2>
+
+<div class="controls">
+  <div class="active-filters-container" id="active-filters">
+    <div class="active-filters-label">Active Filters:</div>
+    <div class="active-filters-tags">
+      <!-- Active criterion filter tags will appear here -->
+    </div>
+    <button id="clear-filters-inline" class="clear-filters-inline">✕ Clear All</button>
+  </div>
+  <div class="search-container">
+    <div class="search-box-wrapper">
+      <input class="search search-box" placeholder="Search models..." />
+    </div>
+  </div>
+</div>
+<div id="included-table">
+  <!-- Table will be injected here by Python script -->
+</div>
+
+<div id="table-guide" style="margin-top: 5px;">
+  <h2 style="text-align: left; margin: 0 0 5px 0; font-size: 1.3em;">How to navigate this table?</h2>
+  <p>The MusGU+ framework evaluates models across 15 criteria distributed among three dimensions: <strong>Adaptability</strong> (5 criteria), <strong>Usability</strong> (6 criteria), and <strong>Controllability</strong> (4 criteria). Each criterion is evaluated on a three-level scale:
+    <span class="legend-symbol" style="background: #c7f0d8; padding: 2px 8px; border-radius: 3px; color: #2d6a4f;">✔︎</span> fully supported,
+    <span class="legend-symbol" style="background: #ffd699; padding: 2px 8px; border-radius: 3px; color: #e67700;">~</span> partially supported, or
+    <span class="legend-symbol" style="background: #ffb3ba; padding: 2px 8px; border-radius: 3px; color: #c1121f;">✘</span> not supported.
+  </p>
+  
+  <p>The table includes <strong>interactive elements</strong>:</p>
+  <ul>
+    <li><strong>Hovering</strong> over a cell reveals a tooltip with the justification behind the assigned evaluation.</li>
+    <li><strong>Clicking</strong> on tag filters (in column headers or under Musical Applications) filters the table to show only models with those features.</li>
+    <li><strong>Dimension filters</strong> (≥60% buttons) show models that score at least 60% in that dimension.</li>
+    <li><strong>Expand buttons</strong> (+N) in column headers reveal additional filter tags for that criterion.</li>
+  </ul>
+  
+  <p>For a detailed breakdown of each model's evaluation, explore the corresponding YAML file in the <a href="https://github.com/lauraibnz/MusGU-plus/tree/main/projects" style="color: #0066cc;">projects folder</a>.</p>
+</div>
+
+<div id="musgo-relationship" style="background-color: #f8f8f8; padding: 1em 1.5em; margin: 5px auto 0; max-width: 1200px; font-size: 1em; line-height: 1.6; border-radius: 4px;">
+  <h2 style="text-align: left; margin: 0 0 5px 0; font-size: 1.3em;">Relationship to MusGO</h2>
+  <p style="margin-top: 0; margin-bottom: 0;">
+    MusGU+ builds on insights from the <a href="https://roserbatlleroca.github.io/MusGO_framework/" target="_blank" style="color: #0066cc;">MusGO framework</a>. MusGO (Music-Generative Open AI) is an openness-focused evaluation framework for music-generative AI. While MusGO assesses transparency and responsible research practices, MusGU+ supports informed selection and practical adoption of generative music AI by musicians.
+  </p>
+</div>
+
+<div id="footer">
+  <p id="build-time">Table last built: [timestamp]</p>
+</div>
+<script>
+// Filter state
+var activeFilters = new Set();
+var activeTags = new Set();
+var activeApplications = new Set();
+var currentOpenPopup = null;
+
+// Criterion ID to display name mapping
+var criterionNames = {
+  'hardware': 'Hardware Requirements',
+  'dataset': 'Dataset Size',
+  'adaptation': 'Adaptation Pathways',
+  'technical': 'Technical Barriers',
+  'redistribution': 'Model Redistribution',
+  'interface': 'Interface Availability',
+  'access': 'Access Restrictions',
+  'realtime': 'Real-time Capabilities',
+  'workflow': 'Workflow Integration',
+  'licensing': 'Output Licensing',
+  'community': 'Community Support',
+  'conditioning': 'Conditioning Inputs',
+  'timevarying': 'Time-Varying Control',
+  'disentanglement': 'Feature Disentanglement',
+  'parameters': 'Control Parameters'
+};
+
+// Dimension filter to display name mapping
+var dimensionNames = {
+  'adaptability': 'Adaptability',
+  'usability': 'Usability',
+  'controllability': 'Controllability'
+};
+
+// Custom search implementation
+function initSearch() {
+  var searchInput = document.querySelector('.search');
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+  }
+}
+
+// Sorting functionality
+var currentSort = { column: null, state: 0 };
+
+function initSorting() {
+  var sortableHeaders = document.querySelectorAll('.sortable');
+  
+  sortableHeaders.forEach(function(header) {
+    header.addEventListener('click', function(e) {
+      // Don't sort if clicking on dimension filter tag
+      if (e.target.classList.contains('dimension-filter-tag')) {
+        return;
+      }
+      
+      var sortColumn = this.getAttribute('data-sort');
+      var sortType = this.getAttribute('data-type');
+      
+      if (currentSort.column === sortColumn) {
+        currentSort.state = (currentSort.state + 1) % 3;
+      } else {
+        currentSort.column = sortColumn;
+        currentSort.state = 1;
+      }
+      
+      if (currentSort.state === 0) {
+        sortTable('overall', 'number', false);
+        updateSortArrows(null, 0);
+        currentSort.column = null;
+      } else {
+        var ascending = (currentSort.state === 2);
+        sortTable(sortColumn, sortType, ascending);
+        updateSortArrows(this, currentSort.state);
+      }
+    });
+  });
+}
+
+function sortTable(column, type, ascending) {
+  var tbody = document.querySelector('#musgu-table tbody');
+  var rows = Array.from(tbody.querySelectorAll('tr'));
+  
+  rows.sort(function(a, b) {
+    var aValue, bValue;
+    
+    if (type === 'number') {
+      aValue = parseFloat(a.getAttribute('data-' + column)) || 0;
+      bValue = parseFloat(b.getAttribute('data-' + column)) || 0;
+    } else {
+      aValue = (a.getAttribute('data-' + column) || '').toLowerCase();
+      bValue = (b.getAttribute('data-' + column) || '').toLowerCase();
+    }
+    
+    if (aValue < bValue) return ascending ? -1 : 1;
+    if (aValue > bValue) return ascending ? 1 : -1;
+    return 0;
+  });
+  
+  rows.forEach(function(row) {
+    tbody.appendChild(row);
+  });
+}
+
+function updateSortArrows(activeHeader, state) {
+  document.querySelectorAll('.sortable').forEach(function(header) {
+    header.classList.remove('active');
+    var arrow = header.querySelector('.sort-arrow');
+    if (arrow) {
+      arrow.textContent = '▴▾';
+      arrow.style.opacity = '0.3';
+    }
+  });
+  
+  if (activeHeader && state !== 0) {
+    activeHeader.classList.add('active');
+    var arrow = activeHeader.querySelector('.sort-arrow');
+    if (arrow) {
+      arrow.style.opacity = '1';
+    }
+  }
+}
+
+// Filter functionality
+function initFilters() {
+  // Dimension filter tags (in table headers)
+  var dimensionTags = document.querySelectorAll('.dimension-filter-tag');
+  dimensionTags.forEach(function(tag) {
+    tag.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var filterName = this.getAttribute('data-filter');
+      
+      if (activeFilters.has(filterName)) {
+        activeFilters.delete(filterName);
+        this.classList.remove('active');
+      } else {
+        activeFilters.add(filterName);
+        this.classList.add('active');
+      }
+      
+      applyFilters();
+      updateClearButton();
+      updateActiveFiltersDisplay();
+    });
+  });
+  
+  // Criterion tag filters (inline under criterion names)
+  var criterionTags = document.querySelectorAll('.criterion-tag');
+  criterionTags.forEach(function(tag) {
+    tag.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var tagName = this.getAttribute('data-tag');
+      var criterionId = this.getAttribute('data-criterion');
+      var tagId = criterionId + ':' + tagName;
+      
+      if (activeTags.has(tagId)) {
+        activeTags.delete(tagId);
+        document.querySelectorAll('.criterion-tag[data-tag="' + tagName + '"][data-criterion="' + criterionId + '"]').forEach(function(t) {
+          t.classList.remove('active');
+        });
+      } else {
+        activeTags.add(tagId);
+        document.querySelectorAll('.criterion-tag[data-tag="' + tagName + '"][data-criterion="' + criterionId + '"]').forEach(function(t) {
+          t.classList.add('active');
+        });
+      }
+      
+      applyFilters();
+      updateClearButton();
+      updateActiveFiltersDisplay();
+    });
+  });
+  
+  var clearBtn = document.getElementById('clear-filters-inline');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', clearFilters);
+  }
+}
+
+function clearFilters() {
+  activeFilters.clear();
+  activeTags.clear();
+  activeApplications.clear();
+  
+  document.querySelectorAll('.dimension-filter-tag').forEach(function(tag) {
+    tag.classList.remove('active');
+  });
+  
+  document.querySelectorAll('.criterion-tag').forEach(function(tag) {
+    tag.classList.remove('active');
+  });
+  
+  document.querySelectorAll('.application-tag').forEach(function(tag) {
+    tag.classList.remove('active');
+  });
+  
+  applyFilters();
+  updateClearButton();
+  updateActiveFiltersDisplay();
+}
+
+function updateClearButton() {
+  var clearBtn = document.getElementById('clear-filters-inline');
+  if (clearBtn) {
+    if (activeFilters.size > 0 || activeTags.size > 0 || activeApplications.size > 0) {
+      clearBtn.classList.add('visible');
+    } else {
+      clearBtn.classList.remove('visible');
+    }
+  }
+}
+
+function updateActiveFiltersDisplay() {
+  var container = document.querySelector('.active-filters-tags');
+  container.innerHTML = '';
+  
+  // Display dimension filters
+  activeFilters.forEach(function(filterName) {
+    var dimensionName = dimensionNames[filterName] || filterName;
+    var tagEl = document.createElement('div');
+    tagEl.className = 'active-filter-tag';
+    tagEl.innerHTML = '<span>' + dimensionName + ' ≥60%</span><span class="remove-icon">✕</span>';
+    tagEl.addEventListener('click', function() {
+      removeDimensionFilter(filterName);
+    });
+    container.appendChild(tagEl);
+  });
+  
+  // Count how many criteria each tag name appears in (across the entire table, not just active)
+  var tagNameInMultipleCriteria = {};
+  document.querySelectorAll('.criterion-tag').forEach(function(tag) {
+    var tagName = tag.getAttribute('data-tag');
+    var criterionId = tag.getAttribute('data-criterion');
+    var key = tagName;
+    
+    if (!tagNameInMultipleCriteria[key]) {
+      tagNameInMultipleCriteria[key] = new Set();
+    }
+    tagNameInMultipleCriteria[key].add(criterionId);
+  });
+  
+  // Display criterion tags with criterion context only if tag name exists in multiple criteria
+  activeTags.forEach(function(tagId) {
+    var parts = tagId.split(':');
+    var criterionId = parts[0];
+    var tagName = parts[1];
+    var criterionName = criterionNames[criterionId] || criterionId;
+    
+    var tagEl = document.createElement('div');
+    tagEl.className = 'active-filter-tag';
+    
+    // Show criterion context only if this tag name exists in multiple criteria in the table
+    var displayText = tagNameInMultipleCriteria[tagName] && tagNameInMultipleCriteria[tagName].size > 1
+      ? tagName + ' (' + criterionName + ')' 
+      : tagName;
+    
+    tagEl.innerHTML = '<span>' + displayText + '</span><span class="remove-icon">✕</span>';
+    tagEl.addEventListener('click', function() {
+      removeTag(tagId);
+    });
+    container.appendChild(tagEl);
+  });
+  
+  // Display application filters
+  activeApplications.forEach(function(appName) {
+    var tagEl = document.createElement('div');
+    tagEl.className = 'active-filter-tag';
+    tagEl.innerHTML = '<span>' + appName + '</span><span class="remove-icon">✕</span>';
+    tagEl.addEventListener('click', function() {
+      removeApplicationFilter(appName);
+    });
+    container.appendChild(tagEl);
+  });
+}
+
+function removeTag(tagId) {
+  activeTags.delete(tagId);
+  
+  var parts = tagId.split(':');
+  var criterionId = parts[0];
+  var tagName = parts[1];
+  
+  document.querySelectorAll('.criterion-tag[data-tag="' + tagName + '"][data-criterion="' + criterionId + '"]').forEach(function(tag) {
+    tag.classList.remove('active');
+  });
+  
+  applyFilters();
+  updateClearButton();
+  updateActiveFiltersDisplay();
+}
+
+function removeDimensionFilter(filterName) {
+  activeFilters.delete(filterName);
+  
+  document.querySelectorAll('.dimension-filter-tag[data-filter="' + filterName + '"]').forEach(function(tag) {
+    tag.classList.remove('active');
+  });
+  
+  applyFilters();
+  updateClearButton();
+  updateActiveFiltersDisplay();
+}
+
+function removeApplicationFilter(appName) {
+  activeApplications.delete(appName);
+  
+  document.querySelectorAll('.application-tag[data-application="' + appName + '"]').forEach(function(tag) {
+    tag.classList.remove('active');
+  });
+  
+  applyFilters();
+  updateClearButton();
+  updateActiveFiltersDisplay();
+}
+
+function initApplicationTags() {
+  var applicationTags = document.querySelectorAll('.application-tag');
+  
+  applicationTags.forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      var appName = tag.getAttribute('data-application');
+      
+      if (tag.classList.contains('active')) {
+        tag.classList.remove('active');
+        activeApplications.delete(appName);
+      } else {
+        tag.classList.add('active');
+        activeApplications.add(appName);
+      }
+      
+      updateActiveFiltersDisplay();
+      applyFilters();
+      updateClearButton();
+    });
+  });
+}
+
+function applyFilters() {
+  var searchTerm = document.querySelector('.search') ? document.querySelector('.search').value.toLowerCase() : '';
+  var rows = document.querySelectorAll('#musgu-table tbody tr');
+  
+  rows.forEach(function(row) {
+    var showRow = true;
+    
+    if (searchTerm) {
+      var nameCell = row.querySelector('.name-cell');
+      var orgCell = row.querySelector('.org');
+      var nameText = nameCell ? nameCell.textContent.toLowerCase() : '';
+      var orgText = orgCell ? orgCell.textContent.toLowerCase() : '';
+      
+      if (!nameText.includes(searchTerm) && !orgText.includes(searchTerm)) {
+        showRow = false;
+      }
+    }
+    
+    if (showRow && activeFilters.size > 0) {
+      var passesFilters = true;
+      
+      activeFilters.forEach(function(filterName) {
+        var score = parseInt(row.getAttribute('data-' + filterName)) || 0;
+        if (score < 60) {
+          passesFilters = false;
+        }
+      });
+      
+      showRow = passesFilters;
+    }
+    
+    if (showRow && activeTags.size > 0) {
+      var rowTags = row.getAttribute('data-tags');
+      if (!rowTags) {
+        showRow = false;
+      } else {
+        var rowTagsArray = rowTags.split(',').map(function(t) { return t.trim(); });
+        var hasAllTags = true;
+        
+        activeTags.forEach(function(tagName) {
+          if (!rowTagsArray.includes(tagName)) {
+            hasAllTags = false;
+          }
+        });
+        
+        showRow = hasAllTags;
+      }
+    }
+    
+    if (showRow && activeApplications.size > 0) {
+      var rowApps = row.getAttribute('data-applications');
+      if (!rowApps) {
+        showRow = false;
+      } else {
+        var rowAppsArray = rowApps.split(',').map(function(a) { return a.trim(); });
+        var hasAllApps = true;
+        
+        activeApplications.forEach(function(appName) {
+          if (!rowAppsArray.includes(appName)) {
+            hasAllApps = false;
+          }
+        });
+        
+        showRow = hasAllApps;
+      }
+    }
+    
+    row.style.display = showRow ? '' : 'none';
+  });
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  initSearch();
+  initSorting();
+  initFilters();
+  initApplicationTags();
+  initTagExpansion();
+  
+  // Show page after everything is initialized
+  document.body.classList.add('ready');
+});
+
+function initTagExpansion() {
+  var expandButtons = document.querySelectorAll('.expand-tags-btn');
+  
+  // Hide the entire table while calculating
+  var table = document.getElementById('musgu-table');
+  if (table) {
+    table.classList.add('calculating');
+  }
+  
+  // Wait for fonts to load before measuring
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() {
+      calculateAndLockWidths();
+    });
+  } else {
+    // Fallback if Font Loading API not available
+    setTimeout(calculateAndLockWidths, 100);
+  }
+  
+  function calculateAndLockWidths() {
+    var containerMaxWidth = 100; // Reduced from 150 to make columns narrower
+    var gap = 4;
+    
+    // Process each criterion column
+    document.querySelectorAll('.criterion-tags').forEach(function(container) {
+      var cell = container.closest('th');
+      if (!cell) return;
+      
+      // Measure the criterion title width
+      var titleElement = cell.querySelector('.criterion-header-wrapper > span');
+      var titleWidth = 0;
+      if (titleElement) {
+        titleWidth = titleElement.offsetWidth;
+      }
+      
+      var allTags = Array.from(container.querySelectorAll('.criterion-tag'));
+      var expandBtn = container.querySelector('.expand-tags-btn');
+      
+      if (allTags.length === 0) {
+        // No tags, just ensure cell is at least as wide as title
+        var cellStyle = window.getComputedStyle(cell);
+        var cellPaddingLeft = parseFloat(cellStyle.paddingLeft) || 0;
+        var cellPaddingRight = parseFloat(cellStyle.paddingRight) || 0;
+        var totalCellPadding = cellPaddingLeft + cellPaddingRight;
+        
+        var neededCellWidth = titleWidth + totalCellPadding;
+        cell.style.width = neededCellWidth + 'px';
+        cell.style.minWidth = neededCellWidth + 'px';
+        cell.style.maxWidth = neededCellWidth + 'px';
+        return;
+      }
+      
+      // Measure all tag widths
+      var tagWidths = [];
+      allTags.forEach(function(tag) {
+        tag.style.display = 'inline-flex';
+        tag.style.position = 'absolute';
+        tag.style.visibility = 'hidden';
+        tagWidths.push({
+          element: tag,
+          width: tag.offsetWidth
+        });
+        tag.style.display = '';
+        tag.style.position = '';
+        tag.style.visibility = '';
+      });
+      
+      // Measure button width
+      var buttonWidth = 0;
+      if (expandBtn) {
+        expandBtn.style.display = 'inline-flex';
+        expandBtn.style.position = 'absolute';
+        expandBtn.style.visibility = 'hidden';
+        buttonWidth = expandBtn.offsetWidth;
+        expandBtn.style.display = '';
+        expandBtn.style.position = '';
+        expandBtn.style.visibility = '';
+      }
+      
+      // Calculate row-based layout (max 3 rows)
+      var rows = [[], [], []];
+      var rowWidths = [0, 0, 0];
+      var currentRow = 0;
+      var visibleTagIndexes = [];
+      
+      for (var i = 0; i < tagWidths.length && currentRow < 3; i++) {
+        var tagData = tagWidths[i];
+        var needsWidth = tagData.width;
+        var gapWidth = rowWidths[currentRow] > 0 ? gap : 0;
+        
+        if (rowWidths[currentRow] + gapWidth + needsWidth <= containerMaxWidth) {
+          // Fits in current row
+          rows[currentRow].push(tagData);
+          rowWidths[currentRow] += gapWidth + needsWidth;
+          visibleTagIndexes.push(i);
+        } else if (currentRow < 2) {
+          // Move to next row
+          currentRow++;
+          rows[currentRow].push(tagData);
+          rowWidths[currentRow] = needsWidth;
+          visibleTagIndexes.push(i);
+        } else {
+          // Already on row 3 and tag doesn't fit - stop
+          break;
+        }
+      }
+      
+      var hiddenCount = tagWidths.length - visibleTagIndexes.length;
+      
+      // Reserve space for expand button in row 3 if needed
+      if (hiddenCount > 0 && expandBtn && rows[2].length > 0) {
+        var row3Width = rowWidths[2];
+        var buttonNeeds = gap + buttonWidth;
+        
+        // Remove tags from row 3 until button fits
+        while (row3Width + buttonNeeds > containerMaxWidth && rows[2].length > 0) {
+          var removed = rows[2].pop();
+          var removedIndex = visibleTagIndexes[visibleTagIndexes.length - 1];
+          visibleTagIndexes.pop();
+          
+          // Recalculate row 3 width
+          row3Width = 0;
+          for (var j = 0; j < rows[2].length; j++) {
+            row3Width += rows[2][j].width + (j > 0 ? gap : 0);
+          }
+          rowWidths[2] = row3Width;
+          hiddenCount++;
+        }
+      }
+      
+      // Apply visibility based on visible indexes
+      allTags.forEach(function(tag, idx) {
+        if (visibleTagIndexes.indexOf(idx) >= 0) {
+          tag.classList.remove('hidden-tag');
+          tag.classList.add('visible-tag');
+          tag.style.display = '';
+        } else {
+          tag.classList.add('hidden-tag');
+          tag.classList.remove('visible-tag');
+          tag.style.display = 'none';
+        }
+      });
+      
+      // Update button
+      if (expandBtn) {
+        if (hiddenCount > 0) {
+          expandBtn.textContent = '+' + hiddenCount;
+          expandBtn.style.display = '';
+          expandBtn.dataset.originalText = '+' + hiddenCount;
+        } else {
+          expandBtn.style.display = 'none';
+        }
+      }
+      
+      // Calculate cell width: use the widest row (not containerMaxWidth unless needed)
+      var maxRowWidth = Math.max(
+        rowWidths[0] || 0,
+        rowWidths[1] || 0,
+        rowWidths[2] + (hiddenCount > 0 && expandBtn ? gap + buttonWidth : 0)
+      );
+      
+      // Also check if any hidden tags are wider than the calculated width
+      // (to prevent layout shift when expanding)
+      var maxHiddenTagWidth = 0;
+      for (var i = 0; i < tagWidths.length; i++) {
+        if (visibleTagIndexes.indexOf(i) < 0) {
+          // This is a hidden tag
+          if (tagWidths[i].width > maxHiddenTagWidth) {
+            maxHiddenTagWidth = tagWidths[i].width;
+          }
+        }
+      }
+      
+      // Get cell padding
+      var cellStyle = window.getComputedStyle(cell);
+      var cellPaddingLeft = parseFloat(cellStyle.paddingLeft) || 0;
+      var cellPaddingRight = parseFloat(cellStyle.paddingRight) || 0;
+      var totalCellPadding = cellPaddingLeft + cellPaddingRight;
+      
+      // Cell width = max(widest visible row, widest hidden tag, title width) + padding
+      var neededCellWidth = Math.max(maxRowWidth, maxHiddenTagWidth, titleWidth) + totalCellPadding;
+      
+      // Lock cell width
+      cell.style.width = neededCellWidth + 'px';
+      cell.style.minWidth = neededCellWidth + 'px';
+      cell.style.maxWidth = neededCellWidth + 'px';
+    });
+    
+    // Show the table after calculations
+    if (table) {
+      table.classList.remove('calculating');
+    }
+  }
+  
+  expandButtons.forEach(function(btn) {
+    // Store original text
+    btn.dataset.originalText = btn.textContent;
+    
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var tagsContainer = this.closest('.criterion-tags');
+      
+      if (tagsContainer) {
+        var isExpanded = tagsContainer.classList.contains('expanded');
+        
+        if (isExpanded) {
+          // Collapsing - restore original text and hide tags again
+          this.textContent = this.dataset.originalText;
+          tagsContainer.classList.remove('expanded');
+        } else {
+          // Expanding - change button to minus and show all tags
+          this.textContent = '−';
+          tagsContainer.classList.add('expanded');
+        }
+      }
+    });
+  });
+}
+</script>
+</body>
+</html>

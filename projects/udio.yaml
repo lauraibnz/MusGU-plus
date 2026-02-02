@@ -1,0 +1,100 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: Udio
+  affiliation: Udio
+  architecture: ''
+  applications: continuation, editing, full song generation, remixing, text-to-music
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: low
+    notes: 'No information is available about the hardware requirements to train the
+      model. '
+  dataset_size:
+    value: low
+    notes: 'No information is available about the amount or type of data required
+      to adapt the model to a musician’s own music. '
+  adaptation_pathways:
+    value: low
+    notes: No training, fine-tuning, or adaptation pathways are provided for users
+      (e.g., no code, checkpoints, or interfaces), making adaptation infeasible from
+      a musician’s perspective.
+    tags: ''
+  technical_barriers:
+    value: low
+    notes: Technical barriers for adaptation cannot be evaluated, as no adaptation
+      mechanisms are provided or documented.
+    tags: ''
+  model_redistribution:
+    value: low
+    notes: Model weights and checkpoints are not accessible to users. The system is
+      provided solely as a hosted service, and redistribution or sharing of adapted
+      models is not permitted under the platform’s terms.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: Udio relies on text-based conditioning, including free-form prompts and
+      lyrics. It allows to set stylistic reference to set the overall mood and tempo
+      of the track.
+    tags: lyrics, style tags, text
+  time_varying_control:
+    value: low
+    notes: Udio provides limited time-localized control through iterative generation
+      and segment-based continuation. However, it does not support explicit or fine-grained
+      temporal conditioning such as per-frame, per-beat, or symbolic time-aligned
+      controls. As a result, the generation itself cannot be guided by meaningful
+      temporal controls.
+  feature_disentanglement:
+    value: low
+    notes: No disentangled or explicitly separable musical control dimensions are
+      exposed. Attributes such as timbre, harmony, rhythm, and form are implicitly
+      entangled within prompt-based generation.
+    tags: ''
+  control_parameters:
+    value: low
+    notes: Udio does not provide any control parameters beyond the conditioning inputs.
+    tags: ''
+usability:
+  interface_availability:
+    value: high
+    notes: 'A dedicated consumer-facing interface is provided for music generation
+      through a web-based application, requiring no local installation or technical
+      setup. An iOS app is also available. '
+    tags: iOS app, web UI
+  access_restrictions:
+    value: partial
+    notes: Access requires using user accounts, accepting terms and conditions and
+      is subject to usage constraints, such as quotas and plan-dependent features,
+      which may limit continuous or unrestricted use. Free trials and promotional
+      codes are available.
+  realtime_capabilities:
+    value: partial
+    notes: Generation takes several seconds and is not designed for live or audio-rate
+      real-time interaction. The system supports real-time editing but not real-time
+      performance or streaming control.
+  workflow_integration:
+    value: low
+    notes: The system operates as a standalone platform. There is no supported mechanism
+      for integrating the model into DAWs, live music environments, or other existing
+      music workflows.
+    tags: ''
+  output_licensing:
+    value: low
+    notes: 'The model’s outputs are subject to proprietary licensing: use is restricted
+      to personal, non-commercial purposes, downloading outputs is prohibited, and
+      ownership of generated content is retained by the company, which constitutes
+      a heavy restriction to output usage. Attribution is required for public use
+      of outputs, although this requirement may be waived for outputs generated under
+      a paid subscription.'
+  community_support:
+    value: high
+    notes: User-facing support resources are available via a help center and  chatbox
+      in their website, and a community in discord Discord and a forum in Reddit,
+      where musicians and music-lovers are encourage to share tips and support.
+    tags: Discord, Forum, Help center

@@ -1,0 +1,98 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: JAM
+  affiliation: 'Singapore University of Technology and Design and Lamda Labs. '
+  architecture: latent diffusion, rectified flow
+  applications: full song generation, lyrics-to-song
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: partial
+    notes: The model requires a CUDA-compatible GPU with sufficient VRAM (+8GB is
+      recommended). Not feasible to train the model on CPU.
+  dataset_size:
+    value: low
+    notes: 'No clear information about the dataset size is provided. The model was
+      trained on a dataset of ~54k hours of audio, which makes adaptation infeasible
+      with musician’s own data. '
+  adaptation_pathways:
+    value: high
+    notes: 'JAM provides complete code and documentation for pretraining, supervised
+      fine-tuning, and direct preference optimization. Model checkpoints are available. '
+    tags: fine-tuning, pretrained checkpoints, training
+  technical_barriers:
+    value: low
+    notes: 'Adaptation requires technical expertise. All training a preprocessing
+      rely on command-line implementation. No user-friendly adaption interface is
+      provided. '
+    tags: CLI
+  model_redistribution:
+    value: partial
+    notes: The use, modification and distribution of JAM is subject to Stability AI
+      Community License Agreement, which is restricted to research and non-commercial
+      use, and requires attribution and notice. Commercial-use may be obtained by
+      registering with Stability AI or with a separate commercial license.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: JAM can be conditioned by lyrics (including word- and phoneme-level timing)
+      and style (via text or audio).
+    tags: audio, lyrics, text, timing
+  time_varying_control:
+    value: partial
+    notes: JAM supports precise time-varying control over vocal structure, with explicit
+      word- and phoneme-level timing and duration inputs that directly guide generation
+      at the latent space. However, no time-varying control is provided for the accompaniment
+      or instrumental structure.
+  feature_disentanglement:
+    value: partial
+    notes: JAM separates lyrics timing, global duration, and style conditioning through
+      explicit control pathways, enabling partial disentanglement of vocal structure.
+      However, musical attributes are not independently controllable, and style remains
+      an entangled representation, limiting fully interpretable, attribute-specific
+      control.
+    tags: ''
+  control_parameters:
+    value: partial
+    notes: JAM provides several generation control parameters, including global duration,
+      adjustable guidance strength, and diffusion step configuration, allowing users
+      to directly influence generation behavior. However, direct manipulation of internal
+      representations is not supported.
+    tags: conditioning strength, diffusion steps, duration
+usability:
+  interface_availability:
+    value: partial
+    notes: There is a hosted HuggingFace web demo, but it is currently unavailable.
+      However, the Gradio code is accessible and can be run locally, though it requires
+      installation and environment setup by the user.
+    tags: Gradio
+  access_restrictions:
+    value: high
+    notes: 'JAM’s source code is openly available and can be freely used without limits,
+      paywalls, or subscriptions. '
+  realtime_capabilities:
+    value: low
+    notes: 'No clear information about the time required for generation is provided.
+      No reference to real-time generation is provided in the documentation or the
+      research article. '
+  workflow_integration:
+    value: low
+    notes: 'There are no clear instructions or specific tools to integrate JAM to
+      a musician’s workflow. '
+    tags: ''
+  output_licensing:
+    value: partial
+    notes: 'Outputs generated with JAM cannot be used for commercial-use, and must
+      not be including content that violates copyright laws. Responsibility of the
+      generated outputs relies entirely with the end user. '
+  community_support:
+    value: partial
+    notes: Support exists via GitHub issues and documentation, but there is no dedicated
+      musician-oriented support space.
+    tags: GitHub Issues

@@ -1,0 +1,95 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: MusicGen
+  affiliation: Meta AI
+  architecture: autoregressive transformer
+  applications: continuation, text-to-music
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: low
+    notes: Training and fine-tuning require institutional-scale hardware. Official
+      models were trained using dozens of GPUs, and even inference for medium/large
+      variants requires ~16 GB VRAM GPUs. CPU-only training is not supported.
+  dataset_size:
+    value: low
+    notes: The model is designed around very large curated datasets (≈20k hours).
+      Fine-tuning presupposes similarly structured datasets with metadata, which makes
+      the use of personal data collections impractical.
+  adaptation_pathways:
+    value: high
+    notes: MusicGen provides complete training and fine-tuning code, supports continuation
+      from pretrained checkpoints, and includes documented data processing pipelines.
+      This makes adaptation on personal or custom datasets technically feasible, even
+      if demanding in practice.
+    tags: fine-tuning, pretrained checkpoints, training
+  technical_barriers:
+    value: low
+    notes: Adaptation requires extensive technical expertise (e.g,., Dora, AudioCraft
+      configs, tokenizer alignment, distributed training). No user-friendly adaptation
+      interface is provided.
+    tags: CLI
+  model_redistribution:
+    value: partial
+    notes: While the software is permissively licensed (MIT), redistribution of trained
+      models and checkpoints is constrained by the weights license (CC BY-NC 4.0),
+      which imposes a non-commercial restriction and requires attribution.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: Supports text conditioning and melody conditioning via chromagram (audio-derived).
+      No MIDI or symbolic score input is supported.
+    tags: melody, text
+  time_varying_control:
+    value: partial
+    notes: Melody conditioning enables coarse time-aligned control over harmonic structure,
+      but there is no per-frame or parameter-level temporal control exposed to users.
+  feature_disentanglement:
+    value: partial
+    notes: Text and melody controls influence different aspects of generation, but
+      interactions remain implicit and do not enable interpretable or musically isolated
+      guidance.
+    tags: ''
+  control_parameters:
+    value: partial
+    notes: MusicGen exposes high-level generation parameters such as duration, sampling
+      controls (temperature, top-k/top-p), and a classifier-free guidance (CFG) coefficient.
+      These provide coarse control over variability and conditioning strength, but
+      do not enable manipulation of internal representations.
+    tags: conditioning strength, duration, randomness, sampling strategy
+usability:
+  interface_availability:
+    value: partial
+    notes: Gradio code and Colab notebooks are provided, but require setup and GPU
+      access. A hosted HuggingFace web demo is available but currently unreliable.
+    tags: Colab, Gradio
+  access_restrictions:
+    value: high
+    notes: Inference via HuggingFace Spaces, although currently unreliable, is freely
+      accessible without login or usage restrictions. Pretrained checkpoints and inference
+      code are publicly available, with no paywalls, subscriptions, or usage limits
+      imposed on model use.
+  realtime_capabilities:
+    value: low
+    notes: Generation is offline and not suitable for real-time use. Local inference
+      requires a GPU.
+  workflow_integration:
+    value: low
+    notes: MusicGen offers no native integration with DAWs, live music environments,
+      or hardware. Usage is limited to file-based generation via notebooks or scripts.
+    tags: ''
+  output_licensing:
+    value: high
+    notes: Generated audio can be used for personal and commercial purposes under
+      the model’s license.
+  community_support:
+    value: partial
+    notes: Support exists via GitHub issues, documentation, and community tutorials,
+      but there is no dedicated musician-oriented support space.
+    tags: GitHub Issues

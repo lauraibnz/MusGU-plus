@@ -1,0 +1,105 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: DDSP-VST
+  affiliation: Google Magenta
+  architecture: differentiable DSP
+  applications: MIDI-to-audio, audio synthesis, style transfer
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: partial
+    notes: The model can be effectively trained on a consumer-grade GPU (the authors
+      suggest ~2-3 hours on Colab’s free tier). CPU-only training is not presented
+      as a practical option.
+  dataset_size:
+    value: high
+    notes: The model is explicitly designed for small, domain-specific datasets. Official
+      documentation recommends 10–20 minutes of monophonic audio to train a usable
+      instrument model, making personal recordings fully viable for musicians.
+  adaptation_pathways:
+    value: partial
+    notes: Complete training code and documented data preprocessing pipelines are
+      provided, including an official Colab notebook for end-to-end model adaptation.
+      However, these pathways rely on notebooks and codebases that have not been actively
+      maintained in recent years, which may require additional setup or troubleshooting.
+    tags: training
+  technical_barriers:
+    value: partial
+    notes: A streamlined Colab notebook with step-by-step instructions is provided,
+      lowering the barrier for users with basic technical familiarity. However, no
+      graphical training interface exists, and successful adaptation still requires
+      navigating notebooks, file systems, and model formats, placing it beyond non-technical
+      musicians.
+    tags: Colab
+  model_redistribution:
+    value: high
+    notes: The code and trained models are released under the Apache License 2.0,
+      which explicitly permits redistribution of modified and derived works, including
+      trained and fine-tuned models, for both commercial and non-commercial use, provided
+      attribution and license terms are preserved.
+controllability:
+  conditioning_inputs:
+    value: high
+    notes: The model accepts multiple musically meaningful conditioning inputs, including
+      audio and MIDI, which directly affect synthesis behavior rather than acting
+      as descriptive prompts.
+    tags: MIDI, audio
+  time_varying_control:
+    value: high
+    notes: DDSP-VST supports sample-accurate, continuous time-varying control over
+      pitch, loudness, envelopes, and excitation signals, enabling fine-grained expressive
+      manipulation suitable for performance and automation.
+  feature_disentanglement:
+    value: high
+    notes: Disentanglement is core to the DDSP architecture. Pitch and loudness are
+      explicitly modeled as independent control pathways, resulting in predictable
+      and interpretable behavior. Timbre, while not exposed as a conditioning input
+      or runtime control, is treated as a disentangled inductive bias and is implicitly
+      determined by the data used to train the model.
+    tags: loudness, pitch
+  control_parameters:
+    value: high
+    notes: The system exposes both high-level musical parameters (e.g., ADSR envelopes,
+      gain, reverb) and low-level latent control (harmonic–noise balance, pitch, and
+      loudness trajectories). Core internal representations are directly and meaningfully
+      manipulable, enabling precise and interpretable control over synthesis behavior.
+    tags: latent manipulation
+usability:
+  interface_availability:
+    value: high
+    notes: DDSP-VST is distributed as native VST3 and AU plugins with a polished graphical
+      interface, fully compatible with major DAWs. No custom setup is required beyond
+      standard plugin installation.
+    tags: AU, VST
+  access_restrictions:
+    value: high
+    notes: The plugins, pretrained models, training notebooks, and source code are
+      freely available with no paywalls, subscriptions, or usage limits.
+  realtime_capabilities:
+    value: high
+    notes: The system is designed for real-time audio processing and synthesis within
+      DAWs. A fixed 64 ms algorithmic latency is introduced due to frame-based pitch
+      detection, which is standard for pitch-aware audio plugins and remains fully
+      suitable for live and interactive performance.
+  workflow_integration:
+    value: high
+    notes: DDSP-VST integrates directly into standard music production workflows as
+      both a real-time audio effect and a MIDI-controlled synthesizer, with automation
+      support and DAW-level modulation (e.g., LFO assignment to pitch and gain).
+    tags: DAW
+  output_licensing:
+    value: high
+    notes: The project does not impose any additional licensing restrictions on generated
+      audio. Outputs can be freely used for personal and commercial purposes without
+      attribution requirements.
+  community_support:
+    value: high
+    notes: An active Discord community is provided alongside GitHub issues, offering
+      musician-oriented support, discussion, and troubleshooting.
+    tags: Discord, GitHub Issues

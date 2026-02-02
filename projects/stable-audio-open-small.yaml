@@ -1,0 +1,106 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: Stable Audio Open Small
+  affiliation: Stablility AI
+  architecture: latent diffusion
+  applications: style transfer, text-to-music
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: partial
+    notes: 'Stable Audio Open Small research paper reports using institutional-scale
+      hardware for fine-tuning (8 x H100 GPUS). However, the released source code
+      supports adaptation on a single consumer-grade GPU, although with significant
+      memory and storage demands. Adapting the model with CPU-only is impractical,
+      and larger GPU setups will significantly improve training and fine-tuning feasibility. '
+  dataset_size:
+    value: low
+    notes: 'Stable Audio Open Small training relies on large-scale curated data (i.e.,
+      thousands of hours of audio). No documentation suggests that effective training
+      or fine-tuning can be achieved with small personal datasets. '
+  adaptation_pathways:
+    value: high
+    notes: 'Stable Audio Open provides complete training and fine-tuning code, supports
+      continuation from pretrained checkpoints, and includes documented data and model
+      configuration pipelines. This makes adaptation on custom datasets technically
+      feasible, even if demanding in practice. '
+    tags: fine-tuning, pretrained checkpoints, training
+  technical_barriers:
+    value: low
+    notes: Adaptation requires substantial technical expertise, including configuration
+      of diffusion training pipelines, dataset preparation, and GPU-based training.
+      No user-friendly interface for model adaptation is provided
+    tags: CLI
+  model_redistribution:
+    value: partial
+    notes: 'Redistribution of adapted models is permitted under the Stability AI Community
+      License, but subject to licensing conditions and commercial revenue thresholds. '
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: 'Stable Audio Open Small primarily conditions on text prompts. No additional
+      musically structured modalities (e.g., MIDI, symbolic control) are available.
+      In addition to text prompts, the model supports audio-to-audio generation by
+      initializing the diffusion process with a reference recording, enabling implicit
+      style transfer without additional training. '
+    tags: audio, text, timing
+  time_varying_control:
+    value: partial
+    notes: The model enables time-localized influence through audio initialization
+      (e.g., beat-aligned or voice-guided generation), but does not provide explicit
+      or fine-grained time-varying control over musical attributes.
+  feature_disentanglement:
+    value: low
+    notes: No disentangled or explicitly separable musical controls are provided.
+      Musical attributes are implicitly entangled within prompt- and audio-based generation.
+    tags: ''
+  control_parameters:
+    value: partial
+    notes: Stable Audio Open Small provides several low-level inference parameters
+      (e.g., duration, diffusion steps, standard diffusion cfg values), allowing certain
+      degree of generation tuning. However, it does not provide direct manipulation
+      of internal representations or fine-grained controls for musical attributes.
+    tags: conditioning strength, diffusion steps, duration, randomness, sampling strategy
+usability:
+  interface_availability:
+    value: partial
+    notes: The model can be run through a basic Gradio UI provided in the stable-audio-tools
+      library, offering a simplified interactive interface. However, it requires installation
+      and environment setup by the user.
+    tags: Gradio
+  access_restrictions:
+    value: partial
+    notes: Stable Audio Open Small can be run locally with open pretrained checkpoints
+      and inference code without paywalls, usage limits, or subscriptions, subject
+      only to license agreement acceptance.
+  realtime_capabilities:
+    value: partial
+    notes: 'Stable Audio Open Small can be interactive on high-end consumer GPU for
+      short audio segments (e.g., achieving sub-200ms response time), but it not designed
+      for low-latency or streaming use on CPU and is impractical for live performance
+      on usual personal hardware. '
+  workflow_integration:
+    value: low
+    notes: Although optimized for low-latency generation on GPU, this model does not
+      offer native integration with DAWs, live music environments, visual programming
+      systems, or musical hardware. Usage is limited to file- or script-based generation
+      via research tooling, with no direct embedding in existing creative workflows
+    tags: ''
+  output_licensing:
+    value: partial
+    notes: Generated outputs are owned by the user and may be used for both non-commercial
+      and commercial purposes. However, commercial use is conditional on registration
+      and subject to revenue thresholds, attribution requirements, and restrictions
+      on downstream uses (e.g., training other foundational models). That is, output
+      usage is permitted but not unrestricted.
+  community_support:
+    value: high
+    notes: 'Support exists via a Discord channel (i.e., specific sub-channel “stable-audio”),
+      GitHub issues and documentation. '
+    tags: Discord, GitHub Issues

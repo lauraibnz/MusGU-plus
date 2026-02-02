@@ -1,0 +1,97 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: Suno
+  affiliation: Suno, Inc.
+  architecture: ''
+  applications: continuation, editing, full song generation, remixing, text-to-music
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: low
+    notes: No information is provided regarding the hardware requirements for training
+      the model.
+  dataset_size:
+    value: low
+    notes: No information is provided about the amount or type of data required for
+      training or fine-tuning the model.
+  adaptation_pathways:
+    value: low
+    notes: No training or fine-tuning pathways are exposed to users (e.g., no code,
+      checkpoints, or interfaces), making adaptation infeasible from a musician’s
+      perspective.
+    tags: ''
+  technical_barriers:
+    value: low
+    notes: Technical barriers for adaptation cannot be evaluated, as no adaptation
+      mechanisms are provided or documented.
+    tags: ''
+  model_redistribution:
+    value: low
+    notes: Model weights and checkpoints are not accessible to users. The system is
+      provided solely as a hosted service, and redistribution or sharing of adapted
+      models is not permitted under the platform’s terms.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: Suno primarily relies on text-based conditioning, including free-form prompts
+      and lyrics. It also allows reference-based reuse of stylistic characteristics
+      from existing songs, enabling style guidance through audio examples without
+      exposing explicit or interpretable conditioning representations.
+    tags: audio, lyrics, style tags, text
+  time_varying_control:
+    value: low
+    notes: Suno does not expose explicit time-varying control signals such as aligned
+      envelopes, symbolic sequences, or structured temporal representations.
+  feature_disentanglement:
+    value: low
+    notes: No disentangled or explicitly separable musical control dimensions are
+      exposed. Attributes such as timbre, harmony, rhythm, and form are implicitly
+      entangled within prompt-based generation.
+    tags: ''
+  control_parameters:
+    value: partial
+    notes: Suno exposes a small set of high-level inference-time controls, such as
+      variability and conditioning strength for style or audio inputs, through its
+      interface. No access to low-level model parameters or internal representations
+      is provided.
+    tags: conditioning strength, randomness
+usability:
+  interface_availability:
+    value: high
+    notes: A dedicated consumer-facing interface is provided for music generation
+      through a web-based application, requiring no local installation or technical
+      setup. Additional iOs and Android apps are available.
+    tags: Android app, iOS app, web UI
+  access_restrictions:
+    value: partial
+    notes: Access requires user accounts and is subject to usage constraints, such
+      as quotas, plan-dependent features, or queue-based generation, which may limit
+      continuous or unrestricted use.
+  realtime_capabilities:
+    value: partial
+    notes: Generation occurs with noticeable latency and is not designed for live
+      or audio-rate real-time interaction. The system supports interactive use but
+      not real-time performance or streaming control.
+  workflow_integration:
+    value: low
+    notes: The system operates as a standalone platform. Although generated audio
+      can be exported, there is no supported mechanism for integrating the model into
+      DAWs, live music environments, or other existing music workflows.
+    tags: ''
+  output_licensing:
+    value: partial
+    notes: Some use limitations apply to the generated output (e.g., free-tier outputs
+      are non-commercial and require attribution; commercial use is tied to paid tiers;
+      additional restrictions include prohibitions on competitive use and using output
+      to train other ML models).
+  community_support:
+    value: high
+    notes: User-facing support resources are available via a help center and a community
+      Discord.
+    tags: Discord, Help center

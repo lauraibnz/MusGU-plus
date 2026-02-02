@@ -1,0 +1,106 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: AFTER
+  affiliation: IRCAM
+  architecture: latent diffusion, rectified flow
+  applications: MIDI-to-audio, audio synthesis, style transfer
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: partial
+    notes: Training and export pipelines are GPU-oriented in practice. CPU-only training
+      is technically possible but impractical within a reasonable timeframe.
+  dataset_size:
+    value: partial
+    notes: The original version of the model, as described in the paper, was trained
+      using approximately 400h of audio from the Synthesized Lakh dataset. Recent
+      versions of AFTER include instrument-specific models, suggesting these data
+      requirements have been significantly reduced. However, no documentation demonstrates
+      that AFTER can be trained effectively on relatively small datasets.
+  adaptation_pathways:
+    value: high
+    notes: Complete training workflows are provided, including dataset preparation,
+      autoencoder training (optional), diffusion training, and export for real-time
+      inference. Pretrained audio codecs are available to skip the autoencoder stage.
+    tags: pretrained codec, training
+  technical_barriers:
+    value: low
+    notes: Training and export are conducted exclusively through command-line interfaces.
+      Although documentation is thorough and aimed at technical users, adaptation
+      requires significant programming knowledge, familiarity with PyTorch-based workflows,
+      and manual configuration across multiple training stages.
+    tags: CLI
+  model_redistribution:
+    value: partial
+    notes: The CC BY-NC 4.0 license permits sharing adapted models or checkpoints
+      for non-commercial use with attribution, but redistribution is constrained and
+      not explicitly promoted by the project.
+controllability:
+  conditioning_inputs:
+    value: high
+    notes: AFTER supports multiple conditioning modalities, combining audio-to-audio
+      and MIDI-to-audio pipelines for structural control, alongside audio conditioning
+      for timbre.
+    tags: MIDI, audio
+  time_varying_control:
+    value: high
+    notes: The model provides explicit, structured time-varying control by separating
+      timbre and structure representations. Conditioning inputs (audio or MIDI) directly
+      shape temporal evolution during generation, enabling fine-grained control over
+      musical form and dynamics.
+  feature_disentanglement:
+    value: high
+    notes: AFTER explicitly disentangles timbre and structure through separate latent
+      representations. This separation is central to the model’s design and enables
+      predictable manipulation of distinct musical attributes.
+    tags: structure, timbre
+  control_parameters:
+    value: high
+    notes: AFTER exposes several inference-time control parameters, including conditioning
+      strength, diffusion step count, and latent space controls. The Max for Live
+      devices support coarse latent exploration via a learned 2D timbre map, with
+      optional refinement through direct manipulation of latent dimensions.
+    tags: conditioning strength, diffusion steps, latent manipulation
+usability:
+  interface_availability:
+    value: high
+    notes: Inference is available through Max/MSP and Pure Data patches, as well as
+      Max for Live devices for Ableton Live, all built on top of nn~. While no standalone
+      VST or web-based interface is provided, the Max for Live device enables direct
+      use within a DAW environment.
+    tags: Max/MSP, Max4Live, PureData
+  access_restrictions:
+    value: high
+    notes: The model, inference patches, and pretrained checkpoints are openly available.
+      Inference can be run locally without usage limits, subscriptions, or paywalls
+      once the software environment is set up.
+  realtime_capabilities:
+    value: high
+    notes: AFTER is explicitly designed for real-time audio generation. Optimized
+      exports enable low-latency performance suitable for live use, including continuous
+      audio-to-audio and MIDI-to-audio generation.
+  workflow_integration:
+    value: high
+    notes: AFTER integrates directly into established music workflows through visual
+      programming environments and DAW-based contexts, specifically as a Max for Live
+      device within Ableton Live, and is designed for live performance, real-time
+      exploration, and structured musical interaction.
+    tags: DAW, visual programming
+  output_licensing:
+    value: partial
+    notes: The generated output is licensed under Creative Commons Attribution–NonCommercial
+      4.0. Use is permitted for personal, artistic, and research purposes, but commercial
+      use is explicitly restricted, limiting professional adoption without additional
+      permission.
+  community_support:
+    value: partial
+    notes: User support is limited to GitHub Issues, which are primarily developer-
+      and research-oriented. No dedicated musician-facing community or discussion
+      forum is provided.
+    tags: GitHub Issues

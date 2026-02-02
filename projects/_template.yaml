@@ -1,0 +1,73 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation template
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+    name:
+    affiliation:
+    architecture:
+    applications:
+    link:
+    notes:
+
+# [A] ADAPTABILITY
+adaptability:
+    hardware_requirements:
+        value:  # ✓ ~ ✗
+        notes:
+    dataset_size:
+        value:  # ✓ ~ ✗
+        notes:
+    adaptation_pathways:
+        value:  # ✓ ~ ✗
+        notes:
+        tags:
+    technical_barriers:
+        value:  # ✓ ~ ✗
+        notes:
+        tags:
+    model_redistribution:
+        value:  # ✓ ~ ✗
+        notes:
+
+# [C] CONTROLLABILITY
+controllability:
+    conditioning_inputs:
+        value:  # ✓ ~ ✗
+        notes:
+        tags:
+    time_varying_control:
+        value:  # ✓ ~ ✗
+        notes:
+    feature_disentanglement:
+        value:  # ✓ ~ ✗
+        notes:
+        tags:
+    control_parameters:
+        value:  # ✓ ~ ✗
+        notes:
+
+# [U] USABILITY
+usability:
+    interface_availability:
+        value:  # ✓ ~ ✗
+        notes:
+        tags:
+    access_restrictions:
+        value:  # ✓ ~ ✗
+        notes:
+    realtime_capabilities:
+        value:  # ✓ ~ ✗
+        notes:
+    workflow_integration:
+        value:  # ✓ ~ ✗
+        notes:
+    output_licensing:
+        value:  # ✓ ~ ✗
+        notes:
+    community_support:
+        value:  # ✓ ~ ✗
+        notes:
+        tags:

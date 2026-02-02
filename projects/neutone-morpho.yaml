@@ -1,0 +1,114 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: Neutone Morpho
+  affiliation: Neutone Inc.
+  architecture: ''
+  applications: audio synthesis, style transfer
+  link: ''
+  notes: ''
+adaptability:
+  hardware_requirements:
+    value: high
+    notes: Custom model training does not require local compute resources. Morpho’s
+      training pipeline is fully cloud-based, requiring no GPU, no local installation,
+      and no ML environment, which removes hardware barriers entirely for end users.
+  dataset_size:
+    value: high
+    notes: Morpho is designed to be trained on small, musician-scale datasets, with
+      clear guidance suggesting ~45 minutes of unique audio as a practical target.
+      This scale is well within reach of individual musicians working with personal
+      recordings or sound libraries.
+  adaptation_pathways:
+    value: partial
+    notes: A complete and practical adaptation pathway is provided through Neutone’s
+      proprietary training service, allowing musicians to upload audio and train custom
+      models end-to-end. However, the training process is closed-source and platform-bound,
+      with no access to underlying training code, checkpoints, or local fine-tuning
+      workflows.
+    tags: training
+  technical_barriers:
+    value: high
+    notes: Model adaptation is designed explicitly for non-technical users. Training
+      is performed via a drag-and-drop, no-code interface, with extensive musician-oriented
+      guidance on dataset preparation, making the process accessible to users without
+      programming or machine learning experience.
+    tags: GUI, drag-and-drop
+  model_redistribution:
+    value: partial
+    notes: Trained models can be freely used by their creators within the Neutone
+      ecosystem, but redistribution is constrained to the platform. Models cannot
+      be exported or reused outside Neutone’s plugin environment, limiting portability
+      despite creative freedom within the system.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: Morpho conditions on incoming audio, using learned timbral representations
+      to transform signals in real time. While rich in effect, conditioning is limited
+      to a single musically meaningful modality rather than multiple symbolic or structured
+      inputs.
+    tags: audio
+  time_varying_control:
+    value: partial
+    notes: Time-localized control emerges implicitly through real-time resynthesis,
+      as the output dynamically follows the temporal structure of the input signal.
+      However, the model does not expose explicit time-indexed representations or
+      independent control over temporal musical attributes (e.g., pitch curves or
+      structural markers).
+  feature_disentanglement:
+    value: partial
+    notes: Neutone Morpho exhibits partial feature disentanglement through real-time
+      audio resynthesis, where temporal structure and pitch contours of the input
+      signal are largely preserved while timbre is transformed by the selected model.
+      This yields predictable and musically coherent behavior in practice, but control
+      pathways are implicit and dependent on the trained model, with no explicit or
+      independently manipulable representations of pitch, loudness, or structure.
+    tags: ''
+  control_parameters:
+    value: partial
+    notes: Neutone Morpho exposes a small set of learned macro-controls that influence
+      stochastic behavior and the strength of coupling between input and output. These
+      parameters offer musically intuitive control over unpredictability and responsiveness,
+      but do not provide direct access to or manipulation of internal latent representations.
+    tags: conditioning strength, randomness
+usability:
+  interface_availability:
+    value: high
+    notes: Neutone Morpho is distributed as a polished VST3/AU plugin with a dedicated
+      graphical interface, designed for immediate use inside major DAWs. No scripting,
+      external inference setup, or technical configuration is required.
+    tags: AU, VST
+  access_restrictions:
+    value: partial
+    notes: The plugin itself is freely downloadable with a limited set of bundled
+      models and a time-limited trial of the full library. Access to additional pretrained
+      models and custom model training requires account creation and paid purchases,
+      introducing moderate platform-level restrictions.
+  realtime_capabilities:
+    value: high
+    notes: Morpho is explicitly designed for real-time audio processing, operating
+      with low and predictable latency suitable for live performance. The system is
+      optimized for consumer CPUs (e.g., Apple M1-class hardware) and is demonstrated
+      in both DAW and embedded hardware contexts.
+  workflow_integration:
+    value: high
+    notes: Morpho integrates directly into standard music production workflows as
+      an audio effect and instrument plugin, with automation-ready parameters and
+      compatibility with all major DAWs. Ongoing work (e.g., Project LYDIA with Roland)
+      further demonstrates its suitability for hardware and live performance contexts.
+    tags: DAW, hardware
+  output_licensing:
+    value: high
+    notes: Audio output generated using Neutone Morpho is fully usable for personal
+      and commercial purposes. Models are trained exclusively on licensed or user-provided
+      data, and users retain ownership of sounds they create.
+  community_support:
+    value: high
+    notes: Neutone maintains an active Discord community, direct support channels,
+      detailed blog posts, FAQs, and ongoing artist-focused communication, providing
+      accessible support for both creative and technical questions.
+    tags: Discord, Help center
