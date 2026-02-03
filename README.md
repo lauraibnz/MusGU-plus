@@ -36,4 +36,3 @@ Rather than presenting a fixed leaderboard, MusGU+ is designed as an interactive
 ## Relationship to MusGO
 
 MusGU+ builds on insights from the **[MusGO framework](https://roserbatlleroca.github.io/MusGO_framework/)**. MusGO (Music-Generative Open AI) is an openness-focused evaluation framework for music-generative AI. While MusGO assesses transparency and responsible research practices, MusGU+ supports informed selection and practical adoption of generative music models by musicians.
-
