@@ -2,3 +2,4 @@
 /projects/old/
 venv/
 .venv/
+__pycache__/
