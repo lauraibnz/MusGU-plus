@@ -28,16 +28,12 @@ Each dimension is composed of multiple criteria (e.g., hardware requirements, in
 📖 Read the **[detailed evaluation criteria](https://lauraibnz.github.io/MusGU-plus/framework)**.
 
 
----
-
 ## A Discovery Tool for Musicians
 
 Rather than presenting a fixed leaderboard, MusGU+ is designed as an interactive discovery tool. It allows musicians to explore, filter, and compare generative music models based on specific criteria and tags, highlighting differences in adaptability, usability, and controllability. This supports early-stage exploration and informed selection of models that may fit particular creative practices or workflow needs.
 
 
----
-
 ## Relationship to MusGO
 
-MusGU+ builds on insights from the **[MusGO framework](https://roserbatlleroca.github.io/MusGO_framework/)**. MusGO (Music-Generative Open AI) is an openness-focused evaluation framework for music-generative AI. While MusGO assesses transparency and responsible research practices, MusGU+ supports informed selection and practical adoption of generative music AI by musicians.
+MusGU+ builds on insights from the **[MusGO framework](https://roserbatlleroca.github.io/MusGO_framework/)**. MusGO (Music-Generative Open AI) is an openness-focused evaluation framework for music-generative AI. While MusGO assesses transparency and responsible research practices, MusGU+ supports informed selection and practical adoption of generative music models by musicians.
 

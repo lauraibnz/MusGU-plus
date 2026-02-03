@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MusGU+ Framework - Detailed Evaluation Criteria</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet"/>
 <style>
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0 auto;
   padding: 20px;
   background: #fff;
-  max-width: 1200px;
-  line-height: 1.6;
 }
 
 .header {
@@ -22,7 +21,11 @@ body {
 
 .header h1 {
   font-size: 2em;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
+}
+.header p {
+  font-size: 1.1em;
+  color: #666;
 }
 
 .back-link {
@@ -33,11 +36,27 @@ body {
 
 .back-link a {
   color: #0066cc;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .back-link a:hover {
   text-decoration: underline;
+}
+
+#description {
+  background-color: #f8f8f8;
+  padding: 1.5em;
+  margin: 5px auto 5px;
+  max-width: 1200px;
+  font-size: 1em;
+  line-height: 1.6;
+  border-radius: 4px;
+  text-align: left;
+}
+
+#description ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 #criteria {
@@ -61,7 +80,7 @@ body {
 }
 
 #criteria > p {
-  margin: 0 0 10px;
+  margin: 0 0 10px 0;
   line-height: 1.6;
   color: #333;
   font-size: 1em;
@@ -69,9 +88,9 @@ body {
 
 #criteria h4 {
   font-size: 1em;
-  margin: 10px 0 5px 0;
+  margin: 10px 0 0px 0.5em;
   color: #333;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 #criteria ul {
@@ -144,126 +163,138 @@ body {
 <div class="header">
   <h1>MusGU+ Framework: Detailed Evaluation Criteria</h1>
 </div>
-
 <div class="back-link">
-  <a href="index.html">← Back to Discovery Tool</a>
+  <div id="description">
+    <p style="margin-top: 0;">
+        The <strong>Music-Generative Usable+ AI (MusGU+)</strong> framework is a musician-centered evaluation framework designed to assess how generative music models can be adapted, used, and controlled in real-world creative contexts. 
+        The framework evaluates models along three complementary dimensions, with each dimension addressing a key question from the musician's perspective:
+      </p>
+    <ul>
+    <li><strong>Adaptability</strong> — <em>Can I realistically adapt this model to my own data?</em></li>
+    <li><strong>Usability</strong> — <em>Can I access, run, and integrate this model into my music-making workflow?</em></li>
+    <li><strong>Controllability</strong> — <em>Can I guide the model in musically meaningful and interpretable ways?</em></li>
+    </ul>
+    <p style="margin-bottom: 0;">
+      🔍 Explore the <a href="index.html" style="color: #0066cc;">MusGU+ discovery tool</a>
+    </p>
+    </div>
 </div>
 
 <section id="criteria">
-  <h2>Adaptability</h2>
+  <h2><strong>Adaptability</strong></h2>
   <p>
     Assesses how feasible it is for musicians to adapt a model to their own data, focusing on practical constraints and supported training or fine-tuning pathways.
   </p>
 
-  <h4>Hardware Requirements</h4>
+  <h4><strong>Hardware Requirements</strong></h4>
   <ul>
     <li>The model can be trained or fine-tuned on CPU-only systems within a practical timeframe for end users.</li>
     <li>Requires a consumer-grade GPU (e.g., T4, P100), such as those found in mid-range gaming laptops or common cloud GPU instances.</li>
     <li>Requires dedicated high-end GPUs (e.g., A100s, multi-GPU rigs) or TPUs. Cannot be adapted without access to premium or institutional-level hardware.</li>
   </ul>
 
-  <h4>Dataset Size</h4>
+  <h4><strong>Dataset Size</strong></h4>
   <ul>
     <li>The model can be effectively trained or fine-tuned using small, personal datasets (e.g., minutes to a few hours of audio).</li>
     <li>The model requires a significant amount (e.g., tens of hours) of recordings or curated datasets, exceeding the size of most musicians' own libraries.</li>
     <li>The model requires large-scale datasets (e.g., hundreds of hours of diverse, high-quality material), making adaptation infeasible without access to institutional or commercial-scale data.</li>
   </ul>
 
-  <h4>Adaptation Pathways</h4>
+  <h4><strong>Adaptation Pathways</strong></h4>
   <ul>
     <li>The model provides practical pathways for training and/or fine-tuning on a musician's own data, such as complete training code, data processing and fine-tuning scripts with required checkpoints, or a dedicated interface for this purpose.</li>
     <li>Adaptation pathways are partially available (e.g., incomplete training code, fine-tuning code without checkpoints), requiring users to assemble or infer missing elements.</li>
     <li>No practical adaptation pathways are provided. The model cannot be meaningfully trained or fine-tuned using the provided materials.</li>
   </ul>
 
-  <h4>Technical Barriers</h4>
+  <h4><strong>Technical Barriers</strong></h4>
   <ul>
     <li>A user-friendly graphical interface or dedicated app is provided for model adaptation, designed for musicians with no programming experience.</li>
     <li>The model provides a streamlined setup (e.g., Colab notebook) for training or fine-tuning, with clear instructions and documentation, making it suitable for users with basic technical skills.</li>
     <li>Only raw code or scripts are provided, with minimal or no guidance or documentation. Training or fine-tuning requires significant programming knowledge and low-level configuration.</li>
   </ul>
 
-  <h4>Model Redistribution</h4>
+  <h4><strong>Model Redistribution</strong></h4>
   <ul>
     <li>Redistribution of trained and/or fine-tuned models or checkpoints is explicitly permitted, allowing adapted models to be shared outside the original system.</li>
     <li>Adapted models or checkpoints can be redistributed, but only under constraints (e.g., non-commercial or research-only use, platform-bound sharing).</li>
     <li>Redistribution of adapted models or checkpoints is prohibited, contractually restricted, or technically impossible.</li>
   </ul>
 
-  <h2>Usability</h2>
+  <h2><strong>Usability</strong></h2>
   <p>
     Examines how easily musicians can run, interact with, and integrate the model into their creative workflows, including access constraints and available support channels.
   </p>
 
-  <h4>Interface Availability</h4>
+  <h4><strong>Interface Availability</strong></h4>
   <ul>
     <li>A dedicated app or user-friendly graphical interface is provided for running the model (e.g., web platform, HuggingFace Space, standalone GUI, mobile app, Max4Live device), requiring minimal or no setup.</li>
     <li>A simplified interface (e.g., Max/MSP or Pure Data patch, Gradio UI code to be run locally) is available but requires some setup or domain-specific familiarity.</li>
     <li>Only raw code or scripts are provided for inference, requiring setup from scratch and significant technical knowledge.</li>
   </ul>
 
-  <h4>Access Restrictions</h4>
+  <h4><strong>Access Restrictions</strong></h4>
   <ul>
     <li>The model can be used freely and repeatedly without limits, paywalls, or subscriptions. This includes open-source tools with available inference code and pretrained checkpoints, or publicly accessible platforms with no login requirements or usage limits.</li>
     <li>Inference is possible, but access is constrained (e.g., login required, acceptance of terms of use, daily usage limits, or restricted free tiers), introducing account-based or usage limitations.</li>
     <li>Direct inference is not feasible due to missing components (e.g., no pretrained checkpoint or inference code), or access is fully restricted (e.g., paywalls, subscriptions, or unstable user interfaces).</li>
   </ul>
 
-  <h4>Real-Time Capabilities</h4>
+  <h4><strong>Real-Time Capabilities</strong></h4>
   <ul>
     <li>The system generates output with minimal or imperceptible delay (e.g., milliseconds to a few seconds), making it suitable for live use even on modest hardware.</li>
     <li>Generation is possible with a moderate delay (e.g., several seconds), making it usable in interactive settings but not for live use. Real-time performance may require a consumer-grade GPU.</li>
     <li>Generation is slow (e.g., minutes per sample) or impractical for real-time use, especially on typical personal computers or laptops.</li>
   </ul>
 
-  <h4>Workflow Integration</h4>
+  <h4><strong>Workflow Integration</strong></h4>
   <ul>
     <li>The model is directly usable in common music workflows (e.g., within DAWs, visual programming environments, live coding systems, or dedicated music hardware).</li>
     <li>Some integration is possible (e.g., via OSC/MIDI connectivity or similar control-based interfaces).</li>
     <li>The system is isolated, with no clear path to embed it in existing creative setups or musical instruments.</li>
   </ul>
 
-  <h4>Output Licensing</h4>
+  <h4><strong>Output Licensing</strong></h4>
   <ul>
     <li>The output is fully usable for both personal and commercial purposes without restriction.</li>
     <li>Some use limitations apply to the generated output (e.g., non-commercial use only, attribution required, unclear terms).</li>
     <li>Output use is heavily restricted or prohibited (e.g., proprietary licensing, unclear or forbidding terms).</li>
   </ul>
 
-  <h4>Community Support</h4>
+  <h4><strong>Community Support</strong></h4>
   <ul>
     <li>An open, user-facing community space is available (e.g., Discord server or forum), suitable for musicians to ask questions and share workflows.</li>
     <li>Limited or developer-oriented channels are available (e.g., GitHub issues), which may provide assistance but are less accessible to most musicians.</li>
     <li>No meaningful public support or community spaces are provided.</li>
   </ul>
 
-  <h2>Controllability</h2>
+  <h2><strong>Controllability</strong></h2>
   <p>
     Evaluates the kinds of input and internal control mechanisms a model offers to guide its behavior, including the diversity, structure, and independence of its control pathways.
   </p>
 
-  <h4>Conditioning Inputs</h4>
+  <h4><strong>Conditioning Inputs</strong></h4>
   <ul>
     <li>The model accepts multiple and diverse conditioning inputs, including at least two musically meaningful modalities (e.g., audio, MIDI, symbolic), enabling rich and varied guidance during generation.</li>
     <li>Conditioning is limited to one musically meaningful modality, possibly combined with descriptive inputs (e.g., audio and text).</li>
     <li>Offers little to no input conditioning. Generation is mostly uncontrolled or limited to coarse or global labels (e.g., genre, tempo).</li>
   </ul>
 
-  <h4>Time-Varying Control</h4>
+  <h4><strong>Time-Varying Control</strong></h4>
   <ul>
     <li>Supports precise time-varying control (e.g., per-frame pitch, loudness, or symbolic changes), enabling fine-grained structural and expressive manipulation.</li>
     <li>Some time-localized control is available (e.g., melody following or segment-based prompts), but not fine-grained.</li>
     <li>Only global control is possible, with no ability to influence generation over time.</li>
   </ul>
 
-  <h4>Feature Disentanglement</h4>
+  <h4><strong>Feature Disentanglement</strong></h4>
   <ul>
     <li>Provided controls are designed to influence distinct and isolated musical attributes (e.g., timbre, pitch, rhythm, structure), enabling predictable and interpretable guidance.</li>
     <li>Some effort is made to separate control pathways, but conditioning inputs are not explicitly associated with interpretable musical attributes, and interactions are expected.</li>
     <li>Control signals are entangled or loosely defined, making it unclear how specific inputs relate to individual musical attributes.</li>
   </ul>
 
-  <h4>Control Parameters</h4>
+  <h4><strong>Control Parameters</strong></h4>
   <ul>
     <li>Provides multiple configurable model parameters (e.g., duration, randomness, style strength) and enables direct manipulation of internal representations.</li>
     <li>Provides a limited set of configurable parameters and/or restricted access to latent representations.</li>

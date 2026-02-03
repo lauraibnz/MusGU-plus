@@ -53,7 +53,7 @@ body.ready {
   min-height: 40px;
   align-items: center;
   width: 100%;
-  max-width: 100%;
+  max-width: 1200px;
   box-sizing: border-box;
 }
 
@@ -148,9 +148,15 @@ body.ready {
 }
 
 /* Applications tags section */
-.applications-section {
-  margin: 0px auto 0;
+#applications-wrapper {
+  width: 100%;
   max-width: 1200px;
+  margin: 0 auto 20px auto;
+  box-sizing: border-box;
+}
+
+.applications-section {
+  margin: 0;
   text-align: center;
 }
 
@@ -167,9 +173,7 @@ body.ready {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  padding: 0 0 30px 0;
-  margin: 0 auto;
-  max-width: 1200px;
+  padding: 0 0 10px 0;
 }
 
 .application-tag {
@@ -228,7 +232,7 @@ body.ready {
   border-bottom: 1px solid #000;
 }
 #musgu-table td {
-  padding: 10px 4px;
+  padding: 6px 4px; /* Increased from 6px to 8px for more vertical space */
   border: none;
   text-align: center;
 }
@@ -236,9 +240,31 @@ body.ready {
   text-align: left !important;
   font-weight: bold;
   border-right: 1px solid #000;
-  width: 0.1%;
-  white-space: nowrap;
+  width: auto;
+  min-width: fit-content; /* Changed from max-content to fit-content */
+  white-space: normal;
+  max-width: none; /* Removed max-width constraint */
 }
+.model-name {
+  font-weight: bold;
+  line-height: 1.1; /* Increased from 1.1 */
+  word-wrap: break-word;
+  white-space: nowrap; /* Keep model names on one line */
+}
+.affiliation {
+  font-size: 0.85em;
+  color: #666;
+  font-weight: normal;
+  margin-top: 5px; /* Increased from 5px */
+  line-height: 1.1; /* Increased from 1.1 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  display: block; /* Ensure it's a block element */
+  padding-bottom: 2px; /* Add padding to prevent descender clipping */
+}
+
 .org {
   text-align: left !important;
   font-size: 0.9em;
@@ -555,7 +581,7 @@ body.ready {
 #footer {
   margin-top: 30px;
   padding: 30px 40px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   background: #f8f8f8;
   border-top: 3px solid #e0e0e0;
   text-align: center;
@@ -653,7 +679,7 @@ body.ready {
 </head>
 <body>
 <div class="header">
-  <h1>MusGU+: A Musician-Centered Evaluation Framework</h1>
+  <h1>MusGU+: Musician-Centered Evaluation Framework</h1>
 </div>
 
 <div id="description">
@@ -671,7 +697,7 @@ body.ready {
   </p>
 </div>
 
-<h2 style="text-align: left; margin: 5px auto 5px; max-width: 1200px; padding: 0 1.5em; font-size: 1.3em;">Discovery Tool for Generative Music AI</h2>
+<h2 style="text-align: center; margin: 15px auto 5px; max-width: 1200px; padding: 0 1.5em; font-size: 1.3em;">A Discovery Tool for Generative Music AI</h2>
 
 <div class="controls">
   <div class="active-filters-container" id="active-filters">
@@ -687,11 +713,16 @@ body.ready {
     </div>
   </div>
 </div>
+
+<div id="applications-wrapper">
+  <!-- Applications section will be injected here by Python script -->
+</div>
+
 <div id="included-table">
   <!-- Table will be injected here by Python script -->
 </div>
 
-<div id="table-guide" style="margin-top: 5px;">
+<div id="table-guide" style="margin-top: 15px;">
   <h2 style="text-align: left; margin: 0 0 5px 0; font-size: 1.3em;">How to navigate this table?</h2>
   <p>The MusGU+ framework evaluates models across 15 criteria distributed among three dimensions: <strong>Adaptability</strong> (5 criteria), <strong>Usability</strong> (6 criteria), and <strong>Controllability</strong> (4 criteria). Each criterion is evaluated on a three-level scale:
     <span class="legend-symbol" style="background: #c7f0d8; padding: 2px 8px; border-radius: 3px; color: #2d6a4f;">✔︎</span> fully supported,
@@ -710,10 +741,10 @@ body.ready {
   <p>For a detailed breakdown of each model's evaluation, explore the corresponding YAML file in the <a href="https://github.com/lauraibnz/MusGU-plus/tree/main/projects" style="color: #0066cc;">projects folder</a>.</p>
 </div>
 
-<div id="musgo-relationship" style="background-color: #f8f8f8; padding: 1em 1.5em; margin: 5px auto 0; max-width: 1200px; font-size: 1em; line-height: 1.6; border-radius: 4px;">
+<div id="musgo-relationship" style="padding: 1em 1.5em; margin: 5px auto 0; max-width: 1200px; font-size: 1em; line-height: 1.6;">
   <h2 style="text-align: left; margin: 0 0 5px 0; font-size: 1.3em;">Relationship to MusGO</h2>
   <p style="margin-top: 0; margin-bottom: 0;">
-    MusGU+ builds on insights from the <a href="https://roserbatlleroca.github.io/MusGO_framework/" target="_blank" style="color: #0066cc;">MusGO framework</a>. MusGO (Music-Generative Open AI) is an openness-focused evaluation framework for music-generative AI. While MusGO assesses transparency and responsible research practices, MusGU+ supports informed selection and practical adoption of generative music AI by musicians.
+    MusGU+ builds on insights from the <a href="https://roserbatlleroca.github.io/MusGO_framework/" target="_blank" style="color: #0066cc;">MusGO framework</a>. MusGO (Music-Generative Open AI) is an openness-focused evaluation framework for music-generative AI. While MusGO assesses transparency and responsible research practices, MusGU+ supports informed selection and practical adoption of generative music models by musicians.
   </p>
 </div>
 
@@ -1122,7 +1153,14 @@ function applyFilters() {
       }
     }
     
-    row.style.display = showRow ? '' : 'none';
+    // Use visibility instead of display to maintain column widths
+    if (showRow) {
+      row.style.display = '';
+      row.style.visibility = '';
+    } else {
+      row.style.display = 'none';
+      row.style.visibility = 'collapse';
+    }
   });
 }
 
@@ -1324,6 +1362,58 @@ function initTagExpansion() {
       cell.style.minWidth = neededCellWidth + 'px';
       cell.style.maxWidth = neededCellWidth + 'px';
     });
+    
+    // Lock tbody cell widths to match header widths
+    var headerCells = document.querySelectorAll('#musgu-table thead th');
+    var bodyRows = document.querySelectorAll('#musgu-table tbody tr');
+    
+    // Calculate the widest Model column based on model names only (not affiliations)
+    var maxModelNameWidth = 0;
+    bodyRows.forEach(function(row) {
+      var cell = row.cells[0];
+      if (cell) {
+        var modelNameElement = cell.querySelector('.model-name');
+        if (modelNameElement) {
+          // Measure just the model name element's natural width
+          var tempSpan = document.createElement('span');
+          tempSpan.style.visibility = 'hidden';
+          tempSpan.style.position = 'absolute';
+          tempSpan.style.whiteSpace = 'nowrap';
+          tempSpan.style.fontWeight = 'bold';
+          tempSpan.style.fontSize = '13px';
+          tempSpan.textContent = modelNameElement.textContent;
+          document.body.appendChild(tempSpan);
+          var modelNameWidth = tempSpan.offsetWidth;
+          document.body.removeChild(tempSpan);
+          
+          if (modelNameWidth > maxModelNameWidth) {
+            maxModelNameWidth = modelNameWidth;
+          }
+        }
+      }
+    });
+    
+    // Set the Model column width based on model names only
+    if (maxModelNameWidth > 0) {
+      // Add cell padding (4px left + 4px right from td padding = 8px)
+      var finalModelColumnWidth = maxModelNameWidth + 8;
+      
+      var modelHeaderCell = headerCells[0];
+      if (modelHeaderCell) {
+        modelHeaderCell.style.width = finalModelColumnWidth + 'px';
+        modelHeaderCell.style.minWidth = finalModelColumnWidth + 'px';
+        modelHeaderCell.style.maxWidth = finalModelColumnWidth + 'px';
+      }
+      
+      bodyRows.forEach(function(row) {
+        var cell = row.cells[0];
+        if (cell) {
+          cell.style.width = finalModelColumnWidth + 'px';
+          cell.style.minWidth = finalModelColumnWidth + 'px';
+          cell.style.maxWidth = finalModelColumnWidth + 'px';
+        }
+      });
+    }
     
     // Show the table after calculations
     if (table) {

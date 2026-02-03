@@ -121,7 +121,6 @@ def write_html(df):
     html_table += '<thead>\n'
     html_table += '<tr class="main-header">'
     html_table += '<th class="sortable" data-sort="name" data-type="text">Model <span class="sort-arrow">▴▾</span></th>'
-    html_table += '<th class="sortable" data-sort="affiliation" data-type="text">Affiliation <span class="sort-arrow">▴▾</span></th>'
     
     # Adaptability with dimension filter tag inline to the right
     html_table += '<th colspan="5" class="sortable" data-sort="adaptability" data-type="number">'
@@ -148,7 +147,7 @@ def write_html(df):
     
     # Second header with criterion names and filter icons
     html_table += '<tr class="second-header">'
-    html_table += '<th></th><th></th>'  # Empty cells for Model and Affiliation
+    html_table += '<th></th>'  # Empty cell for Model column only
     
     # Collect tags by criterion for popups
     projects = df.index.tolist()
@@ -307,13 +306,17 @@ def write_html(df):
             if apps and isinstance(apps, str):
                 row_applications = [a.strip() for a in apps.split(',')]
         
-        r1_html = f'<tr class="row-a" data-name="{p}" data-affiliation="{affiliation}" data-adaptability="{int(df.loc[p, 'adaptability_score'])}" data-usability="{int(df.loc[p, 'usability_score'])}" data-controllability="{int(df.loc[p, 'controllability_score'])}" data-overall="{int(df.loc[p, 'overall_score'])}" data-tags="{",".join(row_tags)}" data-applications="{",".join(row_applications)}">'
+        r1_html = f"""<tr class="row-a" data-name="{p}" data-affiliation="{affiliation}" data-adaptability="{int(df.loc[p, 'adaptability_score'])}" data-usability="{int(df.loc[p, 'usability_score'])}" data-controllability="{int(df.loc[p, 'controllability_score'])}" data-overall="{int(df.loc[p, 'overall_score'])}" data-tags="{','.join(row_tags)}" data-applications="{','.join(row_applications)}">"""
         
+        # Model name cell with affiliation below
+        r1_html += '<td class="name-cell">'
         if project_link:
-            r1_html += f'<td class="name-cell"><a href="{project_link}" target="_blank">{p}</a></td>'
+            r1_html += f'<div class="model-name"><a href="{project_link}" target="_blank">{p}</a></div>'
         else:
-            r1_html += f'<td class="name-cell">{p}</td>'
-        r1_html += f'<td class="org">{affiliation}</td>'
+            r1_html += f'<div class="model-name">{p}</div>'
+        if affiliation:
+            r1_html += f'<div class="affiliation">{affiliation}</div>'
+        r1_html += '</td>'
         
         # Adaptability cells
         for criterion in ['hardware_requirements', 'dataset_size', 'adaptation_pathways', 'technical_barriers', 'model_redistribution']:
@@ -362,14 +365,14 @@ def create_index(table, applications_html):
         html = f.read()
     soup = BeautifulSoup(html, "html.parser")
     
-    # Insert applications tags before the table
+    # Insert applications tags into the applications wrapper
     if applications_html:
-        target_element = soup.find(id="included-table")
+        target_element = soup.find(id="applications-wrapper")
         if target_element:
             apps_soup = BeautifulSoup(applications_html, 'html.parser')
-            target_element.insert(0, apps_soup)
+            target_element.append(apps_soup)
     
-    # Insert table
+    # Insert table into the table container
     target_element = soup.find(id="included-table")
     target_element.append(BeautifulSoup(table, 'html.parser'))
     
