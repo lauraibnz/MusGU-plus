@@ -15,12 +15,12 @@ adaptability:
   hardware_requirements:
     value: partial
     notes: The model can be effectively trained on a consumer-grade GPU (the authors
-      suggest ~2-3 hours on Colab’s free tier). CPU-only training is not presented
-      as a practical option.
+      suggest ~2-3 hours on Colab’s free tier, and less than an hour with ColabPro+).
+      CPU-only training is not presented as a practical option.
   dataset_size:
     value: high
     notes: The model is explicitly designed for small, domain-specific datasets. Official
-      documentation recommends 10–20 minutes of monophonic audio to train a usable
+      documentation recommends 10-20 minutes of monophonic audio to train a usable
       instrument model, making personal recordings fully viable for musicians.
   adaptation_pathways:
     value: partial
@@ -31,18 +31,18 @@ adaptability:
     tags: training
   technical_barriers:
     value: partial
-    notes: A streamlined Colab notebook with step-by-step instructions is provided,
-      lowering the barrier for users with basic technical familiarity. However, no
-      graphical training interface exists, and successful adaptation still requires
-      navigating notebooks, file systems, and model formats, placing it beyond non-technical
-      musicians.
+    notes: A streamlined Colab notebook with step-by-step instructions is provided
+      for training, lowering the barrier for users with basic technical familiarity.
+      However, no graphical training interface exists, and successful adaptation still
+      requires navigating notebooks, file systems, and model formats, placing it beyond
+      non-technical musicians.
     tags: Colab
   model_redistribution:
     value: high
     notes: The code and trained models are released under the Apache License 2.0,
       which explicitly permits redistribution of modified and derived works, including
       trained and fine-tuned models, for both commercial and non-commercial use, provided
-      attribution and license terms are preserved.
+      that attribution and license terms are preserved.
 controllability:
   conditioning_inputs:
     value: high
@@ -66,8 +66,8 @@ controllability:
   control_parameters:
     value: high
     notes: The system exposes both high-level musical parameters (e.g., ADSR envelopes,
-      gain, reverb) and low-level latent control (harmonic–noise balance, pitch, and
-      loudness trajectories). Core internal representations are directly and meaningfully
+      gain, reverb) and low-level latent control (e.g., harmonic–noise balance, pitch,
+      and loudness trajectories). Core internal representations are directly and meaningfully
       manipulable, enabling precise and interpretable control over synthesis behavior.
     tags: latent manipulation
 usability:

@@ -8,7 +8,7 @@ project:
   name: Suno
   affiliation: Suno, Inc.
   architecture: ''
-  applications: continuation, editing, full song generation, remixing, text-to-music
+  applications: continuation, editing, full-song generation, remixing, text-to-music
   link: ''
   notes: ''
 adaptability:

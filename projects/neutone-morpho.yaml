@@ -7,7 +7,7 @@
 project:
   name: Neutone Morpho
   affiliation: Neutone Inc.
-  architecture: ''
+  architecture: autoencoder
   applications: audio synthesis, style transfer
   link: ''
   notes: ''
@@ -15,8 +15,9 @@ adaptability:
   hardware_requirements:
     value: high
     notes: Custom model training does not require local compute resources. Morpho’s
-      training pipeline is fully cloud-based, requiring no GPU, no local installation,
-      and no ML environment, which removes hardware barriers entirely for end users.
+      training pipeline is fully cloud-based and handled by Neutone’s infrastructure,
+      meaning end users do not need a GPU, local installation, or machine learning
+      environment. Training completes within approximately a day.
   dataset_size:
     value: high
     notes: Morpho is designed to be trained on small, musician-scale datasets, with
@@ -33,17 +34,20 @@ adaptability:
     tags: training
   technical_barriers:
     value: high
-    notes: Model adaptation is designed explicitly for non-technical users. Training
-      is performed via a drag-and-drop, no-code interface, with extensive musician-oriented
-      guidance on dataset preparation, making the process accessible to users without
-      programming or machine learning experience.
-    tags: GUI, drag-and-drop
+    notes: 'Model adaptation is designed explicitly for non-technical users. Training
+      is performed via a drag-and-drop, no-code interface, supported by extensive
+      musician-oriented guidance on dataset preparation and workflow. Neutone provides
+      step-by-step blog tutorials as well as a dedicated FAQ section detailing requirements
+      and best practices, making the adaptation process accessible to users without
+      programming or machine learning experience. '
+    tags: GUI, drag-and-drop, tutorial
   model_redistribution:
-    value: partial
-    notes: Trained models can be freely used by their creators within the Neutone
-      ecosystem, but redistribution is constrained to the platform. Models cannot
-      be exported or reused outside Neutone’s plugin environment, limiting portability
-      despite creative freedom within the system.
+    value: low
+    notes: Models trained via Neutone Morpho are owned exclusively by the user who
+      trained them and automatically become available for use within the Morpho plugin.
+      However, there is no documented mechanism for exporting trained models, sharing
+      them with other users, or deploying them outside the Neutone ecosystem. Redistribution
+      is therefore effectively restricted to private, in-platform use.
 controllability:
   conditioning_inputs:
     value: partial
@@ -61,20 +65,24 @@ controllability:
       structural markers).
   feature_disentanglement:
     value: partial
-    notes: Neutone Morpho exhibits partial feature disentanglement through real-time
-      audio resynthesis, where temporal structure and pitch contours of the input
-      signal are largely preserved while timbre is transformed by the selected model.
-      This yields predictable and musically coherent behavior in practice, but control
-      pathways are implicit and dependent on the trained model, with no explicit or
-      independently manipulable representations of pitch, loudness, or structure.
+    notes: Neutone Morpho exhibits partial feature disentanglement through its latent
+      audio representation, which is trained to encode a small number of perceptually
+      salient characteristics of the training data. Some latent variables may show
+      consistent correlations with perceptual attributes (e.g., pitch or texture),
+      and these relationships are partially exposed through macro controls. However,
+      these dimensions are not explicitly modeled as independent musical features,
+      remain unlabeled and model-dependent, and do not provide robust, interpretable
+      control over musical attributes.
     tags: ''
   control_parameters:
-    value: partial
-    notes: Neutone Morpho exposes a small set of learned macro-controls that influence
-      stochastic behavior and the strength of coupling between input and output. These
-      parameters offer musically intuitive control over unpredictability and responsiveness,
-      but do not provide direct access to or manipulation of internal latent representations.
-    tags: conditioning strength, randomness
+    value: high
+    notes: Neutone Morpho exposes a set of learned macro-controls that influence stochastic
+      behavior and the strength of coupling between input and output, offering musically
+      intuitive control over unpredictability and responsiveness. In addition, an
+      experimental Micro View allows users to directly offset and scale individual
+      latent variables in real time, enabling fine-grained manipulation of the model’s
+      internal representation.
+    tags: conditioning strength, latent manipulation, randomness
 usability:
   interface_availability:
     value: high
@@ -104,8 +112,12 @@ usability:
   output_licensing:
     value: high
     notes: Audio output generated using Neutone Morpho is fully usable for personal
-      and commercial purposes. Models are trained exclusively on licensed or user-provided
-      data, and users retain ownership of sounds they create.
+      and commercial purposes, and users retain ownership of the sounds they create.
+      According to Neutone’s published policy on AI and copyright, the base models
+      are trained exclusively on open-source or appropriately licensed audio (e.g.,
+      public domain, Creative Commons, or audio used with the consent of artists),
+      with all training data cited, reflecting a commitment to legal and ethical use
+      of copyrighted material.
   community_support:
     value: high
     notes: Neutone maintains an active Discord community, direct support channels,
