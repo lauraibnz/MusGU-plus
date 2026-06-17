@@ -47,9 +47,9 @@ a {
 .hero-card,
 .detail-section,
 .supporting-card {
-  background: #f8f8f8;
-  border-radius: 4px;
-  padding: 0.5em;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   margin: 5px auto 0;
   box-sizing: border-box;
   max-width: 1200px;
@@ -175,8 +175,8 @@ a {
   text-align: center;
   border-radius: 4px;
   padding: 0.4rem 0.8rem;
-  background: white;
-  border: 1px solid #d7dbe0;
+  background: #f8f8f8;
+  border: 1px solid #e3e3e3;
   font-weight: 700;
 }
 
@@ -187,7 +187,7 @@ a {
 }
 
 .criterion-card {
-  background: white;
+  background: #f8f8f8;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
   padding: 1rem;
