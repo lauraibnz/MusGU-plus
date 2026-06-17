@@ -75,7 +75,7 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 0 auto 1em auto;
+  margin: 1em auto 1em auto;
 }
 
 .resource-links {
@@ -166,7 +166,7 @@ a {
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  padding-top: 15px;
+  padding-top: 20px;
   margin-bottom: 10px;
   flex-wrap: wrap;
 }
