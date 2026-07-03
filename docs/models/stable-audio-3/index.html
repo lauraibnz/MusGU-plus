@@ -44,50 +44,50 @@
 <section aria-labelledby="adaptability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="adaptability-title">Adaptability</h2>
-<div aria-label="Adaptability summary 30 percent" class="score-badge">30%</div>
+<div aria-label="Adaptability summary 50 percent" class="score-badge">50%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Hardware Requirements</h3>
-<span class="status-pill low">✘ Not supported</span>
+<span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Although LoRA fine-tuning is provided, the released models remain large, and the available materials do not demonstrate that adaptation can be performed on CPU-only systems or consumer-grade GPUs within a practical timeframe for end users.</p>
+<p class="criterion-notes">The documented LoRA fine-tuning workflow requires a CUDA GPU. The official documentation reports approximately 2 GB of VRAM for the Small model and 5.5–6.5 GB for the Medium model, placing adaptation within the range of consumer-grade GPUs but not practical CPU-only systems.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Dataset Size</h3>
-<span class="status-pill low">✘ Not supported</span>
+<span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">The official materials do not document that Stable Audio 3 can be effectively fine-tuned using small personal datasets, nor do they establish a moderate dataset requirement. Without evidence of feasible adaptation from musician-sized datasets, dataset requirements remain unsupported from a musician-centered perspective.</p>
+<p class="criterion-notes">The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips. This suggests adaptation is possible with relatively limited custom datasets, but the available documentation does not establish that effective fine-tuning can be achieved with minutes to a few hours of personal audio.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Adaptation Pathways</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">The repository provides a dedicated LoRA fine-tuning workflow, including dataset preparation, training, checkpointing, and loading adapted LoRA checkpoints at inference time. Pretrained model checkpoints and autoencoders are also available.</p>
+<p class="criterion-notes">The repository provides a complete LoRA fine-tuning workflow, including pretrained base checkpoints, raw-audio and pre-encoded dataset modes, a dedicated training script, checkpointing and resume support, and LoRA checkpoint export.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Technical Barriers</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
-<p class="criterion-notes">Fine-tuning is performed through command-line tools and Python-based workflows. No graphical or notebook-based adaptation interface is provided, and users must configure the software environment, prepare data, and run training themselves.</p>
+<p class="criterion-notes">LoRA fine-tuning is performed through command-line tools and Python-based workflows. Although dedicated documentation is provided, users must configure the software environment, prepare datasets, and run training themselves, and no graphical or notebook-based adaptation interface is provided.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Model Redistribution</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">The Stability AI Community License permits users to create and distribute derivative works, including LoRAs and fine-tuned models. However, commercial use of these adapted models is subject to licensing conditions, including an annual revenue threshold above which an Enterprise License may be required.</p>
+<p class="criterion-notes">The Stability AI Community License permits users to create and distribute derivative works, including LoRAs and fine-tuned models. However, commercial use of adapted models is subject to licensing conditions, including an annual revenue threshold above which an Enterprise License may be required.</p>
 </article>
 </div>
 </section>
 <section aria-labelledby="usability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="usability-title">Usability</h2>
-<div aria-label="Usability summary 67 percent" class="score-badge">67%</div>
+<div aria-label="Usability summary 75 percent" class="score-badge">75%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
@@ -95,42 +95,42 @@
 <h3>Interface Availability</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">Stable Audio 3 provides a publicly accessible Hugging Face Space with a graphical interface for text-to-audio generation. The repository also provides a local Gradio interface exposing additional generation and editing controls.</p>
+<p class="criterion-notes">Stable Audio 3 provides a publicly accessible Hugging Face Space with a graphical interface for text-to-audio generation. The repository also provides a local Gradio interface for running the model and accessing additional generation and editing workflows.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Access Restrictions</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">Open-weight Stable Audio 3 models are available with pretrained checkpoints and inference code, allowing unrestricted repeated local inference without subscriptions, usage quotas, or time limits. Although the Large model is API-only, the Small and Medium models can be run locally.</p>
+<p class="criterion-notes">Open-weight Stable Audio 3 models are available with pretrained checkpoints and inference code, allowing repeated local inference without subscriptions, usage quotas, or time limits. Although the Large model is API-only, the Small and Medium models can be run locally.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Real-time Capabilities</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Stable Audio 3 is optimized for very fast generation, with the released benchmarks reporting generation times of several seconds or less depending on model size, output duration, and hardware. However, it is not designed for continuous low-latency interaction or live musical control, and real-time-factor performance on modest hardware does not by itself constitute a live real-time system.</p>
+<p class="criterion-notes">Stable Audio 3 is optimized for fast generation and can produce audio within several seconds or less depending on model size, output duration, and hardware. However, it is designed for fast clip generation rather than continuous low-latency streaming or live musical interaction.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Workflow Integration</h3>
-<span class="status-pill low">✘ Not supported</span>
+<span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">The released tools provide web, local Gradio, CLI, and Python inference workflows, but no direct integration with DAWs, visual programming environments, live coding systems, or dedicated music hardware is provided.</p>
+<p class="criterion-notes">An experimental Ableton Live integration is provided through a MIDI Remote Script and command-line utility. Generated audio files can be inserted into Ableton Live at the current playhead position, with a watch mode for automatically importing new generations. However, the model itself runs externally rather than operating directly within the DAW.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Output Licensing</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Users may own, distribute, and commercialize generated outputs under the Stability AI Community License, but commercial use is subject to licensing conditions, including the annual revenue threshold for organizations using Stability AI models commercially.</p>
+<p class="criterion-notes">Stability AI states that users own generated outputs and may distribute and commercialize them. However, output use remains subject to the Stability AI Community License and Acceptable Use Policy, including licensing conditions for commercial organizations exceeding the specified annual revenue threshold.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Community Support</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">A public Harmonai Discord server is provided for users, with discussions and weekly office hours focused on AI audio and music.</p>
+<p class="criterion-notes">A public Harmonai Discord server run by the research team is provided for discussion and support, including weekly office hours focused on AI audio and music.</p>
 </article>
 </div>
 </section>
@@ -145,33 +145,33 @@
 <h3>Conditioning Inputs</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
-<p class="criterion-notes">Stable Audio 3 conditions generation primarily through descriptive text prompts. Reference audio is used as source material for inpainting and continuation rather than as a separate musical conditioning modality for controlling attributes such as style, timbre, melody, or rhythm.</p>
+<p class="criterion-notes">Stable Audio 3 conditions generation primarily through descriptive text prompts. Existing audio can be supplied for editing, inpainting, and continuation, but serves as source material to be modified or extended rather than as a separate musical conditioning modality.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Users can specify one or multiple temporal regions to regenerate through inpainting masks, while preserving the surrounding audio. This provides segment-level localized control, but not fine-grained control over musical attributes such as pitch, dynamics, rhythm, or structure over time.</p>
+<p class="criterion-notes">Users can specify one or multiple temporal regions for regeneration through inpainting masks while preserving the surrounding audio. This provides time-localized editing control, but not fine-grained control over musical attributes such as pitch, dynamics, rhythm, or structure over time.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Feature Disentanglement</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
-<p class="criterion-notes">The provided controls are not designed to independently manipulate distinct musical attributes. Text prompting and mask-based editing do not expose isolated controls for features such as timbre, pitch, rhythm, or structure.</p>
+<p class="criterion-notes">The provided controls are not designed to independently manipulate distinct musical attributes such as timbre, pitch, rhythm, or structure.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Control Parameters</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">The released interface and inference workflow expose several configurable generation parameters, including duration, sampling steps, CFG scale, sampler, seed, and initialization noise level for audio editing. However, users are not given direct control over internal representations or musically interpretable latent dimensions.</p>
+<p class="criterion-notes">The inference workflows expose multiple configurable parameters, including duration, diffusion steps, CFG scale, sampler, seed, and initialization noise level for editing. However, direct manipulation of internal model representations or musically interpretable latent dimensions is not provided.</p>
 </article>
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-07-03 at 19:23 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-03 at 22:16 UTC.</p>
 </main>
 </body>
 </html>
