@@ -1,0 +1,75 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: Magenta RealTime 2
+  affiliation: Google Magenta
+  architecture: autoregressive transformer
+  applications: MIDI-to-audio, text-to-music
+  link: https://magenta.withgoogle.com/magenta-realtime-2
+  repository: https://github.com/magenta/magenta-realtime
+  article: https://arxiv.org/abs/2508.04651
+  checkpoints: https://huggingface.co/google/magenta-realtime-2
+  ui: https://magenta.withgoogle.com/mrt2
+  notes: Evaluation focuses on Magenta RealTime 2 as the current version of the Magenta RealTime family. The original Magenta RealTime model is maintained in the repository's v1_legacy branch.
+
+adaptability:
+  hardware_requirements:
+    value: low
+    notes: No current training or fine-tuning pathway is provided, so practical adaptation hardware requirements cannot be evaluated from released materials. Future supervised fine-tuning is announced but not yet available.
+  dataset_size:
+    value: low
+    notes: No current training or fine-tuning pathway is provided, and there is no documentation showing that the model can be adapted using small or personal datasets.
+  adaptation_pathways:
+    value: low
+    notes: The release provides inference code, checkpoints, apps, plugins, and developer examples, but no practical training or fine-tuning workflow. Supervised fine-tuning is announced as a future update rather than a current feature.
+  technical_barriers:
+    value: low
+    notes: Since no adaptation pathway is currently provided, adaptation would require unsupported modification or training work beyond the released musician-facing tools and documentation.
+    tags: ''
+  model_redistribution:
+    value: low
+    notes: Because no current adaptation pathway is provided, redistribution of adapted checkpoints is not meaningfully supported or documented.
+
+controllability:
+  conditioning_inputs:
+    value: high
+    notes: Magenta RealTime 2 supports multiple conditioning modalities. Text prompts and audio examples provide style conditioning, while MIDI supplies frame-wise note information during generation.
+    tags: text, MIDI, audio
+  time_varying_control:
+    value: high
+    notes: MIDI conditioning provides precise frame-wise control over pitch activity and note timing during continuous generation. With Auto-Strum disabled, users can specify note onsets and continuations directly, enabling fine-grained temporal control.
+  feature_disentanglement:
+    value: partial
+    notes: The model separates style conditioning from MIDI-based note control. However, style is not associated with a specific isolated musical attribute, and the documentation does not demonstrate that individual musical features can be controlled independently.
+    tags:
+  control_parameters:
+    value: partial
+    notes: The provided interface exposes multiple configurable parameters beyond the primary conditioning inputs, including temperature, Top-K sampling, prompt strength, note strength, Auto-Strum, MIDI Gate, Solo, and a No Drums control. However, direct manipulation of internal model representations is not provided.
+    tags: randomness, sampling strategy, conditioning strength
+
+usability:
+  interface_availability:
+    value: high
+    notes: Magenta RealTime 2 provides pre-built musician-facing interfaces, including standalone macOS apps and an AUv3 plugin bundle for DAW use. The repository also includes example applications for exploring note control, prompt-space interaction, and custom software development.
+    tags: standalone app, AU
+  access_restrictions:
+    value: partial
+    notes: The model weights, code, documentation, and example applications are publicly available, and local use does not require a hosted API or subscription. However, the ready-made real-time interfaces and streaming inference currently require Apple Silicon hardware, limiting access for musicians on other platforms.
+  realtime_capabilities:
+    value: high
+    notes: Magenta RealTime 2 is explicitly designed for real-time streaming music generation. It reduces the control frame size to 40 ms and reports approximately 200 ms control latency, enabling live interaction suitable for performance and instrument-like use.
+  workflow_integration:
+    value: high
+    notes: The model is designed to be used as a standalone application, integrated into DAWs through an AUv3 plugin, or embedded into other music software through the C++ inference engine. This directly supports musician-facing workflows and custom instrument development.
+    tags: DAW
+  output_licensing:
+    value: high
+    notes: The Hugging Face model card states that Google claims no rights in outputs generated using Magenta RealTime 2, and that users are responsible for outputs and subsequent uses. No explicit non-commercial restriction on generated outputs is stated in the available model-card terms.
+  community_support:
+    value: partial
+    notes: The project provides public documentation and GitHub Issues, but no dedicated musician-facing community forum, Discord, or other user-facing support space is clearly provided.
+    tags: GitHub Issues
