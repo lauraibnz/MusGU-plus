@@ -44,7 +44,7 @@
 <section aria-labelledby="adaptability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="adaptability-title">Adaptability</h2>
-<div aria-label="Adaptability summary 0 percent" class="score-badge">0%</div>
+<div aria-label="Adaptability summary 20 percent" class="score-badge">20%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
@@ -78,16 +78,16 @@
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Model Redistribution</h3>
-<span class="status-pill low">✘ Not supported</span>
+<span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">Because no current adaptation pathway is provided, redistribution of adapted checkpoints is not meaningfully supported or documented.</p>
+<p class="criterion-notes">The model weights are released under CC BY 4.0, permitting adapted checkpoints to be redistributed with attribution. The absence of a current fine-tuning workflow limits the ability to create adapted models but does not impose restrictions on their redistribution.</p>
 </article>
 </div>
 </section>
 <section aria-labelledby="usability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="usability-title">Usability</h2>
-<div aria-label="Usability summary 83 percent" class="score-badge">83%</div>
+<div aria-label="Usability summary 92 percent" class="score-badge">92%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
@@ -100,9 +100,9 @@
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Access Restrictions</h3>
-<span class="status-pill partial">~ Partially supported</span>
+<span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">The model weights, code, documentation, and example applications are publicly available, and local use does not require a hosted API or subscription. However, the ready-made real-time interfaces and streaming inference currently require Apple Silicon hardware, limiting access for musicians on other platforms.</p>
+<p class="criterion-notes">The model weights and inference code are publicly available, allowing repeated local use without subscriptions, usage quotas, or time limits. Although the ready-made apps and AUv3 plugin require Apple Silicon, inference can also be run directly through the released codebase.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -116,7 +116,7 @@
 <h3>Workflow Integration</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">The model is designed to be used as a standalone application, integrated into DAWs through an AUv3 plugin, or embedded into other music software through the C++ inference engine. This directly supports musician-facing workflows and custom instrument development.</p>
+<p class="criterion-notes">Magenta RealTime 2 integrates into DAWs through an AUv3 plugin and provides dedicated externals for Max/MSP and Pure Data, as well as a SuperCollider UGen plugin. A C++ inference engine is also provided for embedding the model into other music software.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -166,12 +166,12 @@
 <h3>Control Parameters</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">The provided interface exposes multiple configurable parameters beyond the primary conditioning inputs, including temperature, Top-K sampling, prompt strength, note strength, Auto-Strum, MIDI Gate, Solo, and a No Drums control. However, direct manipulation of internal model representations is not provided.</p>
+<p class="criterion-notes">The provided interfaces expose multiple configurable parameters beyond the primary conditioning inputs, including temperature, Top-K sampling, prompt strength, note strength, Auto-Strum, MIDI Gate, Solo, and drum-related controls. However, direct manipulation of internal model representations is not provided.</p>
 </article>
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-07-03 at 18:31 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-04 at 11:06 UTC.</p>
 </main>
 </body>
 </html>
