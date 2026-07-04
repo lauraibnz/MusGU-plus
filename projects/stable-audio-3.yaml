@@ -84,5 +84,5 @@ usability:
 
   community_support:
     value: high
-    notes: A public Harmonai Discord server run by the research team is provided for discussion and support, including weekly office hours focused on AI audio and music.
-    tags: Discord
+    notes: A public Harmonai Discord server run by the research team is provided for discussion and support, including weekly office hours focused on AI audio and music. GitHub Issues are also available for developer-oriented support and bug reports.
+    tags: Discord, GitHub Issues
