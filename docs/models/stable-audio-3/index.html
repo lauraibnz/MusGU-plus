@@ -102,7 +102,7 @@
 <h3>Access Restrictions</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">Open-weight Stable Audio 3 models are available with pretrained checkpoints and inference code, allowing repeated local inference without subscriptions, usage quotas, or time limits. Although the Large model is API-only, the Small and Medium models can be run locally.</p>
+<p class="criterion-notes">Stable Audio 3 can be used through a publicly accessible Hugging Face Space without requiring checkpoint access, a subscription, or a usage tier. The open-weight checkpoints are separately available for local inference, although downloading them requires users to provide contact information and accept the applicable license and terms of use.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -137,7 +137,7 @@
 <section aria-labelledby="controllability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="controllability-title">Controllability</h2>
-<div aria-label="Controllability summary 25 percent" class="score-badge">25%</div>
+<div aria-label="Controllability summary 12 percent" class="score-badge">12%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
@@ -150,9 +150,9 @@
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
-<span class="status-pill partial">~ Partially supported</span>
+<span class="status-pill low">✘ Not supported</span>
 </div>
-<p class="criterion-notes">Users can specify one or multiple temporal regions for regeneration through inpainting masks while preserving the surrounding audio. This provides time-localized editing control, but not fine-grained control over musical attributes such as pitch, dynamics, rhythm, or structure over time.</p>
+<p class="criterion-notes">Stable Audio 3 does not provide time-varying control over musical attributes during generation. Inpainting allows users to select one or multiple temporal regions of existing audio for regeneration, but these masks determine where editing occurs rather than specifying how musical properties should evolve over time.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -171,7 +171,7 @@
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-07-03 at 22:21 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-04 at 10:14 UTC.</p>
 </main>
 </body>
 </html>
