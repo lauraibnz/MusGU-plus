@@ -31,8 +31,8 @@ adaptability:
     notes: Since no adaptation pathway is currently provided, adaptation would require unsupported modification or training work beyond the released musician-facing tools and documentation.
     tags: ''
   model_redistribution:
-    value: low
-    notes: Because no current adaptation pathway is provided, redistribution of adapted checkpoints is not meaningfully supported or documented.
+    value: high
+    notes: The model weights are released under CC BY 4.0, permitting adapted checkpoints to be redistributed with attribution. The absence of a current fine-tuning workflow limits the ability to create adapted models but does not impose restrictions on their redistribution.
 
 controllability:
   conditioning_inputs:
@@ -45,10 +45,10 @@ controllability:
   feature_disentanglement:
     value: partial
     notes: The model separates style conditioning from MIDI-based note control. However, style is not associated with a specific isolated musical attribute, and the documentation does not demonstrate that individual musical features can be controlled independently.
-    tags:
+    tags: ''
   control_parameters:
     value: partial
-    notes: The provided interface exposes multiple configurable parameters beyond the primary conditioning inputs, including temperature, Top-K sampling, prompt strength, note strength, Auto-Strum, MIDI Gate, Solo, and a No Drums control. However, direct manipulation of internal model representations is not provided.
+    notes: The provided interfaces expose multiple configurable parameters beyond the primary conditioning inputs, including temperature, Top-K sampling, prompt strength, note strength, Auto-Strum, MIDI Gate, Solo, and drum-related controls. However, direct manipulation of internal model representations is not provided.
     tags: randomness, sampling strategy, conditioning strength
 
 usability:
@@ -57,15 +57,15 @@ usability:
     notes: Magenta RealTime 2 provides pre-built musician-facing interfaces, including standalone macOS apps and an AUv3 plugin bundle for DAW use. The repository also includes example applications for exploring note control, prompt-space interaction, and custom software development.
     tags: standalone app, AU
   access_restrictions:
-    value: partial
-    notes: The model weights, code, documentation, and example applications are publicly available, and local use does not require a hosted API or subscription. However, the ready-made real-time interfaces and streaming inference currently require Apple Silicon hardware, limiting access for musicians on other platforms.
+    value: high
+    notes: The model weights and inference code are publicly available, allowing repeated local use without subscriptions, usage quotas, or time limits. Although the ready-made apps and AUv3 plugin require Apple Silicon, inference can also be run directly through the released codebase.
   realtime_capabilities:
     value: high
     notes: Magenta RealTime 2 is explicitly designed for real-time streaming music generation. It reduces the control frame size to 40 ms and reports approximately 200 ms control latency, enabling live interaction suitable for performance and instrument-like use.
   workflow_integration:
     value: high
-    notes: The model is designed to be used as a standalone application, integrated into DAWs through an AUv3 plugin, or embedded into other music software through the C++ inference engine. This directly supports musician-facing workflows and custom instrument development.
-    tags: DAW
+    notes: Magenta RealTime 2 integrates into DAWs through an AUv3 plugin and provides dedicated externals for Max/MSP and Pure Data, as well as a SuperCollider UGen plugin. A C++ inference engine is also provided for embedding the model into other music software.
+    tags: DAW, visual programming, live coding
   output_licensing:
     value: high
     notes: The Hugging Face model card states that Google claims no rights in outputs generated using Magenta RealTime 2, and that users are responsible for outputs and subsequent uses. No explicit non-commercial restriction on generated outputs is stated in the available model-card terms.
