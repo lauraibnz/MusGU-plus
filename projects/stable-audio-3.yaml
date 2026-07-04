@@ -46,8 +46,8 @@ controllability:
     tags: text
 
   time_varying_control:
-    value: partial
-    notes: Users can specify one or multiple temporal regions for regeneration through inpainting masks while preserving the surrounding audio. This provides time-localized editing control, but not fine-grained control over musical attributes such as pitch, dynamics, rhythm, or structure over time.
+    value: low
+    notes: Stable Audio 3 does not provide time-varying control over musical attributes during generation. Inpainting allows users to select one or multiple temporal regions of existing audio for regeneration, but these masks determine where editing occurs rather than specifying how musical properties should evolve over time.
 
   feature_disentanglement:
     value: low
@@ -67,7 +67,7 @@ usability:
 
   access_restrictions:
     value: high
-    notes: Open-weight Stable Audio 3 models are available with pretrained checkpoints and inference code, allowing repeated local inference without subscriptions, usage quotas, or time limits. Although the Large model is API-only, the Small and Medium models can be run locally.
+    notes: Stable Audio 3 can be used through a publicly accessible Hugging Face Space without requiring checkpoint access, a subscription, or a usage tier. The open-weight checkpoints are separately available for local inference, although downloading them requires users to provide contact information and accept the applicable license and terms of use.
 
   realtime_capabilities:
     value: partial
