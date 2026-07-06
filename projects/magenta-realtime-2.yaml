@@ -70,6 +70,6 @@ usability:
     value: high
     notes: The Hugging Face model card states that Google claims no rights in outputs generated using Magenta RealTime 2, and that users are responsible for outputs and subsequent uses. No explicit non-commercial restriction on generated outputs is stated in the available model-card terms.
   community_support:
-    value: partial
-    notes: The project provides public documentation and GitHub Issues, but no dedicated musician-facing community forum, Discord, or other user-facing support space is clearly provided.
-    tags: GitHub Issues
+    value: high
+    notes: The project provides public documentation, GitHub Issues, and a dedicated channel in Magenta's Discord community (https://g.co/magenta/discord). 
+    tags: GitHub Issues, Discord
