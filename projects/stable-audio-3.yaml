@@ -8,7 +8,7 @@ project:
   name: Stable Audio 3
   affiliation: Stability AI
   architecture: latent diffusion
-  applications: continuation, editing, text-to-music
+  applications: continuation, editing, text-to-music, style transfer
   link: https://stability.ai/news-updates/meet-stable-audio-3-the-model-family-built-for-artistic-experimentation-with-open-weight-models
   repository: https://github.com/Stability-AI/stable-audio-3
   article: https://arxiv.org/abs/2605.17991
@@ -22,8 +22,8 @@ adaptability:
     notes: The documented LoRA fine-tuning workflow requires a CUDA GPU. The official documentation reports approximately 2 GB of VRAM for the Small model and 5.5–6.5 GB for the Medium model, placing adaptation within the range of consumer-grade GPUs but not practical CPU-only systems.
 
   dataset_size:
-    value: partial
-    notes: The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips. This suggests adaptation is possible with relatively limited custom datasets, but the available documentation does not establish that effective fine-tuning can be achieved with minutes to a few hours of personal audio.
+    value: high
+    notes: The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips, indicating that adaptation is designed to work with relatively small personal datasets.
 
   adaptation_pathways:
     value: high
@@ -41,9 +41,9 @@ adaptability:
 
 controllability:
   conditioning_inputs:
-    value: low
-    notes: Stable Audio 3 conditions generation primarily through descriptive text prompts. Existing audio can be supplied for editing, inpainting, and continuation, but serves as source material to be modified or extended rather than as a separate musical conditioning modality.
-    tags: text
+    value: partial
+    notes: Stable Audio 3 supports text prompts and existing audio inputs. Audio can be used as initialization for audio-to-audio generation, or as source/context material for inpainting and continuation.
+    tags: audio, text prompt
 
   time_varying_control:
     value: low
