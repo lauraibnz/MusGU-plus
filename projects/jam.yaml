@@ -47,7 +47,7 @@ controllability:
     value: partial
     notes: JAM can be conditioned by lyrics (including word- and phoneme-level timing)
       and style (via text or audio).
-    tags: audio, lyrics, text, timing
+    tags: audio, lyrics, text prompt, timing
   time_varying_control:
     value: partial
     notes: JAM supports precise time-varying control over vocal structure, with explicit
@@ -61,13 +61,13 @@ controllability:
       However, musical attributes are not independently controllable, and style remains
       an entangled representation, limiting fully interpretable, attribute-specific
       control.
-    tags: ''
+    tags: style
   control_parameters:
     value: partial
     notes: JAM provides several generation control parameters, including global duration,
-      adjustable guidance strength, and diffusion step configuration, allowing users
-      to directly influence generation behavior. However, direct manipulation of internal
-      representations is not supported.
+      separate guidance strengths for lyrics and style, and diffusion step configuration,
+      allowing users to directly influence generation behavior. However, direct manipulation
+      of internal representations is not supported.
     tags: conditioning strength, diffusion steps, duration
 usability:
   interface_availability:

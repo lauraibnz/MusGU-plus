@@ -53,11 +53,10 @@ controllability:
       inputs.
     tags: audio
   time_varying_control:
-    value: partial
-    notes: RAVE preserves temporal structure through audio-to-audio conditioning,
-      with output following the time evolution of the input signal. However, it does
-      not support explicit symbolic or structured time-varying controls (e.g. MIDI,
-      aligned control envelopes, or temporal embeddings).
+    value: high
+    notes: RAVE provides continuous time-varying control through audio-to-audio
+      resynthesis. The evolving input signal directly shapes the temporal evolution
+      of the output through the model's time-indexed latent representation.
   feature_disentanglement:
     value: partial
     notes: Post-training analysis identifies informative latent dimensions and improves

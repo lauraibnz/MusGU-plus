@@ -46,7 +46,7 @@ controllability:
     notes: Udio relies on text-based conditioning, including free-form prompts and
       lyrics. It allows to set stylistic reference to set the overall mood and tempo
       of the track.
-    tags: lyrics, style tags, text
+    tags: lyrics, tags, text prompt
   time_varying_control:
     value: low
     notes: Udio provides limited time-localized control through iterative generation

@@ -51,34 +51,32 @@ adaptability:
 controllability:
   conditioning_inputs:
     value: partial
-    notes: Morpho conditions on incoming audio, using learned timbral representations
-      to transform signals in real time. While rich in effect, conditioning is limited
-      to a single musically meaningful modality rather than multiple symbolic or structured
-      inputs.
+    notes: Morpho conditions on incoming audio, using learned representations to transform
+      signals in real time. While rich in effect, conditioning is limited to a single
+      musically meaningful modality rather than multiple symbolic or structured inputs.
     tags: audio
   time_varying_control:
-    value: partial
-    notes: Time-localized control emerges implicitly through real-time resynthesis,
-      as the output dynamically follows the temporal structure of the input signal.
-      However, the model does not expose explicit time-indexed representations or
-      independent control over temporal musical attributes (e.g., pitch curves or
-      structural markers).
+    value: high
+    notes: Morpho provides continuous time-varying control through real-time audio
+      resynthesis. The output dynamically follows the overall temporal shape and
+      performance characteristics of the incoming signal while transforming it through
+      the selected timbral model.
   feature_disentanglement:
     value: partial
-    notes: Neutone Morpho exhibits partial feature disentanglement through real-time
-      audio resynthesis, where temporal structure and pitch contours of the input
-      signal are largely preserved while timbre is transformed by the selected model.
-      This yields predictable and musically coherent behavior in practice, but control
-      pathways are implicit and dependent on the trained model, with no explicit or
-      independently manipulable representations of pitch, loudness, or structure.
+    notes: Neutone Morpho is designed for timbre and style transformation, using
+      the incoming audio to drive generation through a model trained on a different
+      sound domain. However, disentanglement is not explicitly enforced in the learned
+      representations, and latent variables are not guaranteed to correspond to independently
+      interpretable musical attributes.
     tags: ''
   control_parameters:
-    value: partial
-    notes: Neutone Morpho exposes a small set of learned macro-controls that influence
-      stochastic behavior and the strength of coupling between input and output. These
-      parameters offer musically intuitive control over unpredictability and responsiveness,
-      but do not provide direct access to or manipulation of internal latent representations.
-    tags: conditioning strength, randomness
+    value: high
+    notes: Neutone Morpho exposes both model-specific macro controls and an experimental
+      Micro View where users can directly offset and scale latent variables. Additional
+      preprocessing and postprocessing controls, including pitch shift, input filtering,
+      dry/wet mix, and output filtering, provide further real-time control over the model's
+      behavior and output.
+    tags: conditioning strength, randomness, latent manipulation
 usability:
   interface_availability:
     value: high
