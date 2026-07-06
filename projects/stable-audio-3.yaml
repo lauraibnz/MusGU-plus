@@ -46,8 +46,8 @@ controllability:
     tags: audio, text prompt
 
   time_varying_control:
-    value: low
-    notes: Stable Audio 3 does not provide time-varying control over musical attributes during generation. Inpainting allows users to select one or multiple temporal regions of existing audio for regeneration, but these masks determine where editing occurs rather than specifying how musical properties should evolve over time.
+    value: partial
+    notes: Stable Audio 3 enables time-varying influence through audio initialization, allowing the temporal characteristics of an input recording to guide generation. However, it does not provide explicit or fine-grained time-varying control over musical attributes.
 
   feature_disentanglement:
     value: low
