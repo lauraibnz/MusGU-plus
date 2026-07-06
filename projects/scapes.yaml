@@ -54,7 +54,7 @@ controllability:
   feature_disentanglement:
     value: partial
     notes: Semantic conditioning can steer generation between distinct environmental sound classes and intermediate semantic states. However, the control space does not explicitly isolate individual acoustic or perceptual attributes, and transitions may simultaneously affect multiple properties of the generated sound.
-    tags:
+    tags: semantics
 
   control_parameters:
     value: partial
