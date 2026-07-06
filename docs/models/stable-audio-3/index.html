@@ -37,14 +37,14 @@
 <div id="project-note"><p>Evaluation focuses on the publicly released Stable Audio 3 models and workflows. The Small-Music and Medium models are available as open weights, while Large is API-only and is not supported by the repository.</p></div>
 <section class="applications-block">
 <h2>Musical applications</h2>
-<div id="applications-content"><p class="applications-copy">continuation, editing, text-to-music</p></div>
+<div id="applications-content"><p class="applications-copy">continuation, editing, text-to-music, style transfer</p></div>
 </section>
 </section>
 <div id="dimension-sections">
 <section aria-labelledby="adaptability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="adaptability-title">Adaptability</h2>
-<div aria-label="Adaptability summary 50 percent" class="score-badge">50%</div>
+<div aria-label="Adaptability summary 60 percent" class="score-badge">60%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
@@ -57,9 +57,9 @@
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Dataset Size</h3>
-<span class="status-pill partial">~ Partially supported</span>
+<span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips. This suggests adaptation is possible with relatively limited custom datasets, but the available documentation does not establish that effective fine-tuning can be achieved with minutes to a few hours of personal audio.</p>
+<p class="criterion-notes">The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips, indicating that adaptation is designed to work with relatively small personal datasets.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -137,15 +137,15 @@
 <section aria-labelledby="controllability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="controllability-title">Controllability</h2>
-<div aria-label="Controllability summary 12 percent" class="score-badge">12%</div>
+<div aria-label="Controllability summary 25 percent" class="score-badge">25%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Conditioning Inputs</h3>
-<span class="status-pill low">✘ Not supported</span>
+<span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Stable Audio 3 conditions generation primarily through descriptive text prompts. Existing audio can be supplied for editing, inpainting, and continuation, but serves as source material to be modified or extended rather than as a separate musical conditioning modality.</p>
+<p class="criterion-notes">Stable Audio 3 supports text prompts and existing audio inputs. Audio can be used as initialization for audio-to-audio generation, or as source/context material for inpainting and continuation.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -171,7 +171,7 @@
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-07-04 at 11:08 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-06 at 17:58 UTC.</p>
 </main>
 </body>
 </html>
