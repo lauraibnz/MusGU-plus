@@ -137,7 +137,7 @@
 <section aria-labelledby="controllability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="controllability-title">Controllability</h2>
-<div aria-label="Controllability summary 50 percent" class="score-badge">50%</div>
+<div aria-label="Controllability summary 75 percent" class="score-badge">75%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
@@ -145,33 +145,33 @@
 <h3>Conditioning Inputs</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Morpho conditions on incoming audio, using learned timbral representations to transform signals in real time. While rich in effect, conditioning is limited to a single musically meaningful modality rather than multiple symbolic or structured inputs.</p>
+<p class="criterion-notes">Morpho conditions on incoming audio, using learned representations to transform signals in real time. While rich in effect, conditioning is limited to a single musically meaningful modality rather than multiple symbolic or structured inputs.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
-<span class="status-pill partial">~ Partially supported</span>
+<span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">Time-localized control emerges implicitly through real-time resynthesis, as the output dynamically follows the temporal structure of the input signal. However, the model does not expose explicit time-indexed representations or independent control over temporal musical attributes (e.g., pitch curves or structural markers).</p>
+<p class="criterion-notes">Morpho provides continuous time-varying control through real-time audio resynthesis. The output dynamically follows the overall temporal shape and performance characteristics of the incoming signal while transforming it through the selected timbral model.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Feature Disentanglement</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Neutone Morpho exhibits partial feature disentanglement through real-time audio resynthesis, where temporal structure and pitch contours of the input signal are largely preserved while timbre is transformed by the selected model. This yields predictable and musically coherent behavior in practice, but control pathways are implicit and dependent on the trained model, with no explicit or independently manipulable representations of pitch, loudness, or structure.</p>
+<p class="criterion-notes">Neutone Morpho is designed for timbre and style transformation, using the incoming audio to drive generation through a model trained on a different sound domain. However, disentanglement is not explicitly enforced in the learned representations, and latent variables are not guaranteed to correspond to independently interpretable musical attributes.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Control Parameters</h3>
-<span class="status-pill partial">~ Partially supported</span>
+<span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">Neutone Morpho exposes a small set of learned macro-controls that influence stochastic behavior and the strength of coupling between input and output. These parameters offer musically intuitive control over unpredictability and responsiveness, but do not provide direct access to or manipulation of internal latent representations.</p>
+<p class="criterion-notes">Neutone Morpho exposes both model-specific macro controls and an experimental Micro View where users can directly offset and scale latent variables. Additional preprocessing and postprocessing controls, including pitch shift, input filtering, dry/wet mix, and output filtering, provide further real-time control over the model's behavior and output.</p>
 </article>
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-07-03 at 16:51 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-06 at 21:43 UTC.</p>
 </main>
 </body>
 </html>
