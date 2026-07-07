@@ -1,0 +1,90 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: SCAPES
+  affiliation: Music Technology Group, Universitat Pompeu Fabra
+  architecture: continuous normalizing flow
+  applications: audio synthesis, environmental sound generation
+  link: https://cordutie.github.io/SCAPES-DAFx26/
+  repository: https://github.com/cordutie/SCAPES
+  article:
+  checkpoints: https://huggingface.co/cordutie/SCAPES-models
+  ui: https://huggingface.co/spaces/cordutie/SCAPES-demo
+  notes: Evaluation focuses on SCAPES, a lightweight generative framework for semantically controllable environmental sound synthesis. The paper is forthcoming at DAFx 2026 and is not yet publicly available.
+
+adaptability:
+  hardware_requirements:
+    value: high
+    notes: SCAPES can be trained on consumer-grade hardware. The paper reports training a 36-million-parameter model on a single NVIDIA RTX 4090 with peak VRAM usage below 8 GB, and the authors additionally report that training can be performed on CPU, although more slowly.
+    tags: CPU
+
+  dataset_size:
+    value: high
+    notes: SCAPES is explicitly designed for adaptation with small datasets. The paper demonstrates successful training on approximately 34 minutes of uncurated audio across ten environmental sound categories.
+    tags: small dataset
+
+  adaptation_pathways:
+    value: high
+    notes: The repository provides a complete training workflow for custom audio datasets, including data preparation and training. SCAPES trains the generative prior over representations from a pretrained EnCodec model, avoiding the need to train the audio codec itself.
+    tags: training, pretrained codec
+
+  technical_barriers:
+    value: partial
+    notes: Training requires users to configure a software environment and prepare their dataset themselves. However, a guided Colab notebook covers data preparation and training, substantially reducing the technical barrier compared with an undocumented or code-only training workflow.
+    tags: CLI, Colab
+
+  model_redistribution:
+    value: high
+    notes: SCAPES is intended for open redistribution of trained and adapted models, with the released weights and derivatives subject only to the attribution requirements of the project's permissive license.
+
+controllability:
+  conditioning_inputs:
+    value: high
+    notes: SCAPES combines audio-derived semantic conditioning with autoregressive audio context. CLAP embeddings provide high-level semantic guidance, while a memory buffer of previously generated or supplied audio segments conditions each new segment on its preceding acoustic context.
+    tags: audio
+
+  time_varying_control:
+    value: high
+    notes: SCAPES supports time-varying semantic control at a 10 Hz control rate. The semantic conditioning path can change continuously during generation, enabling smooth transitions and interpolations between environmental sound classes.
+
+  feature_disentanglement:
+    value: partial
+    notes: Semantic conditioning can steer generation between distinct environmental sound classes and intermediate semantic states. However, the control space does not explicitly isolate individual acoustic or perceptual attributes, and transitions may simultaneously affect multiple properties of the generated sound.
+    tags: semantics
+
+  control_parameters:
+    value: partial
+    notes: The demo exposes configurable generation parameters including diffusion steps and CFG scale, as well as a timeline-based interface for placing semantic sound anchors and interpolating between them. However, it does not provide a broad set of independent generation parameters or direct manipulation of internal model representations.
+    tags: diffusion steps, conditioning strength, latent interpolation
+
+usability:
+  interface_availability:
+    value: high
+    notes: SCAPES provides a publicly accessible Hugging Face Space with a graphical interface for generation and semantic interpolation. The Gradio interface code is also released in a separate repository for local use.
+    tags: Hugging Face, Gradio
+
+  access_restrictions:
+    value: high
+    notes: SCAPES is publicly available for local use through its released code and example model weights, without subscriptions, usage quotas, or time limits. A publicly accessible Hugging Face Space also allows users to try the model without local installation.
+
+  realtime_capabilities:
+    value: partial
+    notes: SCAPES does not currently provide a real-time interactive implementation. However, the paper reports inference faster than real time when using 16 ODE steps, indicating sufficient computational efficiency for offline generation and potential future real-time applications.
+
+  workflow_integration:
+    value: low
+    notes: No dedicated integration with DAWs, plugins, musical hardware, or other musician-facing production environments is currently provided.
+    tags:
+
+  output_licensing:
+    value: high
+    notes: Generated outputs are intended to be freely usable and redistributable without non-commercial restrictions.
+
+  community_support:
+    value: partial
+    notes: The project provides a public GitHub repository for development and issue reporting, but no dedicated user community, forum, Discord server, or other musician-facing support space is currently identified.
+    tags: GitHub Issues
