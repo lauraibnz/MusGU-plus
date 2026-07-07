@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title id="page-title">MusGU+ Evaluation: Stable Audio 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap" rel="stylesheet"/>
+<link href="../../styles.css" rel="stylesheet"/>
+<link href="../../model_page.css" rel="stylesheet"/>
+</head>
+<body>
+<main class="page-shell">
+<div class="header">
+<h1 id="model-page-heading">MusGU+ Evaluation: Stable Audio 3</h1>
+</div>
+<div id="description">
+<p style="margin-top: 0;">
+        The <strong>Music-Generative Usable+ AI (MusGU+)</strong> framework is a musician-centered evaluation framework designed to assess how generative music models can be adapted, used, and controlled in real-world creative contexts.
+        The framework evaluates models along three complementary dimensions, with each dimension addressing a key question from the musician's perspective:
+      </p>
+<ul>
+<li><strong>Adaptability</strong> — <em>Can I realistically adapt this model to my own data?</em></li>
+<li><strong>Usability</strong> — <em>Can I access, run, and integrate this model into my music-making workflow?</em></li>
+<li><strong>Controllability</strong> — <em>Can I guide the model in musically meaningful and interpretable ways?</em></li>
+</ul>
+<p style="margin-bottom: 0;">
+        📖 Read the <a href="../../framework.html">detailed evaluation criteria</a>, return to the <a href="../../index.html">discovery tool</a> or inspect the model's <a href="https://github.com/lauraibnz/MusGU-plus/blob/main/projects/stable-audio-3.yaml" id="yaml-source-link">YAML source file</a>.
+      </p>
+</div>
+<section class="hero-card">
+<div class="resource-links-wrap">
+<div class="resource-links" id="resource-links"><a class="resource-link" href="https://stability.ai/news-updates/meet-stable-audio-3-the-model-family-built-for-artistic-experimentation-with-open-weight-models" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">🔗</span><span class="resource-link-label">Website</span></a><a class="resource-link" href="https://github.com/Stability-AI/stable-audio-3" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">💻</span><span class="resource-link-label">Repository</span></a><a class="resource-link" href="https://arxiv.org/abs/2605.17991" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">📄</span><span class="resource-link-label">Article</span></a><a class="resource-link" href="https://huggingface.co/collections/stabilityai/stable-audio-3" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">⬇️</span><span class="resource-link-label">Checkpoints</span></a><a class="resource-link" href="https://huggingface.co/spaces/stabilityai/stable-audio-3" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">🎹</span><span class="resource-link-label">UI</span></a></div>
+</div>
+<p class="meta-line"><strong>Affiliation:</strong> <span id="model-affiliation">Stability AI</span></p>
+<p class="meta-line"><strong>Architecture:</strong> <span id="model-architecture">latent diffusion</span></p>
+<div id="project-note"><p>Evaluation focuses on the publicly released Stable Audio 3 models and workflows. The Small-Music and Medium models are available as open weights, while Large is API-only and is not supported by the repository.</p></div>
+<section class="applications-block">
+<h2>Musical applications</h2>
+<div id="applications-content"><p class="applications-copy">continuation, editing, text-to-music, style transfer</p></div>
+</section>
+</section>
+<div id="dimension-sections">
+<section aria-labelledby="adaptability-title" class="detail-section">
+<div class="section-heading">
+<h2 id="adaptability-title">Adaptability</h2>
+<div aria-label="Adaptability summary 60 percent" class="score-badge">60%</div>
+</div>
+<div class="criterion-grid">
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Hardware Requirements</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">The documented LoRA fine-tuning workflow requires a CUDA GPU. The official documentation reports approximately 2 GB of VRAM for the Small model and 5.5–6.5 GB for the Medium model, placing adaptation within the range of consumer-grade GPUs but not practical CPU-only systems.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Dataset Size</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips, indicating that adaptation is designed to work with relatively small personal datasets.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Adaptation Pathways</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">The repository provides a complete LoRA fine-tuning workflow, including pretrained base checkpoints, raw-audio and pre-encoded dataset modes, a dedicated training script, checkpointing and resume support, and LoRA checkpoint export.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Technical Barriers</h3>
+<span class="status-pill low">✘ Not supported</span>
+</div>
+<p class="criterion-notes">LoRA fine-tuning is performed through command-line tools and Python-based workflows. Although dedicated documentation is provided, users must configure the software environment, prepare datasets, and run training themselves, and no graphical or notebook-based adaptation interface is provided.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Model Redistribution</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">The Stability AI Community License permits users to create and distribute derivative works, including LoRAs and fine-tuned models. However, commercial use of adapted models is subject to licensing conditions, including an annual revenue threshold above which an Enterprise License may be required.</p>
+</article>
+</div>
+</section>
+<section aria-labelledby="usability-title" class="detail-section">
+<div class="section-heading">
+<h2 id="usability-title">Usability</h2>
+<div aria-label="Usability summary 75 percent" class="score-badge">75%</div>
+</div>
+<div class="criterion-grid">
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Interface Availability</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">Stable Audio 3 provides a publicly accessible Hugging Face Space with a graphical interface for text-to-audio generation. The repository also provides a local Gradio interface for running the model and accessing additional generation and editing workflows.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Access Restrictions</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">Stable Audio 3 can be used through a publicly accessible Hugging Face Space without requiring checkpoint access, a subscription, or a usage tier. The open-weight checkpoints are separately available for local inference, although downloading them requires users to provide contact information and accept the applicable license and terms of use.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Real-time Capabilities</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">Stable Audio 3 is optimized for fast generation and can produce audio within several seconds or less depending on model size, output duration, and hardware. However, it is designed for fast clip generation rather than continuous low-latency streaming or live musical interaction.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Workflow Integration</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">An experimental Ableton Live integration is provided through a MIDI Remote Script and command-line utility. Generated audio files can be inserted into Ableton Live at the current playhead position, with a watch mode for automatically importing new generations. However, the model itself runs externally rather than operating directly within the DAW.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Output Licensing</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">Stability AI states that users own generated outputs and may distribute and commercialize them. However, output use remains subject to the Stability AI Community License and Acceptable Use Policy, including licensing conditions for commercial organizations exceeding the specified annual revenue threshold.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Community Support</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">A public Harmonai Discord server run by the research team is provided for discussion and support, including weekly office hours focused on AI audio and music. GitHub Issues are also available for developer-oriented support and bug reports.</p>
+</article>
+</div>
+</section>
+<section aria-labelledby="controllability-title" class="detail-section">
+<div class="section-heading">
+<h2 id="controllability-title">Controllability</h2>
+<div aria-label="Controllability summary 38 percent" class="score-badge">38%</div>
+</div>
+<div class="criterion-grid">
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Conditioning Inputs</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">Stable Audio 3 supports text prompts and existing audio inputs. Audio can be used as initialization for audio-to-audio generation, or as source/context material for inpainting and continuation.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Time-Varying Control</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">Stable Audio 3 enables time-varying influence through audio initialization, allowing the temporal characteristics of an input recording to guide generation. However, it does not provide explicit or fine-grained time-varying control over musical attributes.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Feature Disentanglement</h3>
+<span class="status-pill low">✘ Not supported</span>
+</div>
+<p class="criterion-notes">The provided controls are not designed to independently manipulate distinct musical attributes such as timbre, pitch, rhythm, or structure.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Control Parameters</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">The inference workflows expose multiple configurable parameters, including duration, diffusion steps, CFG scale, sampler, seed, and initialization noise level for editing. However, direct manipulation of internal model representations or musically interpretable latent dimensions is not provided.</p>
+</article>
+</div>
+</section>
+</div>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-07 at 08:24 UTC.</p>
+</main>
+</body>
+</html>
