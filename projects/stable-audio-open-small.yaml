@@ -30,11 +30,9 @@ adaptability:
       or fine-tuning can be achieved with small personal datasets. '
   adaptation_pathways:
     value: high
-    notes: 'Stable Audio Open provides complete training and fine-tuning code, supports
-      continuation from pretrained checkpoints, and includes documented data and model
-      configuration pipelines. This makes adaptation on custom datasets technically
-      feasible, even if demanding in practice. '
-    tags: fine-tuning, pretrained checkpoints, training
+    notes: The released tooling supports LoRA, full fine-tuning, and training on custom
+      datasets using pretrained model initialization.
+    tags: LoRA, fine-tuning, pretrained checkpoints, training
   technical_barriers:
     value: low
     notes: Adaptation requires substantial technical expertise, including configuration
@@ -48,12 +46,10 @@ adaptability:
 controllability:
   conditioning_inputs:
     value: partial
-    notes: 'Stable Audio Open Small primarily conditions on text prompts. No additional
-      musically structured modalities (e.g., MIDI, symbolic control) are available.
-      In addition to text prompts, the model supports audio-to-audio generation by
-      initializing the diffusion process with a reference recording, enabling implicit
-      style transfer without additional training. '
-    tags: audio, text, timing
+    notes: Stable Audio Open Small supports text prompts and audio initialization.
+      Initial audio can guide generation through voice-derived control, beat alignment, 
+      and audio-to-audio style transfer.
+    tags: audio, text prompt
   time_varying_control:
     value: partial
     notes: The model enables time-localized influence through audio initialization
@@ -66,10 +62,10 @@ controllability:
     tags: ''
   control_parameters:
     value: partial
-    notes: Stable Audio Open Small provides several low-level inference parameters
-      (e.g., duration, diffusion steps, standard diffusion cfg values), allowing certain
-      degree of generation tuning. However, it does not provide direct manipulation
-      of internal representations or fine-grained controls for musical attributes.
+    notes: Stable Audio Open Small provides several inference parameters, including duration,
+      diffusion steps, seed, audio initialization strength, and sampling controls. These allow
+      generation behavior to be adjusted but do not provide direct manipulation of internal 
+      representations or fine-grained controls for musical attributes.
     tags: conditioning strength, diffusion steps, duration, randomness, sampling strategy
 usability:
   interface_availability:

@@ -43,11 +43,10 @@ adaptability:
 controllability:
   conditioning_inputs:
     value: partial
-    notes: Suno primarily relies on text-based conditioning, including free-form prompts
-      and lyrics. It also allows reference-based reuse of stylistic characteristics
-      from existing songs, enabling style guidance through audio examples without
-      exposing explicit or interpretable conditioning representations.
-    tags: audio, lyrics, style tags, text
+    notes: Suno supports conditioning through text prompts, lyrics, and style tags.
+      It also accepts audio input for audio-guided generation and a range of continuation,
+      editing, and remixing workflows.
+    tags: audio, lyrics, tags, text prompt
   time_varying_control:
     value: low
     notes: Suno does not expose explicit time-varying control signals such as aligned

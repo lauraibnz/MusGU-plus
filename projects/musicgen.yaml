@@ -47,9 +47,9 @@ adaptability:
 controllability:
   conditioning_inputs:
     value: partial
-    notes: Supports text conditioning and melody conditioning via chromagram (audio-derived).
+    notes: Supports text conditioning and melody conditioning via an audio-derived chromagram.
       No MIDI or symbolic score input is supported.
-    tags: melody, text
+    tags: audio, text prompt
   time_varying_control:
     value: partial
     notes: Melody conditioning enables coarse time-aligned control over harmonic structure,
@@ -59,7 +59,7 @@ controllability:
     notes: Text and melody controls influence different aspects of generation, but
       interactions remain implicit and do not enable interpretable or musically isolated
       guidance.
-    tags: ''
+    tags: melody
   control_parameters:
     value: partial
     notes: MusicGen exposes high-level generation parameters such as duration, sampling

@@ -66,7 +66,7 @@
 <h3>Adaptation Pathways</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
-<p class="criterion-notes">Stable Audio Open provides complete training and fine-tuning code, supports continuation from pretrained checkpoints, and includes documented data and model configuration pipelines. This makes adaptation on custom datasets technically feasible, even if demanding in practice. </p>
+<p class="criterion-notes">The released tooling supports LoRA, full fine-tuning, and training on custom datasets using pretrained model initialization.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -145,7 +145,7 @@
 <h3>Conditioning Inputs</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Stable Audio Open Small primarily conditions on text prompts. No additional musically structured modalities (e.g., MIDI, symbolic control) are available. In addition to text prompts, the model supports audio-to-audio generation by initializing the diffusion process with a reference recording, enabling implicit style transfer without additional training. </p>
+<p class="criterion-notes">Stable Audio Open Small supports text prompts and audio initialization. Initial audio can guide generation through voice-derived control, beat alignment, and audio-to-audio style transfer.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -166,12 +166,12 @@
 <h3>Control Parameters</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">Stable Audio Open Small provides several low-level inference parameters (e.g., duration, diffusion steps, standard diffusion cfg values), allowing certain degree of generation tuning. However, it does not provide direct manipulation of internal representations or fine-grained controls for musical attributes.</p>
+<p class="criterion-notes">Stable Audio Open Small provides several inference parameters, including duration, diffusion steps, seed, audio initialization strength, and sampling controls. These allow generation behavior to be adjusted but do not provide direct manipulation of internal representations or fine-grained controls for musical attributes.</p>
 </article>
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-07-07 at 08:02 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-07 at 08:28 UTC.</p>
 </main>
 </body>
 </html>

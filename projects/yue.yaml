@@ -49,8 +49,8 @@ controllability:
   conditioning_inputs:
     value: partial
     notes: 'YuE supports generation conditioning through text (lyrics, structural
-      labels, and style tags), and optional reference audio for in-context learning. '
-    tags: audio, lyrics, section, style tags, text
+      labels, and style tags), and optional reference audio for in-context learning.'
+    tags: audio, lyrics, section, tags, text prompt
   time_varying_control:
     value: partial
     notes: YuE provides limited time-localized control through section-based generation,
@@ -60,18 +60,17 @@ controllability:
   feature_disentanglement:
     value: partial
     notes: YuE introduces training-stage mechanisms to reduce entanglement between
-      textual and audio conditioning, yielding partial disentanglement at inference
-      time. Nonetheless, internal musical attributes remain bundled, and disentanglement
-      is neither explicit nor robustly exposed to user-level control.
-    tags: ''
+      textual and audio conditioning, enabling partial separation between reference-based
+      characteristics and textual controls. However, musical attributes remain bundled,
+      and disentanglement is not exposed as explicit, independently controllable dimensions.
+    tags: style
   control_parameters:
     value: partial
     notes: YuE supports a few inference-time control parameters, limited to repetition
-      penalty (to discourage looping) and deterministic seeding. Other controls, including
-      temperature, top-p sampling and per-segment guidance scaling, remain hard-coded
-      in the inference script, and direct manipulation of internal latent representations
-      is not supported.
-    tags: randomness, variability
+      penalty and deterministic seeding. Other controls, including temperature, top-p
+      sampling, and per-segment guidance scaling, remain hard-coded in the inference
+      script, and direct manipulation of internal latent representations is not supported.
+    tags: randomness, sampling strategy
 usability:
   interface_availability:
     value: partial
