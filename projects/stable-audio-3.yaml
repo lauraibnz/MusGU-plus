@@ -1,0 +1,88 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: Stable Audio 3
+  affiliation: Stability AI
+  architecture: latent diffusion
+  applications: continuation, editing, text-to-music, style transfer
+  link: https://stability.ai/news-updates/meet-stable-audio-3-the-model-family-built-for-artistic-experimentation-with-open-weight-models
+  repository: https://github.com/Stability-AI/stable-audio-3
+  article: https://arxiv.org/abs/2605.17991
+  checkpoints: https://huggingface.co/collections/stabilityai/stable-audio-3
+  ui: https://huggingface.co/spaces/stabilityai/stable-audio-3
+  notes: Evaluation focuses on the publicly released Stable Audio 3 models and workflows. The Small-Music and Medium models are available as open weights, while Large is API-only and is not supported by the repository.
+
+adaptability:
+  hardware_requirements:
+    value: partial
+    notes: The documented LoRA fine-tuning workflow requires a CUDA GPU. The official documentation reports approximately 2 GB of VRAM for the Small model and 5.5–6.5 GB for the Medium model, placing adaptation within the range of consumer-grade GPUs but not practical CPU-only systems.
+
+  dataset_size:
+    value: high
+    notes: The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips, indicating that adaptation is designed to work with relatively small personal datasets.
+
+  adaptation_pathways:
+    value: high
+    notes: The repository provides a complete LoRA fine-tuning workflow, including pretrained base checkpoints, raw-audio and pre-encoded dataset modes, a dedicated training script, checkpointing and resume support, and LoRA checkpoint export.
+    tags: LoRA, fine-tuning, pretrained checkpoints
+
+  technical_barriers:
+    value: low
+    notes: LoRA fine-tuning is performed through command-line tools and Python-based workflows. Although dedicated documentation is provided, users must configure the software environment, prepare datasets, and run training themselves, and no graphical or notebook-based adaptation interface is provided.
+    tags: CLI
+
+  model_redistribution:
+    value: partial
+    notes: The Stability AI Community License permits users to create and distribute derivative works, including LoRAs and fine-tuned models. However, commercial use of adapted models is subject to licensing conditions, including an annual revenue threshold above which an Enterprise License may be required.
+
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: Stable Audio 3 supports text prompts and existing audio inputs. Audio can be used as initialization for audio-to-audio generation, or as source/context material for inpainting and continuation.
+    tags: audio, text prompt
+
+  time_varying_control:
+    value: partial
+    notes: Stable Audio 3 enables time-varying influence through audio initialization, allowing the temporal characteristics of an input recording to guide generation. However, it does not provide explicit or fine-grained time-varying control over musical attributes.
+
+  feature_disentanglement:
+    value: low
+    notes: The provided controls are not designed to independently manipulate distinct musical attributes such as timbre, pitch, rhythm, or structure.
+    tags:
+
+  control_parameters:
+    value: partial
+    notes: The inference workflows expose multiple configurable parameters, including duration, diffusion steps, CFG scale, sampler, seed, and initialization noise level for editing. However, direct manipulation of internal model representations or musically interpretable latent dimensions is not provided.
+    tags: duration, randomness, diffusion steps, sampling strategy, conditioning strength, latent noise
+
+usability:
+  interface_availability:
+    value: high
+    notes: Stable Audio 3 provides a publicly accessible Hugging Face Space with a graphical interface for text-to-audio generation. The repository also provides a local Gradio interface for running the model and accessing additional generation and editing workflows.
+    tags: Hugging Face, Gradio
+
+  access_restrictions:
+    value: high
+    notes: Stable Audio 3 can be used through a publicly accessible Hugging Face Space without requiring checkpoint access, a subscription, or a usage tier. The open-weight checkpoints are separately available for local inference, although downloading them requires users to provide contact information and accept the applicable license and terms of use.
+
+  realtime_capabilities:
+    value: partial
+    notes: Stable Audio 3 is optimized for fast generation and can produce audio within several seconds or less depending on model size, output duration, and hardware. However, it is designed for fast clip generation rather than continuous low-latency streaming or live musical interaction.
+
+  workflow_integration:
+    value: partial
+    notes: An experimental Ableton Live integration is provided through a MIDI Remote Script and command-line utility. Generated audio files can be inserted into Ableton Live at the current playhead position, with a watch mode for automatically importing new generations. However, the model itself runs externally rather than operating directly within the DAW.
+    tags: DAW
+
+  output_licensing:
+    value: partial
+    notes: Stability AI states that users own generated outputs and may distribute and commercialize them. However, output use remains subject to the Stability AI Community License and Acceptable Use Policy, including licensing conditions for commercial organizations exceeding the specified annual revenue threshold.
+
+  community_support:
+    value: high
+    notes: A public Harmonai Discord server run by the research team is provided for discussion and support, including weekly office hours focused on AI audio and music. GitHub Issues are also available for developer-oriented support and bug reports.
+    tags: Discord, GitHub Issues
