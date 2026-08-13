@@ -89,7 +89,7 @@ usability:
     tags: ''
   output_licensing:
     value: partial
-    notes: 'Outputs generated with JAM are restricted to non-commercial use and require explicit attrbution acknowledgign Stability AI licensing. Users are responisble for ensuring generated outputs do not infringe on copyrighted material.'
+    notes: 'Outputs generated with JAM are restricted to non-commercial use and require explicit attribution acknowledging Stability AI licensing. Users are responsible for ensuring generated outputs do not infringe on copyrighted material.'
   community_support:
     value: partial
     notes: Support exists via GitHub issues and documentation, but there is no dedicated
