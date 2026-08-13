@@ -1,0 +1,114 @@
+---
+####################################################################################################################################
+# MusGU+ evaluation
+# A Musician-Centered Evaluation Framework for Generative Music AI
+####################################################################################################################################
+
+project:
+  name: PLAUD
+  affiliation: 'Music Technology Group, Universitat Pompeu Fabra'
+  architecture: differentiable DSP, autoregressive transformer
+  applications: audio synthesis, style transfer
+  link: ''
+  repository: https://github.com/blazejkotowski/plaud
+  article: ''
+  checkpoints: ''
+  ui: ''
+  notes: Single-author research project under active development, released under CC
+    BY-NC 4.0. There is no accompanying article. A pretrained example model (drum loops
+    trained on CC0 Freesound material) and a Max4Live device are provided. The models
+    run via the nn~ external in Ableton Live, Max/MSP, and Pure Data.
+adaptability:
+  hardware_requirements:
+    value: partial
+    notes: Training runs on a single consumer-grade GPU; in the tested configuration
+      the synth stage fits within a T4-class 16GB card. CPU-only training is not supported,
+      as the training code assumes CUDA.
+  dataset_size:
+    value: high
+    notes: The system is explicitly designed for small, personal datasets on the order
+      of minutes to a few hours of audio, intended to model a single artist or sound
+      world rather than a large corpus.
+  adaptation_pathways:
+    value: high
+    notes: Complete pathways are provided to train from scratch on the user's own audio,
+      covering the synth, the grouped-VQ codec, the transformer prior, and export,
+      all driven by a shared configuration file. No pretrained base checkpoints are
+      provided, so every model is trained from the ground up.
+    tags: training, prior training
+  technical_barriers:
+    value: partial
+    notes: A beginner-oriented Colab notebook covers the full training-to-export pipeline
+      alongside an annotated configuration template, but there is no graphical training
+      interface, and setup still requires basic familiarity with Colab, file paths,
+      and running command-line stages. The tooling is research-grade and under active
+      change.
+    tags: CLI, Colab, config
+  model_redistribution:
+    value: partial
+    notes: Released under CC BY-NC 4.0, which permits redistribution of trained models
+      and checkpoints with attribution for non-commercial use. Sharing is explicitly
+      allowed but commercially restricted.
+controllability:
+  conditioning_inputs:
+    value: partial
+    notes: The system is primarily audio-domain. An encoder maps input audio to a control
+      trajectory for resynthesis, and the generative prior is steered by a learned
+      style code, an optional territory selection, and slow control envelopes. There
+      is no MIDI or symbolic conditioning.
+    tags: audio
+  time_varying_control:
+    value: high
+    notes: The synth consumes per-frame control trajectories (loudness, spectral centroid,
+      and latent timbre), and the generative prior is guided over time by control-rate
+      envelopes, a style position, sampling temperature, and guidance strength. Fine
+      detail from the prior is produced autoregressively rather than dictated frame
+      by frame.
+  feature_disentanglement:
+    value: partial
+    notes: Loudness and spectral centroid are exposed as explicit, interpretable per-frame
+      control channels. Timbre is carried by VAE latents and a learned style code that
+      are not individually interpretable, and the style and timbre pathways can interact.
+    tags: loudness, brightness
+  control_parameters:
+    value: high
+    notes: A broad set of runtime parameters is exposed, including a style position,
+      sampling temperature, classifier-free guidance strength, control envelopes, and
+      synth-level attributes such as waveshaping and spectral shaping, together with
+      direct access to the per-frame control and latent representation.
+    tags: latent manipulation, randomness, conditioning strength
+usability:
+  interface_availability:
+    value: high
+    notes: A Max4Live device is provided, making the instrument playable inside Ableton
+      Live through a graphical interface. It runs via the nn~ external, which must be
+      available in Max. There is no standalone application or web interface.
+    tags: Max4Live, Max/MSP, PureData
+  access_restrictions:
+    value: high
+    notes: The source code is openly available with no paywall, login, or usage limit,
+      and a pretrained example model (drum loops trained on CC0 Freesound material)
+      is provided, so inference is possible out of the box without training first.
+  realtime_capabilities:
+    value: high
+    notes: Exported models are designed for real-time use in nn~ via a streaming, KV-cached
+      prior, and run faster than real time on consumer hardware in tested configurations.
+      Heavier synthesis options increase CPU cost, and the streaming prior and optional
+      post-net add some latency.
+  workflow_integration:
+    value: high
+    notes: A Max4Live device integrates the model directly into Ableton Live, and through
+      nn~ it can also be used in the Max/MSP and Pure Data visual programming environments
+      alongside other audio and control objects.
+    tags: DAW, visual programming
+  output_licensing:
+    value: partial
+    notes: Under CC BY-NC 4.0 the material may be used, shared, and adapted for non-commercial
+      purposes with attribution. Commercial use of generated audio is not permitted,
+      and attribution is required.
+  community_support:
+    value: partial
+    notes: The public repository has GitHub Issues available (enabled by default) as
+      a developer-oriented contact channel. There is no dedicated musician-facing community
+      space such as a forum or chat server.
+    tags: GitHub Issues

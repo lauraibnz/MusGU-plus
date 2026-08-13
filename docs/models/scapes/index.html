@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title id="page-title">MusGU+ Evaluation: SCAPES</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap" rel="stylesheet"/>
+<link href="../../styles.css" rel="stylesheet"/>
+<link href="../../model_page.css" rel="stylesheet"/>
+</head>
+<body>
+<main class="page-shell">
+<div class="header">
+<h1 id="model-page-heading">MusGU+ Evaluation: SCAPES</h1>
+</div>
+<div id="description">
+<p style="margin-top: 0;">
+        The <strong>Music-Generative Usable+ AI (MusGU+)</strong> framework is a musician-centered evaluation framework designed to assess how generative music models can be adapted, used, and controlled in real-world creative contexts.
+        The framework evaluates models along three complementary dimensions, with each dimension addressing a key question from the musician's perspective:
+      </p>
+<ul>
+<li><strong>Adaptability</strong> — <em>Can I realistically adapt this model to my own data?</em></li>
+<li><strong>Usability</strong> — <em>Can I access, run, and integrate this model into my music-making workflow?</em></li>
+<li><strong>Controllability</strong> — <em>Can I guide the model in musically meaningful and interpretable ways?</em></li>
+</ul>
+<p style="margin-bottom: 0;">
+        📖 Read the <a href="../../framework.html">detailed evaluation criteria</a>, return to the <a href="../../index.html">discovery tool</a> or inspect the model's <a href="https://github.com/lauraibnz/MusGU-plus/blob/main/projects/scapes.yaml" id="yaml-source-link">YAML source file</a>.
+      </p>
+</div>
+<section class="hero-card">
+<div class="resource-links-wrap">
+<div class="resource-links" id="resource-links"><a class="resource-link" href="https://cordutie.github.io/SCAPES-DAFx26/" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">🔗</span><span class="resource-link-label">Website</span></a><a class="resource-link" href="https://github.com/cordutie/SCAPES" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">💻</span><span class="resource-link-label">Repository</span></a><a class="resource-link" href="https://huggingface.co/cordutie/SCAPES-models" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">⬇️</span><span class="resource-link-label">Checkpoints</span></a><a class="resource-link" href="https://huggingface.co/spaces/cordutie/SCAPES-demo" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">🎹</span><span class="resource-link-label">UI</span></a></div>
+</div>
+<p class="meta-line"><strong>Affiliation:</strong> <span id="model-affiliation">Music Technology Group, Universitat Pompeu Fabra</span></p>
+<p class="meta-line"><strong>Architecture:</strong> <span id="model-architecture">continuous normalizing flow</span></p>
+<div id="project-note"><p>Evaluation focuses on SCAPES, a lightweight generative framework for semantically controllable environmental sound synthesis. The paper is forthcoming at DAFx 2026 and is not yet publicly available.</p></div>
+<section class="applications-block">
+<h2>Musical applications</h2>
+<div id="applications-content"><p class="applications-copy">audio synthesis, environmental sound generation</p></div>
+</section>
+</section>
+<div id="dimension-sections">
+<section aria-labelledby="adaptability-title" class="detail-section">
+<div class="section-heading">
+<h2 id="adaptability-title">Adaptability</h2>
+<div aria-label="Adaptability summary 90 percent" class="score-badge">90%</div>
+</div>
+<div class="criterion-grid">
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Hardware Requirements</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">SCAPES can be trained on consumer-grade hardware. The paper reports training a 36-million-parameter model on a single NVIDIA RTX 4090 with peak VRAM usage below 8 GB, and the authors additionally report that training can be performed on CPU, although more slowly.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Dataset Size</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">SCAPES is explicitly designed for adaptation with small datasets. The paper demonstrates successful training on approximately 34 minutes of uncurated audio across ten environmental sound categories.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Adaptation Pathways</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">The repository provides a complete training workflow for custom audio datasets, including data preparation and training. SCAPES trains the generative prior over representations from a pretrained EnCodec model, avoiding the need to train the audio codec itself.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Technical Barriers</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">Training requires users to configure a software environment and prepare their dataset themselves. However, a guided Colab notebook covers data preparation and training, substantially reducing the technical barrier compared with an undocumented or code-only training workflow.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Model Redistribution</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">SCAPES is intended for open redistribution of trained and adapted models, with the released weights and derivatives subject only to the attribution requirements of the project's permissive license.</p>
+</article>
+</div>
+</section>
+<section aria-labelledby="usability-title" class="detail-section">
+<div class="section-heading">
+<h2 id="usability-title">Usability</h2>
+<div aria-label="Usability summary 67 percent" class="score-badge">67%</div>
+</div>
+<div class="criterion-grid">
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Interface Availability</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">SCAPES provides a publicly accessible Hugging Face Space with a graphical interface for generation and semantic interpolation. The Gradio interface code is also released in a separate repository for local use.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Access Restrictions</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">SCAPES is publicly available for local use through its released code and example model weights, without subscriptions, usage quotas, or time limits. A publicly accessible Hugging Face Space also allows users to try the model without local installation.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Real-time Capabilities</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">SCAPES does not currently provide a real-time interactive implementation. However, the paper reports inference faster than real time when using 16 ODE steps, indicating sufficient computational efficiency for offline generation and potential future real-time applications.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Workflow Integration</h3>
+<span class="status-pill low">✘ Not supported</span>
+</div>
+<p class="criterion-notes">No dedicated integration with DAWs, plugins, musical hardware, or other musician-facing production environments is currently provided.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Output Licensing</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">Generated outputs are intended to be freely usable and redistributable without non-commercial restrictions.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Community Support</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">The project provides a public GitHub repository for development and issue reporting, but no dedicated user community, forum, Discord server, or other musician-facing support space is currently identified.</p>
+</article>
+</div>
+</section>
+<section aria-labelledby="controllability-title" class="detail-section">
+<div class="section-heading">
+<h2 id="controllability-title">Controllability</h2>
+<div aria-label="Controllability summary 75 percent" class="score-badge">75%</div>
+</div>
+<div class="criterion-grid">
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Conditioning Inputs</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">SCAPES combines audio-derived semantic conditioning with autoregressive audio context. CLAP embeddings provide high-level semantic guidance, while a memory buffer of previously generated or supplied audio segments conditions each new segment on its preceding acoustic context.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Time-Varying Control</h3>
+<span class="status-pill high">✔︎ Fully supported</span>
+</div>
+<p class="criterion-notes">SCAPES supports time-varying semantic control at a 10 Hz control rate. The semantic conditioning path can change continuously during generation, enabling smooth transitions and interpolations between environmental sound classes.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Feature Disentanglement</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">Semantic conditioning can steer generation between distinct environmental sound classes and intermediate semantic states. However, the control space does not explicitly isolate individual acoustic or perceptual attributes, and transitions may simultaneously affect multiple properties of the generated sound.</p>
+</article>
+<article class="criterion-card">
+<div class="criterion-card-top">
+<h3>Control Parameters</h3>
+<span class="status-pill partial">~ Partially supported</span>
+</div>
+<p class="criterion-notes">The demo exposes configurable generation parameters including diffusion steps and CFG scale, as well as a timeline-based interface for placing semantic sound anchors and interpolating between them. However, it does not provide a broad set of independent generation parameters or direct manipulation of internal model representations.</p>
+</article>
+</div>
+</section>
+</div>
+<p class="footer-note" id="build-time">Model page last updated on 2026-07-07 at 08:28 UTC.</p>
+</main>
+</body>
+</html>
