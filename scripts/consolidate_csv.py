@@ -255,6 +255,14 @@ def build_detail_page_link(slug):
     return f"models/{slug}/"
 
 
+def build_criterion_anchor(criterion):
+    return CRITERION_INFO[criterion]["page_label"].lower().replace(" ", "-")
+
+
+def build_criterion_page_link(slug, criterion):
+    return f"{build_detail_page_link(slug)}#{build_criterion_anchor(criterion)}"
+
+
 def write_html(df):
     projects = df.index.tolist()
     sorted_applications = collect_all_applications(df)
@@ -331,8 +339,13 @@ def write_html(df):
                 value = df.loc[project, f"{dimension_key}.{criterion}.value"]
                 notes = escape_attr(df.loc[project, f"{dimension_key}.{criterion}.notes"])
                 status = get_status_meta(value)
+                criterion_link = build_criterion_page_link(slug, criterion)
+                criterion_label = CRITERION_INFO[criterion]["page_label"]
                 row_html.append(
-                    f'<td class="{status["class_name"]} data-cell" title="{notes}">{status["symbol"]}</td>'
+                    f'<td class="{status["class_name"]} data-cell" title="{notes}" '
+                    f'data-detail-link="{escape_attr(criterion_link)}" role="link" tabindex="0" '
+                    f'aria-label="Open {escape_attr(criterion_label)} details for {escape_attr(project)}">'
+                    f'{status["symbol"]}</td>'
                 )
 
         row_html.append("</tr>")
@@ -432,6 +445,7 @@ def render_criterion_card(project_row, dimension_key, criterion):
     tags = split_tags(project_row.get(f"{dimension_key}.{criterion}.tags", ""))
     status = get_status_meta(value)
     info = CRITERION_INFO[criterion]
+    criterion_id = build_criterion_anchor(criterion)
     notes_html = html.escape(notes) if notes else "No notes provided."
     tags_html = ""
     if tags:
@@ -445,7 +459,7 @@ def render_criterion_card(project_row, dimension_key, criterion):
         )
 
     return f"""
-    <article class="criterion-card">
+    <article class="criterion-card" id="{criterion_id}" tabindex="-1">
       <div class="criterion-card-top">
         <h3>{html.escape(info["page_label"])}</h3>
         <span class="status-pill {status["class_name"]}">{status["symbol"]} {html.escape(status["label"])}</span>

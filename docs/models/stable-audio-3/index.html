@@ -47,21 +47,21 @@
 <div aria-label="Adaptability summary 60 percent" class="score-badge">60%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="hardware-requirements" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Hardware Requirements</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">The documented LoRA fine-tuning workflow requires a CUDA GPU. The official documentation reports approximately 2 GB of VRAM for the Small model and 5.5–6.5 GB for the Medium model, placing adaptation within the range of consumer-grade GPUs but not practical CPU-only systems.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="dataset-size" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Dataset Size</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">The LoRA fine-tuning documentation recommends a minimum of approximately 20–50 audio clips, indicating that adaptation is designed to work with relatively small personal datasets.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="adaptation-pathways" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Adaptation Pathways</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -69,7 +69,7 @@
 <p class="criterion-notes">The repository provides a complete LoRA fine-tuning workflow, including pretrained base checkpoints, raw-audio and pre-encoded dataset modes, a dedicated training script, checkpointing and resume support, and LoRA checkpoint export.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">LoRA</span><span class="criterion-tag-chip">fine-tuning</span><span class="criterion-tag-chip">pretrained checkpoints</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="technical-barriers" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Technical Barriers</h3>
 <span class="status-pill low">✘ Not supported</span>
@@ -77,7 +77,7 @@
 <p class="criterion-notes">LoRA fine-tuning is performed through command-line tools and Python-based workflows. Although dedicated documentation is provided, users must configure the software environment, prepare datasets, and run training themselves, and no graphical or notebook-based adaptation interface is provided.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">CLI</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="model-redistribution" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Model Redistribution</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -92,7 +92,7 @@
 <div aria-label="Usability summary 75 percent" class="score-badge">75%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="interface-availability" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Interface Availability</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -100,21 +100,21 @@
 <p class="criterion-notes">Stable Audio 3 provides a publicly accessible Hugging Face Space with a graphical interface for text-to-audio generation. The repository also provides a local Gradio interface for running the model and accessing additional generation and editing workflows.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">Hugging Face</span><span class="criterion-tag-chip">Gradio</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="access-restrictions" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Access Restrictions</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">Stable Audio 3 can be used through a publicly accessible Hugging Face Space without requiring checkpoint access, a subscription, or a usage tier. The open-weight checkpoints are separately available for local inference, although downloading them requires users to provide contact information and accept the applicable license and terms of use.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="real-time-capabilities" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Real-time Capabilities</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Stable Audio 3 is optimized for fast generation and can produce audio within several seconds or less depending on model size, output duration, and hardware. However, it is designed for fast clip generation rather than continuous low-latency streaming or live musical interaction.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="workflow-integration" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Workflow Integration</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -122,14 +122,14 @@
 <p class="criterion-notes">An experimental Ableton Live integration is provided through a MIDI Remote Script and command-line utility. Generated audio files can be inserted into Ableton Live at the current playhead position, with a watch mode for automatically importing new generations. However, the model itself runs externally rather than operating directly within the DAW.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">DAW</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="output-licensing" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Output Licensing</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Stability AI states that users own generated outputs and may distribute and commercialize them. However, output use remains subject to the Stability AI Community License and Acceptable Use Policy, including licensing conditions for commercial organizations exceeding the specified annual revenue threshold.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="community-support" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Community Support</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -145,7 +145,7 @@
 <div aria-label="Controllability summary 38 percent" class="score-badge">38%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="conditioning-inputs" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Conditioning Inputs</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -153,21 +153,21 @@
 <p class="criterion-notes">Stable Audio 3 supports text prompts and existing audio inputs. Audio can be used as initialization for audio-to-audio generation, or as source/context material for inpainting and continuation.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">audio</span><span class="criterion-tag-chip">text prompt</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="time-varying-control" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Stable Audio 3 enables time-varying influence through audio initialization, allowing the temporal characteristics of an input recording to guide generation. However, it does not provide explicit or fine-grained time-varying control over musical attributes.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="feature-disentanglement" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Feature Disentanglement</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">The provided controls are not designed to independently manipulate distinct musical attributes such as timbre, pitch, rhythm, or structure.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="control-parameters" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Control Parameters</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -178,7 +178,7 @@
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:00 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:23 UTC.</p>
 </main>
 </body>
 </html>

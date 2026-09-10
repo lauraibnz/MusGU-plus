@@ -47,7 +47,7 @@
 <div aria-label="Adaptability summary 90 percent" class="score-badge">90%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="hardware-requirements" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Hardware Requirements</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -55,7 +55,7 @@
 <p class="criterion-notes">SCAPES can be trained on consumer-grade hardware. The paper reports training a 36-million-parameter model on a single NVIDIA RTX 4090 with peak VRAM usage below 8 GB, and the authors additionally report that training can be performed on CPU, although more slowly.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">CPU</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="dataset-size" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Dataset Size</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -63,7 +63,7 @@
 <p class="criterion-notes">SCAPES is explicitly designed for adaptation with small datasets. The paper demonstrates successful training on approximately 34 minutes of uncurated audio across ten environmental sound categories.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">small dataset</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="adaptation-pathways" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Adaptation Pathways</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -71,7 +71,7 @@
 <p class="criterion-notes">The repository provides a complete training workflow for custom audio datasets, including data preparation and training. SCAPES trains the generative prior over representations from a pretrained EnCodec model, avoiding the need to train the audio codec itself.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">training</span><span class="criterion-tag-chip">pretrained codec</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="technical-barriers" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Technical Barriers</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -79,7 +79,7 @@
 <p class="criterion-notes">Training requires users to configure a software environment and prepare their dataset themselves. However, a guided Colab notebook covers data preparation and training, substantially reducing the technical barrier compared with an undocumented or code-only training workflow.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">CLI</span><span class="criterion-tag-chip">Colab</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="model-redistribution" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Model Redistribution</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -94,7 +94,7 @@
 <div aria-label="Usability summary 67 percent" class="score-badge">67%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="interface-availability" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Interface Availability</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -102,35 +102,35 @@
 <p class="criterion-notes">SCAPES provides a publicly accessible Hugging Face Space with a graphical interface for generation and semantic interpolation. The Gradio interface code is also released in a separate repository for local use.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">Hugging Face</span><span class="criterion-tag-chip">Gradio</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="access-restrictions" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Access Restrictions</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">SCAPES is publicly available for local use through its released code and example model weights, without subscriptions, usage quotas, or time limits. A publicly accessible Hugging Face Space also allows users to try the model without local installation.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="real-time-capabilities" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Real-time Capabilities</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">SCAPES does not currently provide a real-time interactive implementation. However, the paper reports inference faster than real time when using 16 ODE steps, indicating sufficient computational efficiency for offline generation and potential future real-time applications.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="workflow-integration" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Workflow Integration</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">No dedicated integration with DAWs, plugins, musical hardware, or other musician-facing production environments is currently provided.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="output-licensing" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Output Licensing</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">Generated outputs are intended to be freely usable and redistributable without non-commercial restrictions.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="community-support" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Community Support</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -146,7 +146,7 @@
 <div aria-label="Controllability summary 75 percent" class="score-badge">75%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="conditioning-inputs" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Conditioning Inputs</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -154,14 +154,14 @@
 <p class="criterion-notes">SCAPES combines audio-derived semantic conditioning with autoregressive audio context. CLAP embeddings provide high-level semantic guidance, while a memory buffer of previously generated or supplied audio segments conditions each new segment on its preceding acoustic context.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">audio</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="time-varying-control" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">SCAPES supports time-varying semantic control at a 10 Hz control rate. The semantic conditioning path can change continuously during generation, enabling smooth transitions and interpolations between environmental sound classes.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="feature-disentanglement" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Feature Disentanglement</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -169,7 +169,7 @@
 <p class="criterion-notes">Semantic conditioning can steer generation between distinct environmental sound classes and intermediate semantic states. However, the control space does not explicitly isolate individual acoustic or perceptual attributes, and transitions may simultaneously affect multiple properties of the generated sound.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">semantics</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="control-parameters" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Control Parameters</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -180,7 +180,7 @@
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:00 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:23 UTC.</p>
 </main>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MusGU+: Toward a Musician-Centered Evaluation Framework and Discovery Tool for Generative Music AI</title>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
 <style>
 body {
@@ -1202,11 +1202,38 @@ window.addEventListener('DOMContentLoaded', function() {
   initSorting();
   initFilters();
   initApplicationTags();
+  initCriterionDetailLinks();
   initTagExpansion();
   
   // Show page after everything is initialized
   document.body.classList.add('ready');
 });
+
+function initCriterionDetailLinks() {
+  document.querySelectorAll('.data-cell[data-detail-link]').forEach(function(cell) {
+    function openCriterionDetails(event) {
+      if (event && (event.ctrlKey || event.metaKey || event.button === 1)) {
+        window.open(cell.dataset.detailLink, '_blank', 'noopener');
+        return;
+      }
+      window.location.href = cell.dataset.detailLink;
+    }
+
+    cell.addEventListener('click', openCriterionDetails);
+    cell.addEventListener('auxclick', function(event) {
+      if (event.button === 1) {
+        event.preventDefault();
+        openCriterionDetails(event);
+      }
+    });
+    cell.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openCriterionDetails();
+      }
+    });
+  });
+}
 
 function initTagExpansion() {
   var expandButtons = document.querySelectorAll('.expand-tags-btn');

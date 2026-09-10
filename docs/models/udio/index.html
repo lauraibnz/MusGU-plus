@@ -47,35 +47,35 @@
 <div aria-label="Adaptability summary 0 percent" class="score-badge">0%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="hardware-requirements" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Hardware Requirements</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">No information is available about the hardware requirements to train the model. </p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="dataset-size" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Dataset Size</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">No information is available about the amount or type of data required to adapt the model to a musician’s own music. </p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="adaptation-pathways" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Adaptation Pathways</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">No training, fine-tuning, or adaptation pathways are provided for users (e.g., no code, checkpoints, or interfaces), making adaptation infeasible from a musician’s perspective.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="technical-barriers" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Technical Barriers</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">Technical barriers for adaptation cannot be evaluated, as no adaptation mechanisms are provided or documented.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="model-redistribution" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Model Redistribution</h3>
 <span class="status-pill low">✘ Not supported</span>
@@ -90,7 +90,7 @@
 <div aria-label="Usability summary 50 percent" class="score-badge">50%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="interface-availability" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Interface Availability</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -98,35 +98,35 @@
 <p class="criterion-notes">A dedicated consumer-facing interface is provided for music generation through a web-based application, requiring no local installation or technical setup. An iOS app is also available. </p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">iOS app</span><span class="criterion-tag-chip">web UI</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="access-restrictions" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Access Restrictions</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Access requires using user accounts, accepting terms and conditions and is subject to usage constraints, such as quotas and plan-dependent features, which may limit continuous or unrestricted use. Free trials and promotional codes are available.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="real-time-capabilities" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Real-time Capabilities</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Generation takes several seconds and is not designed for live or audio-rate real-time interaction. The system supports real-time editing but not real-time performance or streaming control.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="workflow-integration" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Workflow Integration</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">The system operates as a standalone platform. There is no supported mechanism for integrating the model into DAWs, live music environments, or other existing music workflows.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="output-licensing" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Output Licensing</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">The model’s outputs are subject to proprietary licensing: use is restricted to personal, non-commercial purposes, downloading outputs is prohibited, and ownership of generated content is retained by the company, which constitutes a heavy restriction to output usage. Attribution is required for public use of outputs, although this requirement may be waived for outputs generated under a paid subscription.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="community-support" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Community Support</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -142,7 +142,7 @@
 <div aria-label="Controllability summary 12 percent" class="score-badge">12%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="conditioning-inputs" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Conditioning Inputs</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -150,21 +150,21 @@
 <p class="criterion-notes">Udio relies on text-based conditioning, including free-form prompts and lyrics. It allows to set stylistic reference to set the overall mood and tempo of the track.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">lyrics</span><span class="criterion-tag-chip">style tags</span><span class="criterion-tag-chip">text prompt</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="time-varying-control" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">Udio provides limited time-localized control through iterative generation and segment-based continuation. However, it does not support explicit or fine-grained temporal conditioning such as per-frame, per-beat, or symbolic time-aligned controls. As a result, the generation itself cannot be guided by meaningful temporal controls.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="feature-disentanglement" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Feature Disentanglement</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">No disentangled or explicitly separable musical control dimensions are exposed. Attributes such as timbre, harmony, rhythm, and form are implicitly entangled within prompt-based generation.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="control-parameters" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Control Parameters</h3>
 <span class="status-pill low">✘ Not supported</span>
@@ -174,7 +174,7 @@
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:00 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:23 UTC.</p>
 </main>
 </body>
 </html>

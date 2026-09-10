@@ -47,21 +47,21 @@
 <div aria-label="Adaptability summary 70 percent" class="score-badge">70%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="hardware-requirements" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Hardware Requirements</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">The model can be effectively trained on a consumer-grade GPU (the authors suggest ~2-3 hours on Colab’s free tier). CPU-only training is not presented as a practical option.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="dataset-size" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Dataset Size</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">The model is explicitly designed for small, domain-specific datasets. Official documentation recommends 10–20 minutes of monophonic audio to train a usable instrument model, making personal recordings fully viable for musicians.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="adaptation-pathways" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Adaptation Pathways</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -69,7 +69,7 @@
 <p class="criterion-notes">Complete training code and documented data preprocessing pipelines are provided, including an official Colab notebook for end-to-end model adaptation. However, these pathways rely on notebooks and codebases that have not been actively maintained in recent years, which may require additional setup or troubleshooting.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">training</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="technical-barriers" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Technical Barriers</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -77,7 +77,7 @@
 <p class="criterion-notes">A streamlined Colab notebook with step-by-step instructions is provided, lowering the barrier for users with basic technical familiarity. However, no graphical training interface exists, and successful adaptation still requires navigating notebooks, file systems, and model formats, placing it beyond non-technical musicians.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">Colab</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="model-redistribution" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Model Redistribution</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -92,7 +92,7 @@
 <div aria-label="Usability summary 100 percent" class="score-badge">100%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="interface-availability" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Interface Availability</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -100,21 +100,21 @@
 <p class="criterion-notes">DDSP-VST is distributed as native VST3 and AU plugins with a polished graphical interface, fully compatible with major DAWs. No custom setup is required beyond standard plugin installation.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">AU</span><span class="criterion-tag-chip">VST</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="access-restrictions" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Access Restrictions</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">The plugins, pretrained models, training notebooks, and source code are freely available with no paywalls, subscriptions, or usage limits.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="real-time-capabilities" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Real-time Capabilities</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">The system is designed for real-time audio processing and synthesis within DAWs. A fixed 64 ms algorithmic latency is introduced due to frame-based pitch detection, which is standard for pitch-aware audio plugins and remains fully suitable for live and interactive performance.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="workflow-integration" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Workflow Integration</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -122,14 +122,14 @@
 <p class="criterion-notes">DDSP-VST integrates directly into standard music production workflows as both a real-time audio effect and a MIDI-controlled synthesizer, with automation support and DAW-level modulation (e.g., LFO assignment to pitch and gain).</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">DAW</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="output-licensing" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Output Licensing</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">The project does not impose any additional licensing restrictions on generated audio. Outputs can be freely used for personal and commercial purposes without attribution requirements.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="community-support" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Community Support</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -145,7 +145,7 @@
 <div aria-label="Controllability summary 100 percent" class="score-badge">100%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="conditioning-inputs" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Conditioning Inputs</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -153,14 +153,14 @@
 <p class="criterion-notes">The model accepts multiple musically meaningful conditioning inputs, including audio and MIDI, which directly affect synthesis behavior rather than acting as descriptive prompts.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">MIDI</span><span class="criterion-tag-chip">audio</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="time-varying-control" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">DDSP-VST supports sample-accurate, continuous time-varying control over pitch, loudness, envelopes, and excitation signals, enabling fine-grained expressive manipulation suitable for performance and automation.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="feature-disentanglement" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Feature Disentanglement</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -168,7 +168,7 @@
 <p class="criterion-notes">Disentanglement is core to the DDSP architecture. Pitch and loudness are explicitly modeled as independent control pathways, resulting in predictable and interpretable behavior. Timbre, while not exposed as a conditioning input or runtime control, is treated as a disentangled inductive bias and is implicitly determined by the data used to train the model.</p>
 <div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">loudness</span><span class="criterion-tag-chip">pitch</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="control-parameters" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Control Parameters</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
@@ -179,7 +179,7 @@
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:00 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 19:23 UTC.</p>
 </main>
 </body>
 </html>
