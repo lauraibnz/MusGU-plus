@@ -199,6 +199,11 @@ a {
   padding: 1rem;
 }
 
+.criterion-card:focus {
+  outline: 2px solid #4b5563;
+  outline-offset: 2px;
+}
+
 .criterion-card-top {
   display: block;
   margin-bottom: 10px;
