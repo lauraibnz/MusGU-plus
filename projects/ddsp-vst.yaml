@@ -27,11 +27,9 @@ adaptability:
       documentation recommends 10–20 minutes of monophonic audio to train a usable
       instrument model, making personal recordings fully viable for musicians.
   adaptation_pathways:
-    value: partial
+    value: high
     notes: Complete training code and documented data preprocessing pipelines are
       provided, including an official Colab notebook for end-to-end model adaptation.
-      However, these pathways rely on notebooks and codebases that have not been actively
-      maintained in recent years, which may require additional setup or troubleshooting.
     tags: training
   technical_barriers:
     value: partial
@@ -56,16 +54,14 @@ controllability:
     tags: MIDI, audio
   time_varying_control:
     value: high
-    notes: DDSP-VST supports sample-accurate, continuous time-varying control over
-      pitch, loudness, envelopes, and excitation signals, enabling fine-grained expressive
-      manipulation suitable for performance and automation.
+    notes: DDSP-VST supports continuous time-varying control over pitch, loudness,
+      envelopes, and excitation signals, enabling fine-grained expressive manipulation
+      suitable for performance and automation.
   feature_disentanglement:
     value: high
     notes: Disentanglement is core to the DDSP architecture. Pitch and loudness are
       explicitly modeled as independent control pathways, resulting in predictable
-      and interpretable behavior. Timbre, while not exposed as a conditioning input
-      or runtime control, is treated as a disentangled inductive bias and is implicitly
-      determined by the data used to train the model.
+      and interpretable behavior.
     tags: loudness, pitch
   control_parameters:
     value: high
