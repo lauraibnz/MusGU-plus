@@ -225,14 +225,14 @@ body.ready {
   border-bottom: 1px solid #000;
 }
 #musgu-table th {
-  padding: 12px 4px;
+  padding: 12px 2px;
   text-align: center;
   font-weight: bold;
   border: none;
   border-bottom: 1px solid #000;
 }
 #musgu-table td {
-  padding: 6px 4px; /* Increased from 6px to 8px for more vertical space */
+  padding: 6px 2px; /* Increased from 6px to 8px for more vertical space */
   border: none;
   text-align: center;
 }
@@ -376,6 +376,15 @@ body.ready {
   overflow: visible; /* Allow content to be visible */
 }
 
+.tag-row {
+  display: inline-flex;
+  flex: 0 0 100%;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
 /* When there's only 1 visible tag (no second tag, no expand button), make it narrower */
 .criterion-tags:has(.visible-tag:only-of-type) {
   max-width: fit-content; /* Only as wide as the single tag */
@@ -396,9 +405,6 @@ body.ready {
 
 .criterion-tags.expanded {
   position: relative;
-  max-width: none !important;
-  flex-wrap: wrap !important;
-  min-height: 60px; /* Reserve space for expanded tags */
 }
 
 .criterion-tags.expanded .tag-group {
@@ -412,11 +418,6 @@ body.ready {
 .criterion-tags.expanded .hidden-tag {
   display: inline-flex !important;
   order: 999; /* Push hidden tags to the end when expanded */
-}
-
-/* Force first hidden tag to start on new line after button */
-.criterion-tags.expanded .hidden-tag:first-of-type {
-  margin-left: 100%; /* Force break before first hidden tag */
 }
 
 .expand-tags-btn {
@@ -1209,7 +1210,7 @@ function initTagExpansion() {
   }
   
   function calculateAndLockWidths() {
-    var containerMaxWidth = 100; // Reduced from 150 to make columns narrower
+    var containerMaxWidth = 80; // Reduced from 150 to make columns narrower
     var gap = 4;
     
     // Process each criterion column
@@ -1298,25 +1299,13 @@ function initTagExpansion() {
       
       var hiddenCount = tagWidths.length - visibleTagIndexes.length;
       
-      // Reserve space for expand button in row 3 if needed
+      // Reserve space for the expand button in row 3 if needed. Keep the last
+      // visible tag rather than hiding it just to satisfy the nominal width.
+      var requiredContainerWidth = 0;
       if (hiddenCount > 0 && expandBtn && rows[2].length > 0) {
         var row3Width = rowWidths[2];
         var buttonNeeds = gap + buttonWidth;
-        
-        // Remove tags from row 3 until button fits
-        while (row3Width + buttonNeeds > containerMaxWidth && rows[2].length > 0) {
-          var removed = rows[2].pop();
-          var removedIndex = visibleTagIndexes[visibleTagIndexes.length - 1];
-          visibleTagIndexes.pop();
-          
-          // Recalculate row 3 width
-          row3Width = 0;
-          for (var j = 0; j < rows[2].length; j++) {
-            row3Width += rows[2][j].width + (j > 0 ? gap : 0);
-          }
-          rowWidths[2] = row3Width;
-          hiddenCount++;
-        }
+        requiredContainerWidth = Math.max(requiredContainerWidth, row3Width + buttonNeeds);
       }
       
       // Apply visibility based on visible indexes
@@ -1369,7 +1358,38 @@ function initTagExpansion() {
       var totalCellPadding = cellPaddingLeft + cellPaddingRight;
       
       // Cell width = max(widest visible row, widest hidden tag, title width) + padding
-      var neededCellWidth = Math.max(maxRowWidth, maxHiddenTagWidth, titleWidth) + totalCellPadding;
+      var neededCellWidth = Math.max(
+        maxRowWidth,
+        maxHiddenTagWidth,
+        titleWidth,
+        requiredContainerWidth
+      ) + totalCellPadding;
+
+      // Preserve the calculated three-row layout in the rendered flex container.
+      // Moving existing nodes keeps their filter listeners and visibility state intact.
+      rows.forEach(function(row, rowIndex) {
+        if (row.length === 0) return;
+
+        var tagRow = document.createElement('span');
+        tagRow.className = 'tag-row';
+        container.insertBefore(tagRow, row[0].element);
+
+        row.forEach(function(tagData) {
+          tagRow.appendChild(tagData.element);
+        });
+
+        if (rowIndex === 2 && hiddenCount > 0 && expandBtn) {
+          tagRow.appendChild(expandBtn);
+        }
+      });
+
+      if (hiddenCount === 0 && expandBtn) {
+        expandBtn.style.display = 'none';
+      }
+
+      container.style.width = maxRowWidth + 'px';
+      container.style.minWidth = maxRowWidth + 'px';
+      container.style.maxWidth = maxRowWidth + 'px';
       
       // Lock cell width
       cell.style.width = neededCellWidth + 'px';
@@ -1449,9 +1469,13 @@ function initTagExpansion() {
         if (isExpanded) {
           // Collapsing - restore original text and hide tags again
           this.textContent = this.dataset.originalText;
+          this.style.width = '';
+          this.style.boxSizing = '';
           tagsContainer.classList.remove('expanded');
         } else {
           // Expanding - change button to minus and show all tags
+          this.style.width = this.getBoundingClientRect().width + 'px';
+          this.style.boxSizing = 'border-box';
           this.textContent = '−';
           tagsContainer.classList.add('expanded');
         }
