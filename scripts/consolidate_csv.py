@@ -429,9 +429,20 @@ def render_applications(applications):
 def render_criterion_card(project_row, dimension_key, criterion):
     value = project_row.get(f"{dimension_key}.{criterion}.value", "")
     notes = project_row.get(f"{dimension_key}.{criterion}.notes", "")
+    tags = split_tags(project_row.get(f"{dimension_key}.{criterion}.tags", ""))
     status = get_status_meta(value)
     info = CRITERION_INFO[criterion]
     notes_html = html.escape(notes) if notes else "No notes provided."
+    tags_html = ""
+    if tags:
+        tag_chips = "".join(
+            f'<span class="criterion-tag-chip">{html.escape(tag)}</span>' for tag in tags
+        )
+        tags_html = (
+            '<div class="criterion-card-tags" aria-label="Tags">'
+            '<span class="criterion-tags-label">Tags:</span>'
+            f"{tag_chips}</div>"
+        )
 
     return f"""
     <article class="criterion-card">
@@ -440,6 +451,7 @@ def render_criterion_card(project_row, dimension_key, criterion):
         <span class="status-pill {status["class_name"]}">{status["symbol"]} {html.escape(status["label"])}</span>
       </div>
       <p class="criterion-notes">{notes_html}</p>
+      {tags_html}
     </article>
     """
 

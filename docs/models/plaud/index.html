@@ -67,6 +67,7 @@
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">Complete pathways are provided to train from scratch on the user's own audio, covering the synth, the grouped-VQ codec, the transformer prior, and export, all driven by a shared configuration file. No pretrained base checkpoints are provided, so every model is trained from the ground up.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">training</span><span class="criterion-tag-chip">prior training</span></div>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -74,6 +75,7 @@
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">A beginner-oriented Colab notebook covers the full training-to-export pipeline alongside an annotated configuration template, but there is no graphical training interface, and setup still requires basic familiarity with Colab, file paths, and running command-line stages. The tooling is research-grade and under active change.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">CLI</span><span class="criterion-tag-chip">Colab</span><span class="criterion-tag-chip">config</span></div>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -96,6 +98,7 @@
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">A Max4Live device is provided, making the instrument playable inside Ableton Live through a graphical interface. It runs via the nn~ external, which must be available in Max. There is no standalone application or web interface.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">Max4Live</span><span class="criterion-tag-chip">Max/MSP</span><span class="criterion-tag-chip">PureData</span></div>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -117,6 +120,7 @@
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">A Max4Live device integrates the model directly into Ableton Live, and through nn~ it can also be used in the Max/MSP and Pure Data visual programming environments alongside other audio and control objects.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">DAW</span><span class="criterion-tag-chip">visual programming</span></div>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -131,6 +135,7 @@
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">The public repository has GitHub Issues available (enabled by default) as a developer-oriented contact channel. There is no dedicated musician-facing community space such as a forum or chat server.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">GitHub Issues</span></div>
 </article>
 </div>
 </section>
@@ -146,6 +151,7 @@
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">The system is primarily audio-domain. An encoder maps input audio to a control trajectory for resynthesis, and the generative prior is steered by a learned style code, an optional territory selection, and slow control envelopes. There is no MIDI or symbolic conditioning.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">audio</span></div>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -160,6 +166,7 @@
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Loudness and spectral centroid are exposed as explicit, interpretable per-frame control channels. Timbre is carried by VAE latents and a learned style code that are not individually interpretable, and the style and timbre pathways can interact.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">loudness</span><span class="criterion-tag-chip">brightness</span></div>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -167,11 +174,12 @@
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">A broad set of runtime parameters is exposed, including a style position, sampling temperature, classifier-free guidance strength, control envelopes, and synth-level attributes such as waveshaping and spectral shaping, together with direct access to the per-frame control and latent representation.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">latent manipulation</span><span class="criterion-tag-chip">randomness</span><span class="criterion-tag-chip">conditioning strength</span></div>
 </article>
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 17:31 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 18:20 UTC.</p>
 </main>
 </body>
 </html>
