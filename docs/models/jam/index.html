@@ -32,7 +32,7 @@
 <div class="resource-links-wrap">
 <div class="resource-links" id="resource-links"><a class="resource-link" href="https://declare-lab.github.io/jamify" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">🔗</span><span class="resource-link-label">Website</span></a><a class="resource-link" href="https://github.com/declare-lab/jamify" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">💻</span><span class="resource-link-label">Repository</span></a><a class="resource-link" href="https://arxiv.org/abs/2507.20880" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">📄</span><span class="resource-link-label">Article</span></a><a class="resource-link" href="https://huggingface.co/declare-lab/JAM-0.5/blob/main/jam-0_5.safetensors" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">⬇️</span><span class="resource-link-label">Checkpoints</span></a><a class="resource-link" href="https://huggingface.co/spaces/declare-lab/JAM" rel="noreferrer noopener" target="_blank"><span aria-hidden="true" class="resource-link-icon">🎹</span><span class="resource-link-label">UI</span></a></div>
 </div>
-<p class="meta-line"><strong>Affiliation:</strong> <span id="model-affiliation">Singapore University of Technology and Design and Lamda Labs. </span></p>
+<p class="meta-line"><strong>Affiliation:</strong> <span id="model-affiliation">Singapore University of Technology and Design and Lambda Labs. </span></p>
 <p class="meta-line"><strong>Architecture:</strong> <span id="model-architecture">latent diffusion, rectified flow</span></p>
 
 <section class="applications-block">
@@ -44,15 +44,15 @@
 <section aria-labelledby="adaptability-title" class="detail-section">
 <div class="section-heading">
 <h2 id="adaptability-title">Adaptability</h2>
-<div aria-label="Adaptability summary 40 percent" class="score-badge">40%</div>
+<div aria-label="Adaptability summary 20 percent" class="score-badge">20%</div>
 </div>
 <div class="criterion-grid">
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Hardware Requirements</h3>
-<span class="status-pill partial">~ Partially supported</span>
+<span class="status-pill low">✘ Not supported</span>
 </div>
-<p class="criterion-notes">The model requires a CUDA-compatible GPU with sufficient VRAM (+8GB is recommended). Not feasible to train the model on CPU.</p>
+<p class="criterion-notes">The documented training setup requires high-end GPU resources. All training stages were carried out using 8 H100 GPUs, and no practical CPU-only or consumer-GPU adaptation pathway is demonstrated.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -64,9 +64,9 @@
 <article class="criterion-card">
 <div class="criterion-card-top">
 <h3>Adaptation Pathways</h3>
-<span class="status-pill high">✔︎ Fully supported</span>
+<span class="status-pill partial">~ Partially supported</span>
 </div>
-<p class="criterion-notes">JAM provides complete code and documentation for pretraining, supervised fine-tuning, and direct preference optimization. Model checkpoints are available. </p>
+<p class="criterion-notes">JAM provides code and documentation for pretraining, supervised fine-tuning, and direct preference optimization, as well as pretrained model checkpoints. However, the released training workflows assume preprocessed representations and metadata and do not provide a complete end-to-end preprocessing pathway from a musician’s own audio data.</p>
 </article>
 <article class="criterion-card">
 <div class="criterion-card-top">
@@ -171,7 +171,7 @@
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-08-13 at 10:47 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-09-10 at 20:03 UTC.</p>
 </main>
 </body>
 </html>
