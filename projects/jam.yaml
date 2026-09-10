@@ -6,7 +6,7 @@
 
 project:
   name: JAM
-  affiliation: 'Singapore University of Technology and Design and Lamda Labs. '
+  affiliation: 'Singapore University of Technology and Design and Lambda Labs. '
   architecture: latent diffusion, rectified flow
   applications: full song generation, lyrics-to-song
   link: https://declare-lab.github.io/jamify
@@ -17,18 +17,22 @@ project:
   notes: ''
 adaptability:
   hardware_requirements:
-    value: partial
-    notes: The model requires a CUDA-compatible GPU with sufficient VRAM (+8GB is
-      recommended). Not feasible to train the model on CPU.
+    value: low
+    notes: The documented training setup requires high-end GPU resources. All training
+      stages were carried out using 8 H100 GPUs, and no practical CPU-only or consumer-GPU
+      adaptation pathway is demonstrated.
   dataset_size:
     value: low
     notes: 'No clear information about the dataset size is provided. The model was
       trained on a dataset of ~54k hours of audio, which makes adaptation infeasible
       with musician’s own data. '
   adaptation_pathways:
-    value: high
-    notes: 'JAM provides complete code and documentation for pretraining, supervised
-      fine-tuning, and direct preference optimization. Model checkpoints are available. '
+    value: partial
+    notes: 'JAM provides code and documentation for pretraining, supervised fine-tuning,
+      and direct preference optimization, as well as pretrained model checkpoints.
+      However, the released training workflows assume preprocessed representations
+      and metadata and do not provide a complete end-to-end preprocessing pathway
+      from a musician’s own audio data.'
     tags: fine-tuning, pretrained checkpoints, training
   technical_barriers:
     value: low
