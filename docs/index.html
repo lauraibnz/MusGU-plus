@@ -412,6 +412,47 @@ body.ready {
   flex-wrap: wrap;
 }
 
+.citation-code {
+  position: relative;
+}
+
+.citation-code pre {
+  padding-right: 5em !important;
+}
+
+.citation-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #495057;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.citation-copy:hover {
+  color: #000000;
+}
+
+.citation-copy svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.citation-copy .copy-front {
+  fill: #ffffff;
+}
+
 .hidden-tag {
   display: none !important;
 }
@@ -754,13 +795,13 @@ body.ready {
 <th><div class="criterion-header-wrapper"><span>Adaptation<br/>Pathways</span><div class="criterion-tags" data-criterion="adaptation"><span class="criterion-tag" data-criterion="adaptation" data-tag="LoRA">LoRA</span><span class="criterion-tag" data-criterion="adaptation" data-tag="training">training</span><span class="criterion-tag" data-criterion="adaptation" data-tag="fine-tuning">fine-tuning</span><span class="criterion-tag" data-criterion="adaptation" data-tag="prior training">prior training</span><span class="criterion-tag" data-criterion="adaptation" data-tag="pretrained codec">pretrained codec</span><span class="criterion-tag" data-criterion="adaptation" data-tag="pretrained checkpoints">pretrained checkpoints</span><span class="expand-tags-btn" data-criterion="adaptation">+0</span></div></div></th>
 <th><div class="criterion-header-wrapper"><span>Technical<br/>Barriers</span><div class="criterion-tags" data-criterion="technical"><span class="criterion-tag" data-criterion="technical" data-tag="CLI">CLI</span><span class="criterion-tag" data-criterion="technical" data-tag="GUI">GUI</span><span class="criterion-tag" data-criterion="technical" data-tag="Colab">Colab</span><span class="criterion-tag" data-criterion="technical" data-tag="config">config</span><span class="criterion-tag" data-criterion="technical" data-tag="tutorial">tutorial</span><span class="criterion-tag" data-criterion="technical" data-tag="drag-and-drop">drag-and-drop</span><span class="expand-tags-btn" data-criterion="technical">+0</span></div></div></th>
 <th><div class="criterion-header-wrapper"><span>Model<br/>Redistribution</span></div></th>
-<th><div class="criterion-header-wrapper"><span>Interface<br/>Availability</span><div class="criterion-tags" data-criterion="interface"><span class="criterion-tag" data-criterion="interface" data-tag="AU">AU</span><span class="criterion-tag" data-criterion="interface" data-tag="VST">VST</span><span class="criterion-tag" data-criterion="interface" data-tag="Colab">Colab</span><span class="criterion-tag" data-criterion="interface" data-tag="web UI">web UI</span><span class="criterion-tag" data-criterion="interface" data-tag="Gradio">Gradio</span><span class="criterion-tag" data-criterion="interface" data-tag="iOS app">iOS app</span><span class="criterion-tag" data-criterion="interface" data-tag="Max/MSP">Max/MSP</span><span class="criterion-tag" data-criterion="interface" data-tag="Max4Live">Max4Live</span><span class="criterion-tag" data-criterion="interface" data-tag="PureData">PureData</span><span class="criterion-tag" data-criterion="interface" data-tag="Android app">Android app</span><span class="criterion-tag" data-criterion="interface" data-tag="Hugging Face">Hugging Face</span><span class="criterion-tag" data-criterion="interface" data-tag="standalone app">standalone app</span><span class="expand-tags-btn" data-criterion="interface">+0</span></div></div></th>
+<th><div class="criterion-header-wrapper"><span>Interface<br/>Availability</span><div class="criterion-tags" data-criterion="interface"><span class="criterion-tag" data-criterion="interface" data-tag="AU">AU</span><span class="criterion-tag" data-criterion="interface" data-tag="VST">VST</span><span class="criterion-tag" data-criterion="interface" data-tag="Colab">Colab</span><span class="criterion-tag" data-criterion="interface" data-tag="web UI">web UI</span><span class="criterion-tag" data-criterion="interface" data-tag="Gradio">Gradio</span><span class="criterion-tag" data-criterion="interface" data-tag="iOS app">iOS app</span><span class="criterion-tag" data-criterion="interface" data-tag="Max/MSP">Max/MSP</span><span class="criterion-tag" data-criterion="interface" data-tag="PureData">PureData</span><span class="criterion-tag" data-criterion="interface" data-tag="Max4Live">Max4Live</span><span class="criterion-tag" data-criterion="interface" data-tag="Android app">Android app</span><span class="criterion-tag" data-criterion="interface" data-tag="Hugging Face">Hugging Face</span><span class="criterion-tag" data-criterion="interface" data-tag="standalone app">standalone app</span><span class="expand-tags-btn" data-criterion="interface">+0</span></div></div></th>
 <th><div class="criterion-header-wrapper"><span>Access<br/>Restrictions</span></div></th>
 <th><div class="criterion-header-wrapper"><span>Real-time<br/>Capabilities</span><div class="criterion-tags" data-criterion="realtime"><span class="criterion-tag" data-criterion="realtime" data-tag="real-time">real-time</span><span class="expand-tags-btn" data-criterion="realtime">+0</span></div></div></th>
 <th><div class="criterion-header-wrapper"><span>Workflow<br/>Integration</span><div class="criterion-tags" data-criterion="workflow"><span class="criterion-tag" data-criterion="workflow" data-tag="DAW">DAW</span><span class="criterion-tag" data-criterion="workflow" data-tag="hardware">hardware</span><span class="criterion-tag" data-criterion="workflow" data-tag="live coding">live coding</span><span class="criterion-tag" data-criterion="workflow" data-tag="visual programming">visual programming</span><span class="expand-tags-btn" data-criterion="workflow">+0</span></div></div></th>
 <th><div class="criterion-header-wrapper"><span>Output<br/>Licensing</span></div></th>
 <th><div class="criterion-header-wrapper"><span>Community<br/>Support</span><div class="criterion-tags" data-criterion="community"><span class="criterion-tag" data-criterion="community" data-tag="Forum">Forum</span><span class="criterion-tag" data-criterion="community" data-tag="Discord">Discord</span><span class="criterion-tag" data-criterion="community" data-tag="Help center">Help center</span><span class="criterion-tag" data-criterion="community" data-tag="GitHub Issues">GitHub Issues</span><span class="criterion-tag" data-criterion="community" data-tag="GitHub Discussions">GitHub Discussions</span><span class="expand-tags-btn" data-criterion="community">+0</span></div></div></th>
-<th><div class="criterion-header-wrapper"><span>Conditioning<br/>Inputs</span><div class="criterion-tags" data-criterion="conditioning"><span class="criterion-tag" data-criterion="conditioning" data-tag="MIDI">MIDI</span><span class="criterion-tag" data-criterion="conditioning" data-tag="audio">audio</span><span class="criterion-tag" data-criterion="conditioning" data-tag="timing">timing</span><span class="criterion-tag" data-criterion="conditioning" data-tag="lyrics">lyrics</span><span class="criterion-tag" data-criterion="conditioning" data-tag="section">section</span><span class="criterion-tag" data-criterion="conditioning" data-tag="style tags">style tags</span><span class="criterion-tag" data-criterion="conditioning" data-tag="text prompt">text prompt</span><span class="expand-tags-btn" data-criterion="conditioning">+0</span></div></div></th>
+<th><div class="criterion-header-wrapper"><span>Conditioning<br/>Inputs</span><div class="criterion-tags" data-criterion="conditioning"><span class="criterion-tag" data-criterion="conditioning" data-tag="MIDI">MIDI</span><span class="criterion-tag" data-criterion="conditioning" data-tag="audio">audio</span><span class="criterion-tag" data-criterion="conditioning" data-tag="lyrics">lyrics</span><span class="criterion-tag" data-criterion="conditioning" data-tag="timing">timing</span><span class="criterion-tag" data-criterion="conditioning" data-tag="section">section</span><span class="criterion-tag" data-criterion="conditioning" data-tag="style tags">style tags</span><span class="criterion-tag" data-criterion="conditioning" data-tag="text prompt">text prompt</span><span class="expand-tags-btn" data-criterion="conditioning">+0</span></div></div></th>
 <th><div class="criterion-header-wrapper"><span>Time-Varying<br/>Control</span></div></th>
 <th><div class="criterion-header-wrapper"><span>Feature<br/>Disentanglement</span><div class="criterion-tags" data-criterion="disentanglement"><span class="criterion-tag" data-criterion="disentanglement" data-tag="pitch">pitch</span><span class="criterion-tag" data-criterion="disentanglement" data-tag="style">style</span><span class="criterion-tag" data-criterion="disentanglement" data-tag="timbre">timbre</span><span class="criterion-tag" data-criterion="disentanglement" data-tag="melody">melody</span><span class="criterion-tag" data-criterion="disentanglement" data-tag="loudness">loudness</span><span class="criterion-tag" data-criterion="disentanglement" data-tag="structure">structure</span><span class="criterion-tag" data-criterion="disentanglement" data-tag="semantics">semantics</span><span class="criterion-tag" data-criterion="disentanglement" data-tag="brightness">brightness</span><span class="expand-tags-btn" data-criterion="disentanglement">+0</span></div></div></th>
 <th><div class="criterion-header-wrapper"><span>Control<br/>Parameters</span><div class="criterion-tags" data-criterion="parameters"><span class="criterion-tag" data-criterion="parameters" data-tag="duration">duration</span><span class="criterion-tag" data-criterion="parameters" data-tag="randomness">randomness</span><span class="criterion-tag" data-criterion="parameters" data-tag="latent noise">latent noise</span><span class="criterion-tag" data-criterion="parameters" data-tag="latent prior">latent prior</span><span class="criterion-tag" data-criterion="parameters" data-tag="diffusion steps">diffusion steps</span><span class="criterion-tag" data-criterion="parameters" data-tag="sampling strategy">sampling strategy</span><span class="criterion-tag" data-criterion="parameters" data-tag="latent manipulation">latent manipulation</span><span class="criterion-tag" data-criterion="parameters" data-tag="latent interpolation">latent interpolation</span><span class="criterion-tag" data-criterion="parameters" data-tag="conditioning strength">conditioning strength</span><span class="expand-tags-btn" data-criterion="parameters">+0</span></div></div></th>
@@ -810,7 +851,9 @@ body.ready {
 <div id="citation" style="padding: 0.7em 1.5em; margin: 0 auto; max-width: 1200px; font-size: 1em; line-height: 1.6;">
 <h2 style="text-align: left; margin: 0 0 5px 0; font-size: 1.3em;">Citation</h2>
 <p style="margin-top: 0;">The paper <em>MusGU+: Toward a Musician-Centered Evaluation Framework and Discovery Tool for Generative Music AI</em> was accepted at the <strong>7th Conference on AI Music Creativity (AIMC 2026)</strong>. If our work is relevant to you, please cite it as follows:</p>
-<pre style="margin: 0; padding: 1em; overflow-x: auto; background: #f8f8f8; border-radius: 4px; font-family: monospace; font-size: 0.9em; line-height: 1.5;">@InProceedings{ibanezmartinez2026musgu,
+<div class="citation-code">
+<button aria-label="Copy BibTeX citation" class="citation-copy" data-copy-target="musgu-citation" title="Copy BibTeX citation" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 16c-1.1 0-2-0.9-2-2V4c0-1.1 0.9-2 2-2h10c1.1 0 2 0.9 2 2"></path><rect class="copy-front" height="14" rx="2" ry="2" width="14" x="8" y="8"></rect></svg></button>
+<pre id="musgu-citation" style="margin: 0; padding: 1em; overflow-x: auto; background: #f8f8f8; border-radius: 4px; font-family: monospace; font-size: 0.9em; line-height: 1.5;">@InProceedings{ibanezmartinez2026musgu,
   author    = {Ibáñez-Martínez, Laura and Batlle-Roca, Roser and Serra, Xavier and Rocamora, Martín},
   title     = {MusGU+: Toward a Musician-Centered Evaluation Framework and Discovery Tool for Generative Music AI},
   booktitle = {Proceedings of the 7th Conference on AI Music Creativity (AIMC 2026)},
@@ -821,6 +864,7 @@ body.ready {
   url       = {https://doi.org/10.5281/zenodo.22281934}
 }</pre>
 </div>
+</div>
 <div id="musgo-relationship" style="padding: 0.7em 1.5em; margin: 0 auto; max-width: 1200px; font-size: 1em; line-height: 1.6;">
 <h2 style="text-align: left; margin: 0 0 5px 0; font-size: 1.3em;">Relationship to MusGO</h2>
 <p style="margin-top: 0; margin-bottom: 0; line-height: 1.6; font-size: 1em;">
@@ -828,7 +872,7 @@ body.ready {
   </p>
 </div>
 <div id="footer">
-<p id="build-time">Discovery tool last updated on 2026-09-10 at 19:39 UTC.</p>
+<p id="build-time">Discovery tool last updated on 2026-09-11 at 14:16 UTC.</p>
 </div>
 <script>
 // Filter state
@@ -1250,10 +1294,48 @@ window.addEventListener('DOMContentLoaded', function() {
   initApplicationTags();
   initCriterionDetailLinks();
   initTagExpansion();
+  initCitationCopy();
   
   // Show page after everything is initialized
   document.body.classList.add('ready');
 });
+
+function initCitationCopy() {
+  var copyButton = document.querySelector('.citation-copy');
+  if (!copyButton) return;
+
+  copyButton.addEventListener('click', function() {
+    var target = document.getElementById(this.dataset.copyTarget);
+    if (!target) return;
+
+    var citation = target.textContent.trim();
+    var button = this;
+    var defaultIcon = button.innerHTML;
+    var copied = function() {
+      button.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg>';
+      button.title = 'Copied';
+      setTimeout(function() {
+        button.innerHTML = defaultIcon;
+        button.title = 'Copy BibTeX citation';
+      }, 1500);
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(citation).then(copied);
+      return;
+    }
+
+    var textArea = document.createElement('textarea');
+    textArea.value = citation;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    copied();
+  });
+}
 
 function initCriterionDetailLinks() {
   document.querySelectorAll('.data-cell[data-detail-link]').forEach(function(cell) {
