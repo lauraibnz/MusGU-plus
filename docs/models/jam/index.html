@@ -47,35 +47,37 @@
 <div aria-label="Adaptability summary 40 percent" class="score-badge">40%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="hardware-requirements" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Hardware Requirements</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">The model requires a CUDA-compatible GPU with sufficient VRAM (+8GB is recommended). Not feasible to train the model on CPU.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="dataset-size" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Dataset Size</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">No clear information about the dataset size is provided. The model was trained on a dataset of ~54k hours of audio, which makes adaptation infeasible with musician’s own data. </p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="adaptation-pathways" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Adaptation Pathways</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">JAM provides complete code and documentation for pretraining, supervised fine-tuning, and direct preference optimization. Model checkpoints are available. </p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">fine-tuning</span><span class="criterion-tag-chip">pretrained checkpoints</span><span class="criterion-tag-chip">training</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="technical-barriers" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Technical Barriers</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">Adaptation requires technical expertise. All training a preprocessing rely on command-line implementation. No user-friendly adaption interface is provided. </p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">CLI</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="model-redistribution" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Model Redistribution</h3>
 <span class="status-pill partial">~ Partially supported</span>
@@ -90,47 +92,49 @@
 <div aria-label="Usability summary 42 percent" class="score-badge">42%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="interface-availability" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Interface Availability</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">There is a hosted HuggingFace web demo, but it is currently unavailable. However, the Gradio code is accessible and can be run locally, though it requires installation and environment setup by the user.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">Gradio</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="access-restrictions" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Access Restrictions</h3>
 <span class="status-pill high">✔︎ Fully supported</span>
 </div>
 <p class="criterion-notes">JAM’s source code is openly available and can be freely used without limits, paywalls, or subscriptions. </p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="real-time-capabilities" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Real-time Capabilities</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">No clear information about the time required for generation is provided. No reference to real-time generation is provided in the documentation or the research article. </p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="workflow-integration" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Workflow Integration</h3>
 <span class="status-pill low">✘ Not supported</span>
 </div>
 <p class="criterion-notes">There are no clear instructions or specific tools to integrate JAM to a musician’s workflow. </p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="output-licensing" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Output Licensing</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Outputs generated with JAM cannot be used for commercial-use, and must not be including content that violates copyright laws. Responsibility of the generated outputs relies entirely with the end user. </p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="community-support" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Community Support</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">Support exists via GitHub issues and documentation, but there is no dedicated musician-oriented support space.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">GitHub Issues</span></div>
 </article>
 </div>
 </section>
@@ -140,38 +144,41 @@
 <div aria-label="Controllability summary 50 percent" class="score-badge">50%</div>
 </div>
 <div class="criterion-grid">
-<article class="criterion-card">
+<article class="criterion-card" id="conditioning-inputs" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Conditioning Inputs</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">JAM can be conditioned by lyrics (including word- and phoneme-level timing) and style (via text or audio).</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">audio</span><span class="criterion-tag-chip">lyrics</span><span class="criterion-tag-chip">text prompt</span><span class="criterion-tag-chip">timing</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="time-varying-control" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Time-Varying Control</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">JAM supports precise time-varying control over vocal structure, with explicit word- and phoneme-level timing and duration inputs that directly guide generation at the latent space. However, no time-varying control is provided for the accompaniment or instrumental structure.</p>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="feature-disentanglement" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Feature Disentanglement</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">JAM separates lyrics timing, global duration, and style conditioning through explicit control pathways, enabling partial disentanglement of vocal structure. However, musical attributes are not independently controllable, and style remains an entangled representation, limiting fully interpretable, attribute-specific control.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">style</span></div>
 </article>
-<article class="criterion-card">
+<article class="criterion-card" id="control-parameters" tabindex="-1">
 <div class="criterion-card-top">
 <h3>Control Parameters</h3>
 <span class="status-pill partial">~ Partially supported</span>
 </div>
 <p class="criterion-notes">JAM provides several generation control parameters, including global duration, separate guidance strengths for lyrics and style, and diffusion step configuration, allowing users to directly influence generation behavior. However, direct manipulation of internal representations is not supported.</p>
+<div aria-label="Tags" class="criterion-card-tags"><span class="criterion-tags-label">Tags:</span><span class="criterion-tag-chip">conditioning strength</span><span class="criterion-tag-chip">diffusion steps</span><span class="criterion-tag-chip">duration</span></div>
 </article>
 </div>
 </section>
 </div>
-<p class="footer-note" id="build-time">Model page last updated on 2026-07-07 at 08:28 UTC.</p>
+<p class="footer-note" id="build-time">Model page last updated on 2026-09-11 at 14:18 UTC.</p>
 </main>
 </body>
 </html>

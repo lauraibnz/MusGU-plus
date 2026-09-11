@@ -50,7 +50,7 @@ controllability:
     value: partial
     notes: 'YuE supports generation conditioning through text (lyrics, structural
       labels, and style tags), and optional reference audio for in-context learning.'
-    tags: audio, lyrics, section, tags, text prompt
+    tags: audio, lyrics, section, style tags, text prompt
   time_varying_control:
     value: partial
     notes: YuE provides limited time-localized control through section-based generation,
