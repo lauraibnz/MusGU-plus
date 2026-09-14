@@ -50,7 +50,7 @@ The paper *MusGU+: Toward a Musician-Centered Evaluation Framework and Discovery
 @InProceedings{ibanezmartinez2026musgu,
   author    = {Ibáñez-Martínez, Laura and Batlle-Roca, Roser and Serra, Xavier and Rocamora, Martín},
   title     = {MusGU+: Toward a Musician-Centered Evaluation Framework and Discovery Tool for Generative Music AI},
-  booktitle = {Proceedings of the 7th Conference on AI Music Creativity (AIMC 2026)},
+  booktitle = {Proceedings of the 7th Conference on AI Music Creativity (AIMC 2026), Berlin, Germany},
   year      = {2026},
   month     = sep,
   publisher = {AIMC},
