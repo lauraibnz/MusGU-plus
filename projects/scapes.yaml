@@ -11,10 +11,10 @@ project:
   applications: audio synthesis, environmental sound generation
   link: https://cordutie.github.io/SCAPES-DAFx26/
   repository: https://github.com/cordutie/SCAPES
-  article:
+  article: https://arxiv.org/abs/2609.04634
   checkpoints: https://huggingface.co/cordutie/SCAPES-models
   ui: https://huggingface.co/spaces/cordutie/SCAPES-demo
-  notes: Evaluation focuses on SCAPES, a lightweight generative framework for semantically controllable environmental sound synthesis. The paper is forthcoming at DAFx 2026 and is not yet publicly available.
+  notes: Evaluation focuses on SCAPES, a lightweight generative framework for semantically controllable environmental sound synthesis.
 
 adaptability:
   hardware_requirements:
@@ -59,7 +59,7 @@ controllability:
   control_parameters:
     value: partial
     notes: The demo exposes configurable generation parameters including diffusion steps and CFG scale, as well as a timeline-based interface for placing semantic sound anchors and interpolating between them. However, it does not provide a broad set of independent generation parameters or direct manipulation of internal model representations.
-    tags: diffusion steps, conditioning strength, latent interpolation
+    tags: diffusion steps, conditioning strength, interpolation
 
 usability:
   interface_availability:
