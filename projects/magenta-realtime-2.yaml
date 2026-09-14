@@ -38,7 +38,7 @@ controllability:
   conditioning_inputs:
     value: high
     notes: Magenta RealTime 2 supports multiple conditioning modalities. Text prompts and audio examples provide style conditioning, while MIDI supplies frame-wise note information during generation.
-    tags: text, MIDI, audio
+    tags: text prompt, MIDI, audio
   time_varying_control:
     value: high
     notes: MIDI conditioning provides precise frame-wise control over pitch activity and note timing during continuous generation. With Auto-Strum disabled, users can specify note onsets and continuations directly, enabling fine-grained temporal control.

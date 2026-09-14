@@ -74,11 +74,11 @@ controllability:
 usability:
   interface_availability:
     value: high
-    notes: Inference is available through Max/MSP and Pure Data patches, as well as
+    notes: Inference is available through Max/MSP patches, as well as
       Max for Live devices for Ableton Live, all built on top of nn~. While no standalone
       VST or web-based interface is provided, the Max for Live device enables direct
       use within a DAW environment.
-    tags: Max/MSP, Max4Live, PureData
+    tags: Max/MSP, Max4Live
   access_restrictions:
     value: high
     notes: The model, inference patches, and pretrained checkpoints are openly available.
@@ -103,8 +103,7 @@ usability:
       use is explicitly restricted, limiting professional adoption without additional
       permission.
   community_support:
-    value: partial
-    notes: User support is limited to GitHub Issues, which are primarily developer-
-      and research-oriented. No dedicated musician-facing community or discussion
-      forum is provided.
-    tags: GitHub Issues
+    value: high
+    notes: User support is available through the official ACIDS Discord server, alongside
+      GitHub Issues.
+    tags: Discord, GitHub Issues
