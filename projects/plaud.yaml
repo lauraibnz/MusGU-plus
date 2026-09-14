@@ -9,15 +9,15 @@ project:
   affiliation: 'Music Technology Group, Universitat Pompeu Fabra'
   architecture: differentiable DSP, autoregressive transformer
   applications: audio synthesis, style transfer
-  link: ''
+  link: https://plaudaimc2026.github.io/
   repository: https://github.com/blazejkotowski/plaud
-  article: ''
+  article: https://arxiv.org/abs/2608.13724
   checkpoints: ''
   ui: ''
-  notes: Single-author research project under active development, released under CC
-    BY-NC 4.0. There is no accompanying article. A pretrained example model (drum loops
-    trained on CC0 Freesound material) and a Max4Live device are provided. The models
-    run via the nn~ external in Ableton Live, Max/MSP, and Pure Data.
+  notes: Research project under active development, released under CC BY-NC 4.0. A pretrained
+    example model (drum loops trained on CC0 Freesound material) and a Max4Live device
+    are provided. The models run via the nn~ external in Ableton Live, Max/MSP, and Pure
+    Data.
 adaptability:
   hardware_requirements:
     value: partial
@@ -43,7 +43,7 @@ adaptability:
       interface, and setup still requires basic familiarity with Colab, file paths,
       and running command-line stages. The tooling is research-grade and under active
       change.
-    tags: CLI, Colab, config
+    tags: CLI, Colab
   model_redistribution:
     value: partial
     notes: Released under CC BY-NC 4.0, which permits redistribution of trained models
