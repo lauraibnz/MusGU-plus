@@ -9,7 +9,7 @@ project:
   affiliation: Stability AI
   development_context: Industrial Research
   architecture: latent diffusion
-  applications: continuation, editing, text-to-music, style transfer
+  applications: continuation, editing, full song generation, text-to-music, style transfer
   link: https://stability.ai/news-updates/meet-stable-audio-3-the-model-family-built-for-artistic-experimentation-with-open-weight-models
   repository: https://github.com/Stability-AI/stable-audio-3
   article: https://arxiv.org/abs/2605.17991
