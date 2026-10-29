@@ -7,6 +7,7 @@
 project:
   name: RAVE
   affiliation: IRCAM
+  development_context: Academic
   architecture: variational autoencoder
   applications: audio synthesis, style transfer
   link: https://forum.ircam.fr/projects/detail/rave/

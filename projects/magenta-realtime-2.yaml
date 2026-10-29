@@ -7,6 +7,7 @@
 project:
   name: Magenta RealTime 2
   affiliation: Google Magenta
+  development_context: Industrial Research
   architecture: autoregressive transformer
   applications: MIDI-to-audio, text-to-music
   link: https://magenta.withgoogle.com/magenta-realtime-2

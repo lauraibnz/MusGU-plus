@@ -7,6 +7,7 @@
 project:
   name: DDSP-VST
   affiliation: Google Magenta
+  development_context: Industrial Research
   architecture: differentiable DSP
   applications: MIDI-to-audio, audio synthesis, style transfer
   link: https://magenta.withgoogle.com/ddsp-vst

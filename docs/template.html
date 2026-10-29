@@ -148,11 +148,19 @@ body.ready {
 }
 
 /* Applications tags section */
-#applications-wrapper {
+#applications-wrapper,
+#development-context-wrapper {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 20px auto;
   box-sizing: border-box;
+}
+
+#applications-wrapper {
+  margin: 0 auto 14px auto;
+}
+
+#development-context-wrapper {
+  margin: 0 auto 20px auto;
 }
 
 .applications-section {
@@ -723,6 +731,10 @@ body.ready {
   <!-- Applications section will be injected here by Python script -->
 </div>
 
+<div id="development-context-wrapper">
+  <!-- Development context filters will be injected here by Python script -->
+</div>
+
 <div id="included-table">
   <!-- Table will be injected here by Python script -->
 </div>
@@ -770,6 +782,7 @@ body.ready {
 var activeFilters = new Set();
 var activeTags = new Set();
 var activeApplications = new Set();
+var activeDevelopmentContexts = new Set();
 var currentOpenPopup = null;
 
 // Criterion ID to display name mapping
@@ -946,6 +959,7 @@ function clearFilters() {
   activeFilters.clear();
   activeTags.clear();
   activeApplications.clear();
+  activeDevelopmentContexts.clear();
   
   document.querySelectorAll('.dimension-filter-tag').forEach(function(tag) {
     tag.classList.remove('active');
@@ -967,7 +981,7 @@ function clearFilters() {
 function updateClearButton() {
   var clearBtn = document.getElementById('clear-filters-inline');
   if (clearBtn) {
-    if (activeFilters.size > 0 || activeTags.size > 0 || activeApplications.size > 0) {
+    if (activeFilters.size > 0 || activeTags.size > 0 || activeApplications.size > 0 || activeDevelopmentContexts.size > 0) {
       clearBtn.classList.add('visible');
     } else {
       clearBtn.classList.remove('visible');
@@ -1036,6 +1050,16 @@ function updateActiveFiltersDisplay() {
     });
     container.appendChild(tagEl);
   });
+
+  activeDevelopmentContexts.forEach(function(context) {
+    var tagEl = document.createElement('div');
+    tagEl.className = 'active-filter-tag';
+    tagEl.innerHTML = '<span>' + context + '</span><span class="remove-icon">✕</span>';
+    tagEl.addEventListener('click', function() {
+      removeDevelopmentContext(context);
+    });
+    container.appendChild(tagEl);
+  });
 }
 
 function removeTag(tagId) {
@@ -1078,8 +1102,20 @@ function removeApplicationFilter(appName) {
   updateActiveFiltersDisplay();
 }
 
+function removeDevelopmentContext(context) {
+  activeDevelopmentContexts.delete(context);
+
+  document.querySelectorAll('.development-context-tag[data-development-context="' + context + '"]').forEach(function(tag) {
+    tag.classList.remove('active');
+  });
+
+  applyFilters();
+  updateClearButton();
+  updateActiveFiltersDisplay();
+}
+
 function initApplicationTags() {
-  var applicationTags = document.querySelectorAll('.application-tag');
+  var applicationTags = document.querySelectorAll('.application-tag:not(.development-context-tag)');
   
   applicationTags.forEach(function(tag) {
     tag.addEventListener('click', function() {
@@ -1093,6 +1129,28 @@ function initApplicationTags() {
         activeApplications.add(appName);
       }
       
+      updateActiveFiltersDisplay();
+      applyFilters();
+      updateClearButton();
+    });
+  });
+}
+
+function initDevelopmentContextTags() {
+  var contextTags = document.querySelectorAll('.development-context-tag');
+
+  contextTags.forEach(function(tag) {
+    tag.addEventListener('click', function() {
+      var context = tag.getAttribute('data-development-context');
+
+      if (tag.classList.contains('active')) {
+        tag.classList.remove('active');
+        activeDevelopmentContexts.delete(context);
+      } else {
+        tag.classList.add('active');
+        activeDevelopmentContexts.add(context);
+      }
+
       updateActiveFiltersDisplay();
       applyFilters();
       updateClearButton();
@@ -1137,15 +1195,24 @@ function applyFilters() {
         showRow = false;
       } else {
         var rowTagsArray = rowTags.split(',').map(function(t) { return t.trim(); });
-        var hasAllTags = true;
-        
+        var selectedTagsByCriterion = {};
+
         activeTags.forEach(function(tagName) {
-          if (!rowTagsArray.includes(tagName)) {
-            hasAllTags = false;
+          var separatorIndex = tagName.indexOf(':');
+          var criterionId = tagName.slice(0, separatorIndex);
+          if (!selectedTagsByCriterion[criterionId]) {
+            selectedTagsByCriterion[criterionId] = [];
           }
+          selectedTagsByCriterion[criterionId].push(tagName);
         });
-        
-        showRow = hasAllTags;
+
+        var matchesAllCriteria = Object.values(selectedTagsByCriterion).every(function(criterionTags) {
+          return criterionTags.some(function(tagName) {
+            return rowTagsArray.includes(tagName);
+          });
+        });
+
+        showRow = matchesAllCriteria;
       }
     }
     
@@ -1155,15 +1222,22 @@ function applyFilters() {
         showRow = false;
       } else {
         var rowAppsArray = rowApps.split(',').map(function(a) { return a.trim(); });
-        var hasAllApps = true;
+        var hasAnyApp = false;
         
         activeApplications.forEach(function(appName) {
-          if (!rowAppsArray.includes(appName)) {
-            hasAllApps = false;
+          if (rowAppsArray.includes(appName)) {
+            hasAnyApp = true;
           }
         });
         
-        showRow = hasAllApps;
+        showRow = hasAnyApp;
+      }
+    }
+
+    if (showRow && activeDevelopmentContexts.size > 0) {
+      var rowContext = row.getAttribute('data-development-context');
+      if (!activeDevelopmentContexts.has(rowContext)) {
+        showRow = false;
       }
     }
     
@@ -1183,6 +1257,7 @@ window.addEventListener('DOMContentLoaded', function() {
   initSorting();
   initFilters();
   initApplicationTags();
+  initDevelopmentContextTags();
   initTagExpansion();
   
   // Show page after everything is initialized

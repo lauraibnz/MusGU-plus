@@ -7,6 +7,7 @@
 project:
   name: YuE
   affiliation: The Hong Kong University of Science and Technology (HKUST) and MAP
+  development_context: Academic
   architecture: autoregressive transformer
   applications: continuation, full song generation, lyrics-to-song
   link: https://map-yue.github.io/

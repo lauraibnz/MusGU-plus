@@ -7,6 +7,7 @@
 project:
   name: MusicGen
   affiliation: Meta AI
+  development_context: Industrial Research
   architecture: autoregressive transformer
   applications: continuation, text-to-music
   link: ''

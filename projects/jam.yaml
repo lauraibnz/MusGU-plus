@@ -7,6 +7,7 @@
 project:
   name: JAM
   affiliation: 'Singapore University of Technology and Design and Lamda Labs. '
+  development_context: Academic
   architecture: latent diffusion, rectified flow
   applications: full song generation, lyrics-to-song
   link: https://declare-lab.github.io/jamify

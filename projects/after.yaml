@@ -7,6 +7,7 @@
 project:
   name: AFTER
   affiliation: IRCAM
+  development_context: Academic
   architecture: latent diffusion, rectified flow
   applications: MIDI-to-audio, audio synthesis, style transfer
   link: https://forum.ircam.fr/projects/detail/after/
