@@ -7,8 +7,9 @@
 project:
   name: Udio
   affiliation: Udio
+  development_context: Proprietary
   architecture: ''
-  applications: continuation, editing, full song generation, remixing, text-to-music
+  applications: continuation, editing, full-song generation, lyrics-to-song, remixing, text-to-music
   link: https://www.udio.com/
   repository: ''
   article: ''

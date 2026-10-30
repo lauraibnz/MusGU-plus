@@ -7,6 +7,7 @@
 project:
   name: SCAPES
   affiliation: Music Technology Group, Universitat Pompeu Fabra
+  development_context: Academic
   architecture: continuous normalizing flow
   applications: audio synthesis, environmental sound generation
   link: https://cordutie.github.io/SCAPES-DAFx26/

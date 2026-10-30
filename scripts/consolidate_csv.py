@@ -146,6 +146,8 @@ SYNTHETIC_TAGS = {
     "realtime_capabilities": {"high": ["real-time"], "partial": [], "low": []},
 }
 
+DEVELOPMENT_CONTEXTS = ("Academic", "Industrial Research", "Proprietary")
+
 
 def split_tags(value):
     if not value or not isinstance(value, str):
@@ -310,6 +312,11 @@ def write_html(df):
 
     for project in projects:
         affiliation = df.loc[project, "project.affiliation"] if "project.affiliation" in df.columns else ""
+        development_context = (
+            df.loc[project, "project.development_context"]
+            if "project.development_context" in df.columns
+            else ""
+        )
         slug = str(df.loc[project, "project.slug"])
         row_tags = get_row_tags(df, project)
         row_applications = split_tags(df.loc[project, "project.applications"]) if "project.applications" in df.columns else []
@@ -322,7 +329,8 @@ def write_html(df):
             f'data-controllability="{int(df.loc[project, "controllability_score"])}" '
             f'data-overall="{int(df.loc[project, "overall_score"])}" '
             f'data-tags="{escape_attr(",".join(row_tags))}" '
-            f'data-applications="{escape_attr(",".join(row_applications))}">'
+            f'data-applications="{escape_attr(",".join(row_applications))}" '
+            f'data-development-context="{escape_attr(development_context)}">'
         ]
 
         row_html.append('<td class="name-cell">')
@@ -364,16 +372,34 @@ def write_html(df):
     applications_html.append("</div>")
     applications_html.append("</div>")
 
-    return "\n".join(html_table), "\n".join(applications_html)
+    development_context_html = [
+        '<div class="applications-section development-context-section">',
+        '<h3 class="applications-title">Development Context</h3>',
+        '<div class="applications-tags-container">',
+    ]
+    for context in DEVELOPMENT_CONTEXTS:
+        escaped_context = html.escape(context)
+        development_context_html.append(
+            f'<span class="application-tag development-context-tag" '
+            f'data-development-context="{escaped_context}">{escaped_context}</span>'
+        )
+    development_context_html.append("</div>")
+    development_context_html.append("</div>")
+
+    return "\n".join(html_table), "\n".join(applications_html), "\n".join(development_context_html)
 
 
-def create_index(table_html, applications_html):
+def create_index(table_html, applications_html, development_context_html):
     with open("./docs/template.html", "r", encoding="utf-8") as file:
         soup = BeautifulSoup(file.read(), "html.parser")
 
     applications_wrapper = soup.find(id="applications-wrapper")
     if applications_wrapper and applications_html:
         applications_wrapper.append(BeautifulSoup(applications_html, "html.parser"))
+
+    development_context_wrapper = soup.find(id="development-context-wrapper")
+    if development_context_wrapper and development_context_html:
+        development_context_wrapper.append(BeautifulSoup(development_context_html, "html.parser"))
 
     included_table = soup.find(id="included-table")
     if included_table:
@@ -578,8 +604,8 @@ def main():
     df = calculate_scores(df)
     df = df.sort_values(by="overall_score", ascending=False)
 
-    table_html, applications_html = write_html(df)
-    create_index(table_html, applications_html)
+    table_html, applications_html, development_context_html = write_html(df)
+    create_index(table_html, applications_html, development_context_html)
     create_model_pages(df)
     df.to_csv("./docs/df.csv", index=False)
 
